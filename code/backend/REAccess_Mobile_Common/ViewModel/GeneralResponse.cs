@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace REAccess_Mobile_Commen.ViewModel
+namespace REAccess_Mobile_Common.ViewModel
 {
     public class GeneralResponse
     {

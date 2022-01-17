@@ -10,6 +10,7 @@ namespace REAccess_Mobile_Api.Extensions
         {
             services.AddScoped<IUtilService, UtilService>();
             services.AddScoped<IRankService, RankService>();
+            services.AddScoped<IIndustryService, IndustryService>();
         }
     }
 }

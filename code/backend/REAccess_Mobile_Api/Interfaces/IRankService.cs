@@ -1,4 +1,4 @@
-﻿using REAccess_Mobile_Commen.ViewModel;
+﻿using REAccess_Mobile_Common.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +12,6 @@ namespace REAccess_Mobile_Api.Interfaces
         public SingleIndexModel GetSingleIndexRank(string selectIndex, string selectYear);
         //城市排名
         public CityRankModel GetCityRank(string selectCity, string selectYear);
+        public List<NewsModel> GetNewsList();
     }
 }
