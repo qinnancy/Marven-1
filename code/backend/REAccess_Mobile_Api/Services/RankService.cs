@@ -1,9 +1,10 @@
 ﻿using REAccess_Mobile_Api.Interfaces;
 using REAccess_Mobile_Api.Utils;
-using REAccess_Mobile_Commen.ViewModel;
+using REAccess_Mobile_Common.ViewModel;
 using REAccess_Mobile_Database;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -25,7 +26,7 @@ namespace REAccess_Mobile_Api.Services
         public SingleIndexModel GetSingleIndexRank(string selectIndex,string selectYear)
         {
             SingleIndexModel model = new SingleIndexModel();
-            List<SingleIndex> singleIndexList = new List<SingleIndex>();
+            List<RankModel> singleIndexList = new List<RankModel>();
             var indicatorOriginalScore = StaticCache.IndicatorOriginalScore;
             var districtList = StaticCache.Districts;
             if (string.IsNullOrEmpty(selectYear))
@@ -37,8 +38,9 @@ namespace REAccess_Mobile_Api.Services
                 var indicator = indicatorOriginalScore.FirstOrDefault(x => x.DistrictSk == district.DistrictSk && x.SnapshotPeriod == selectYear);
                 if(indicator != null)
                 {
-                    SingleIndex singleIndex = new SingleIndex()
+                    RankModel singleIndex = new RankModel()
                     {
+                        DistrictSk = district.DistrictSk,
                         CityName = district.CityName,
                         ProvinceName = district.ProvName,
                         RankValue = ((decimal)indicator.GetOriginalValueByName(selectIndex)).ToString("N0")
@@ -47,9 +49,24 @@ namespace REAccess_Mobile_Api.Services
                 }
             }
             singleIndexList = singleIndexList.OrderByDescending(x => float.Parse(x.RankValue)).Take(5).ToList();
-            foreach(var data in singleIndexList)
+            //根据指标数据排名--数据相同则名次相同
+            for (var i = 0; i < singleIndexList.Count(); i++)
             {
-                data.RankPlace = singleIndexList.IndexOf(data) + 1;
+                if (i == 0)
+                {
+                    singleIndexList[i].RankPlace = 1;
+                }
+                else
+                {
+                    if (singleIndexList[i].RankValue == singleIndexList[i - 1].RankValue)
+                    {
+                        singleIndexList[i].RankPlace = singleIndexList[i - 1].RankPlace;
+                    }
+                    else
+                    {
+                        singleIndexList[i].RankPlace = i + 1;
+                    }
+                }
             }
             model.SingleIndexList = singleIndexList;
             model.Unit = StaticCache.Indicators.FirstOrDefault(x => x.Name == selectIndex).DisplayDataUnit;
@@ -79,16 +96,47 @@ namespace REAccess_Mobile_Api.Services
                 CityRank cityRank = new CityRank()
                 {
                     IndexName = indicator,
-                    IndexScore = ((double)indicatorScore.GetValueByName(indicator)).ToString("0.00")
+                    IndexValue = ((double)indicatorScore.GetValueByName(indicator)).ToString("0.00")
                 };
                 cityRankList.Add(cityRank);
             }
-            cityRankList = cityRankList.OrderByDescending(x => float.Parse(x.IndexScore)).Take(5).ToList();
-            foreach (var data in cityRankList)
+            cityRankList = cityRankList.OrderByDescending(x => float.Parse(x.IndexValue)).Take(5).ToList();
+            //根据指标得分排名--得分相同则名次相同
+            for (var i = 0; i < cityRankList.Count(); i++)
             {
-                data.RankPlace = cityRankList.IndexOf(data) + 1;
+                if (i == 0)
+                {
+                    cityRankList[i].RankPlace = 1;
+                }
+                else
+                {
+                    if (cityRankList[i].IndexValue == cityRankList[i - 1].IndexValue)
+                    {
+                        cityRankList[i].RankPlace = cityRankList[i - 1].RankPlace;
+                    }
+                    else
+                    {
+                        cityRankList[i].RankPlace = i + 1;
+                    }
+                }
             }
             model.CityRankList = cityRankList;
+
+            return model;
+        }
+        
+        //咨询
+        public List<NewsModel> GetNewsList()
+        {
+            DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
+            dtFormat.ShortDatePattern = "yyyy-MM-dd";
+            List<NewsModel> model = StaticCache.DdsNews.Select(x => new NewsModel()
+            {
+                NewsTitle = x.Title,
+                NewsContent = x.Content,
+                NewsReleaseDate = Convert.ToDateTime(x.ReleaseTime,dtFormat).ToString("yyyy-MM-dd"),
+                NewTags = x.Tags.Split(';').ToList()
+            }).ToList();
 
             return model;
         }

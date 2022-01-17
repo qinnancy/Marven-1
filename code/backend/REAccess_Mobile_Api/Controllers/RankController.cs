@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using REAccess_Mobile_Api.Interfaces;
-using REAccess_Mobile_Commen.ViewModel;
-using static REAccess_Mobile_Commen.Constants;
+using REAccess_Mobile_Common.ViewModel;
+using static REAccess_Mobile_Common.Constants;
 
 namespace REAccess_Mobile_Api.Controllers
 {
@@ -69,6 +69,33 @@ namespace REAccess_Mobile_Api.Controllers
             catch (Exception e)
             {
                 _logger.LogInformation(e, "Error in GetCityRank() method");
+                return new JsonResult(
+                    new GeneralResponse()
+                    {
+                        StatusCode = ResponseStatusCode.Exception,
+                        StatusMessage = ResponseMessage.Failed,
+                        ReturnObj = e.Message
+                    });
+            }
+        }
+        //资讯
+        [HttpGet("GetNewsList")]
+        public JsonResult GetNewsList()
+        {
+            try
+            {
+                _logger.LogInformation("Start executing GetNewsList() method");
+                return new JsonResult(
+                    new GeneralResponse()
+                    {
+                        StatusCode = ResponseStatusCode.Success,
+                        StatusMessage = ResponseMessage.Success,
+                        ReturnObj = _rankService.GetNewsList()
+                    });
+            }
+            catch (Exception e)
+            {
+                _logger.LogInformation(e, "Error in GetNewsList() method");
                 return new JsonResult(
                     new GeneralResponse()
                     {

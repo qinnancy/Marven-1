@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace REAccess_Mobile_Commen
+namespace REAccess_Mobile_Common
 {
     public class Constants
     {
@@ -31,6 +31,23 @@ namespace REAccess_Mobile_Commen
             public const int ChinaSkId = 640;
             public const string ProjectPhase1 = "Phase 1";
             public const string DeloitteRank = "德勤指标";
+        }
+        public static class IndustryRankUnit
+        {
+            public const string ByCounts = "个";
+            public const string ByAmount = "亿元";
+            public const string DetailAmount = "亿元";
+            public const string NullVaule = "未披露";
+            public const string ByLandSize = "亩";
+            public const string Growth = "%";
+            public const string Year = "年";
+        }
+        public static class LandRankUnit
+        {
+            public const string TransactionAmountUnit = "亿元";
+            public const string TransactionAmountUnitOfTable = "万元";
+            public const string TransactionAreaUnit = "万㎡";
+            public const string TransactionSumUnit = "笔";
         }
     }
 }

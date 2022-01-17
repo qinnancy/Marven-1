@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using static REAccess_Mobile_Commen.Constants;
+using static REAccess_Mobile_Common.Constants;
 
 namespace REAccess_Mobile_Api.Utils
 {
@@ -98,10 +98,15 @@ namespace REAccess_Mobile_Api.Utils
                 {
                     DsaPolicyIndustryFieldTagRelation = databaseContext.DsaPolicyIndustryFieldTagRelation.Include(x => x.IndustryFieldTag).Include(x => x.Policy).ToList();
                 }
-                //DsaPolicyFile
+                //政策文件
                 if (targetCaches == null || targetCaches.Contains(CacheEnum.DsaPolicyFile))
                 {
                     DsaPolicyFile = databaseContext.DsaPolicyFiles.ToList();
+                }
+                //政策文件
+                if (targetCaches == null || targetCaches.Contains(CacheEnum.News))
+                {
+                    DdsNews = databaseContext.DdsNews.ToList();
                 }
             }
         }
@@ -122,6 +127,7 @@ namespace REAccess_Mobile_Api.Utils
         public static List<DsaSolidSmallMediumCompanies> DsaSolidSmallMediumCompany { get; set; }
         public static List<DsaPolicyIndustryFieldTagRelation> DsaPolicyIndustryFieldTagRelation { get; set; }
         public static List<DsaPolicyFiles> DsaPolicyFile { get; set; }
+        public static List<DdsNews> DdsNews { get; set; }
     }
     public enum CacheEnum
     {
@@ -141,6 +147,7 @@ namespace REAccess_Mobile_Api.Utils
         DsaListedCompany,
         DsaSolidSmallMediumCompany,
         DsaPolicyIndustryFieldTagRelation,
-        DsaPolicyFile
+        DsaPolicyFile,
+        News
     }
 }
