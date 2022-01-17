@@ -1,12 +1,11 @@
 ﻿using REAccess_Mobile_Api.Interfaces;
 using REAccess_Mobile_Api.Utils;
-using REAccess_Mobile_Commen.ViewModel;
+using REAccess_Mobile_Common.ViewModel;
 using REAccess_Mobile_Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using static REAccess_Mobile_Commen.Constants;
 
 namespace REAccess_Mobile_Api.Services
 {
