@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "REAccess_Mobile_Api", "REAc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "REAccess_Mobile_Database", "REAccess_Mobile_Database\REAccess_Mobile_Database.csproj", "{AA39374F-FA58-4036-A0D9-68CEE23B15DF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "REAccess_Mobile_Common", "REAccess_Mobile_Commen\REAccess_Mobile_Common.csproj", "{0155CC24-955F-41C2-82BA-82369EF6F41B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "REAccess_Mobile_Common", "REAccess_Mobile_Common\REAccess_Mobile_Common.csproj", "{3B63B26B-F745-4177-B024-40A4DD36FBD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{AA39374F-FA58-4036-A0D9-68CEE23B15DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA39374F-FA58-4036-A0D9-68CEE23B15DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA39374F-FA58-4036-A0D9-68CEE23B15DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0155CC24-955F-41C2-82BA-82369EF6F41B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0155CC24-955F-41C2-82BA-82369EF6F41B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0155CC24-955F-41C2-82BA-82369EF6F41B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0155CC24-955F-41C2-82BA-82369EF6F41B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B63B26B-F745-4177-B024-40A4DD36FBD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B63B26B-F745-4177-B024-40A4DD36FBD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B63B26B-F745-4177-B024-40A4DD36FBD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B63B26B-F745-4177-B024-40A4DD36FBD7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

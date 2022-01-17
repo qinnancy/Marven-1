@@ -20,7 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\REAccess_Mobile_Commen\REAccess_Mobile_Common.csproj" />
     <ProjectReference Include="..\REAccess_Mobile_Database\REAccess_Mobile_Database.csproj" />
   </ItemGroup>
 

@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using REAccess_Mobile_Api.Interfaces;
-using REAccess_Mobile_Common.ViewModel;
-using static REAccess_Mobile_Common.Constants;
+using REAccess_Mobile_Commen.ViewModel;
+using static REAccess_Mobile_Commen.Constants;
 
 namespace REAccess_Mobile_Api.Controllers
 {
