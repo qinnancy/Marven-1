@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="63px" viewBox="0 0 100 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>城市</title>
+    <defs>
+        <linearGradient x1="41.7615277%" y1="-21.0184974%" x2="54.0402208%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#F4F6FF" stop-opacity="0.130545236" offset="0%"></stop>
+            <stop stop-color="#E5EAFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="45.4072893%" y1="0%" x2="54.4941782%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#EBEFFF" offset="0%"></stop>
+            <stop stop-color="#ABC1FF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="39.5407656%" y1="0%" x2="60.234841%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#EBEFFF" offset="0%"></stop>
+            <stop stop-color="#ABC1FF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="30.746229%" y1="0%" x2="75.1404959%" y2="104.486226%" id="linearGradient-4">
+            <stop stop-color="#DEE4FF" offset="0%"></stop>
+            <stop stop-color="#2C60FD" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="产业投资-活跃区域详情" transform="translate(-127.000000, -124.000000)">
+            <g id="城市" transform="translate(127.000000, 124.000000)">
+                <path d="M17.3184358,61.6937611 C5.34687018,50.0548721 0.877596432,42.8695446 3.91061453,40.1377787 C8.46014166,36.0401298 13.9664804,40.7552136 13.9664804,36.0401298 C13.9664804,31.325046 0,26.77756 0,18.6770013 C0.187677146,13.7320659 6.70391061,20.9116382 8.65921788,18.6770013 C10.6145251,16.4423644 1.73488326,7.29282494 8.65921788,4.00971898 C14.3384598,2.50291068 14.4836605,18.6770013 17.3184358,18.6770013 C20.153211,18.6770013 20.6374301,14.7663868 23.7265363,18.6770013 C26.8156425,22.5876158 19.9219425,32.9682558 19.9219425,36.0401298 C19.9219425,39.1120038 23.3112895,35.2186599 25.742524,37.1653319 C27.363347,38.4631132 26.0450755,46.6392562 21.7877095,61.6937611 L17.3184358,61.6937611 Z" id="路径-26" fill="url(#linearGradient-1)"></path>
+                <rect id="矩形" fill="url(#linearGradient-2)" x="21.7877095" y="15.0837989" width="22.3463687" height="46.3687151" rx="1"></rect>
+                <rect id="矩形" fill="url(#linearGradient-3)" x="77.6536313" y="30.726257" width="22.3463687" height="30.726257" rx="1"></rect>
+                <rect id="矩形" fill="url(#linearGradient-4)" x="39.1061453" y="0" width="43.575419" height="61.452514" rx="1"></rect>
+                <path d="M67.7150838,43.0167598 C68.2673685,43.0167598 68.7150838,43.464475 68.7150838,44.0167598 L68.7150838,45.3687151 C68.7150838,45.9209998 68.2673685,46.3687151 67.7150838,46.3687151 L65.9216257,46.3677598 L65.9217877,61.452514 L55.8659218,61.452514 L55.8656257,46.3677598 L54.0726257,46.3687151 C53.5203409,46.3687151 53.0726257,45.9209998 53.0726257,45.3687151 L53.0726257,44.0167598 C53.0726257,43.464475 53.5203409,43.0167598 54.0726257,43.0167598 L67.7150838,43.0167598 Z" id="形状结合" fill="#EEF2FF"></path>
+                <g id="编组-9" transform="translate(49.720670, 8.379888)" fill="#EEF2FF">
+                    <rect id="矩形" x="0" y="0" width="6.70391061" height="6.70391061" rx="1"></rect>
+                    <rect id="矩形" x="16.2011173" y="0" width="6.70391061" height="6.70391061" rx="1"></rect>
+                    <rect id="矩形" x="0" y="11.1731844" width="6.70391061" height="6.70391061" rx="1"></rect>
+                    <rect id="矩形" x="16.2011173" y="11.1731844" width="6.70391061" height="6.70391061" rx="1"></rect>
+                    <rect id="矩形" x="0" y="22.3463687" width="6.70391061" height="6.70391061" rx="1"></rect>
+                    <rect id="矩形" x="16.2011173" y="22.3463687" width="6.70391061" height="6.70391061" rx="1"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
