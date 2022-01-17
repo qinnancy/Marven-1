@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="24px" viewBox="0 0 20 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>3</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="单项指标" transform="translate(-30.000000, -410.000000)">
+            <g id="背景处理" transform="translate(0.000000, 86.000000)">
+                <g id="编组" transform="translate(0.000000, 85.000000)">
+                    <g id="3" transform="translate(30.000000, 239.000000)">
+                        <path d="M18.4483891,23.1877423 L10.4165945,20.1404365 L10.4165945,20.1404365 C10.1471779,20.0388822 9.85265165,20.0388822 9.58323507,20.1404365 L1.55156987,23.1877423 C0.80672865,23.47043 0,22.9427764 0,22.1731127 L0,1.09075486 C0,0.488316415 0.508068516,0 1.1348481,0 L18.8651519,0 C19.4918668,0 20,0.488386847 20,1.09075486 L20,22.1731127 C20,22.9427764 19.1932045,23.47043 18.4483654,23.1877423 L18.4483891,23.1877423 Z" id="路径" fill="#E7C897" fill-rule="nonzero"></path>
+                        <text id="#3" font-family="PingFangSC-Medium, PingFang SC" font-size="12" font-weight="400" fill="#FFFFFF">
+                            <tspan x="3" y="15">#3</tspan>
+                        </text>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
