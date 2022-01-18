@@ -3,6 +3,7 @@ using REAccess_Mobile_Api.Utils;
 using REAccess_Mobile_Common.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using static REAccess_Mobile_Common.Constants;
@@ -220,6 +221,81 @@ namespace REAccess_Mobile_Api.Services
                         model[i].RankPlace = i + 1;
                     }
                 }
+            }
+
+            return model;
+        }
+
+        //获取项目信息
+        public IndustryModel GetIndustryProject(string primaryCategory,string secondaryCategory,string currentId)
+        {
+            IndustryModel model = new IndustryModel();
+            DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
+            dtFormat.ShortDatePattern = "yyyy-MM-dd";
+            //获取产业类型
+            var industryTypeList = StaticCache.IndustryCategorys.ToList();
+            if (primaryCategory == Industrycategory.EnterpriseInvestment)//企业投资
+            {
+                //获取所有产业项目
+                var industryProject = StaticCache.DsaInvestedProject;
+                //获取最新年份的数据
+                var year = industryProject.Where(x => x.InvestDate != null).Select(x => x.InvestDate.Value.Year).Distinct().Max();
+                industryProject = industryProject.Where(x => x.InvestDate != null && x.InvestDate.Value.Year == year).ToList();
+
+                if (secondaryCategory == Industrycategory.ActiveRegion)
+                {
+                    industryProject = industryProject.Where(x => x.CitySk == long.Parse(currentId)).ToList();
+                    model.PrimaryName = StaticCache.DsaDistrict.FirstOrDefault(x => x.DistrictSk == long.Parse(currentId)).City;
+                }
+                else
+                {
+                    industryProject = industryProject.Where(x => x.IndustryPrimaryClassKey == currentId).ToList();
+                    model.PrimaryName = industryTypeList.FirstOrDefault(x => x.Id.ToString() == currentId).IndustryName;
+                }
+                model.InvestProjectCount = industryProject.Count().ToString() + LandRankUnit.TransactionSumUnit;
+                model.InvestProjectAmount = ((double)industryProject.Sum(x => x.InvestAmount10k / 10000)).ToString("N0") + IndustryRankUnit.ByAmount;
+                industryProject = industryProject.OrderByDescending(x => x.InvestAmount10k).Take(8).ToList();
+                model.ProjectList = industryProject.Select(x => new ProjectDetail()
+                {
+                    InvestmentCompany = x.InvestCompany == null ? IndustryRankUnit.NullVaule : x.InvestCompany,
+                    ProjectLocation = x.ProjectLocation == null ? IndustryRankUnit.NullVaule : x.ProjectLocation,
+                    ProjectIndustry = industryTypeList.FirstOrDefault(a => a.Id.ToString() == x.IndustrySecondaryClassKey).IndustryName,
+                    ProjectCapacity = x.ProjectCapacity == null ? IndustryRankUnit.NullVaule : x.ProjectCapacity,
+                    AreaCovered = x.LandSize == null ? IndustryRankUnit.NullVaule : ((double)x.LandSize).ToString("N0") + IndustryRankUnit.ByLandSize,
+                    TransactionAmount = x.InvestAmount10k == null ? IndustryRankUnit.NullVaule : ((double)x.InvestAmount10k).ToString("N0") + IndustryRankUnit.ByAmount,
+                    AnnualOutput = x.ProjectAnnualProduction10k == null ? IndustryRankUnit.NullVaule : ((double)x.ProjectAnnualProduction10k).ToString("N0") + IndustryRankUnit.ByAmount,
+                    AnnualTax = x.ProjectAnnualTax10k == null ? IndustryRankUnit.NullVaule : ((double)x.ProjectAnnualTax10k).ToString("N0") + IndustryRankUnit.ByAmount,
+                }).ToList();
+            }
+            else   //产业用地
+            {
+                //获取所有产业用地数据
+                var industryLand = StaticCache.DsaIndustryLand.Where(x => x.CitySk != null).ToList();
+                //获取最新年份的数据
+                var year = industryLand.Where(x => x.LandClosingTime != null).Select(x => x.LandClosingTime.Value.Year).Distinct().Max();
+                industryLand = industryLand.Where(x => x.LandClosingTime != null && x.LandClosingTime.Value.Year == year).ToList();
+                
+                if (secondaryCategory == Industrycategory.ActiveRegion)
+                {
+                    industryLand = industryLand.Where(x => x.CitySk == long.Parse(currentId)).ToList();
+                    model.PrimaryName = StaticCache.DsaDistrict.FirstOrDefault(x => x.DistrictSk == long.Parse(currentId)).City;
+                }
+                else
+                {
+                    industryLand = industryLand.Where(x => x.BuyerIndustryPrimaryClassKey == currentId).ToList();
+                    model.PrimaryName = industryTypeList.FirstOrDefault(x => x.Id.ToString() == currentId).IndustryName;
+                }
+                model.InvestProjectCount = industryLand.Count().ToString("N0") + LandRankUnit.TransactionSumUnit;
+                model.InvestProjectAmount = ((double)industryLand.Sum(x => x.LandPrice / 10000)).ToString("N0") + LandRankUnit.TransactionAmountUnit;
+                industryLand = industryLand.OrderByDescending(x => x.LandPrice).Take(8).ToList();
+                model.ProjectList = industryLand.Select(x => new ProjectDetail()
+                {
+                    ProjectLocation = x.LandLocation == null ? IndustryRankUnit.NullVaule : x.LandLocation,
+                    ProjectIndustry = industryTypeList.FirstOrDefault(a => a.Id.ToString() == x.BuyerIndustryPrimaryClassKey).IndustryName,
+                    AreaCovered = x.LandTotalArea == null ? IndustryRankUnit.NullVaule : ((double)x.LandTotalArea).ToString("N0") + LandRankUnit.TransactionAreaUnit,
+                    TransactionAmount = x.LandPrice == null ? IndustryRankUnit.NullVaule : ((double)x.LandPrice).ToString("N0") + LandRankUnit.TransactionAmountUnitOfTable,
+                    TransferDate = x.LandClosingTime == null ? IndustryRankUnit.NullVaule : Convert.ToDateTime(x.LandClosingTime,dtFormat).ToString("yyyy-MM-dd")
+                }).ToList();
             }
 
             return model;

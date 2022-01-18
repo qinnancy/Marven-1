@@ -16,5 +16,7 @@ namespace REAccess_Mobile_Api.Interfaces
         public List<RankModel> GetIndusrtyActiveRegion();
         //产业投资-产业用地-看热点产业
         public List<CityRank> GetLandHotIndustryRank();
+        //获取项目信息
+        public IndustryModel GetIndustryProject(string primaryCategory, string secondaryCategory, string currentId);
     }
 }

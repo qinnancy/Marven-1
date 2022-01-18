@@ -131,5 +131,33 @@ namespace REAccess_Mobile_Api.Controllers
                     });
             }
         }
+
+        //获取项目信息
+        [HttpGet("GetIndustryProject")]
+        public JsonResult GetIndustryProject(string primaryCategory, string secondaryCategory, string currentId)
+        {
+            try
+            {
+                _logger.LogInformation("Start executing GetIndustryProject() method");
+                return new JsonResult(
+                    new GeneralResponse()
+                    {
+                        StatusCode = ResponseStatusCode.Success,
+                        StatusMessage = ResponseMessage.Success,
+                        ReturnObj = _industryService.GetIndustryProject(primaryCategory, secondaryCategory, currentId)
+                    });
+            }
+            catch (Exception e)
+            {
+                _logger.LogInformation(e, "Error in GetIndustryProject() method");
+                return new JsonResult(
+                    new GeneralResponse()
+                    {
+                        StatusCode = ResponseStatusCode.Exception,
+                        StatusMessage = ResponseMessage.Failed,
+                        ReturnObj = e.Message
+                    });
+            }
+        }
     }
 }

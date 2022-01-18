@@ -49,5 +49,12 @@ namespace REAccess_Mobile_Common
             public const string TransactionAreaUnit = "万㎡";
             public const string TransactionSumUnit = "笔";
         }
+        public static class Industrycategory
+        {
+            public const string ActiveRegion = "活跃区域";
+            public const string HotIndustry = "热点产业";
+            public const string EnterpriseInvestment = "企业投资";
+            public const string IndustryLand = "产业用地";
+        }
     }
 }
