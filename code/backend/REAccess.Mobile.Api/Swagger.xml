@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>REAccess.Mobile.Api</name>
+    </assembly>
+    <members>
+        <member name="M:REAccess.Mobile.Api.Controllers.IndustryController.GetActiveAreaRank(System.Int32)">
+            <summary>
+            产业投资--企业投资--活跃区域
+            筛选规则：全部产业/投资项目数量/全国/最新年份的排名
+            </summary>
+        </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.IndustryController.GetHotIndustryRank(System.Int32)">
+             <summary>
+            产业投资--企业投资--热点产业
+            筛选规则：全国/投资项目数量/国民经济行业门类/最新年份的排名
+             </summary>
+        </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.IndustryController.GetIndusrtyActiveRegion(System.Int32)">
+             <summary>
+            产业投资-产业用地-活跃区域
+            筛选条件：全部产业/土地成交笔数/全国/最新年份
+             </summary>
+        </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.IndustryController.GetLandHotIndustryRank(System.Int32)">
+             <summary>
+            产业投资-产业用地-看热点产业
+            筛选规则：全国/土地成交笔数/国民经济行业门类/最新年份的排名
+             </summary>
+        </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.IndustryController.GetIndustryProject(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            获取项目信息
+            </summary>
+        </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.RankController.GetSingleIndexRank(System.String,System.String,System.Int32)">
+            <summary>
+            单指标排名，根据用户选择的指标获取该指标的真实数据进行排名，取排名前N的数据
+            </summary>
+        </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.RankController.GetCityRank(System.String,System.String,System.Int32)">
+            <summary>
+            城市排名,根据用户选择的城市，获取该城市的每一个指标在所有城市中的排名，并取出排名前N的数据
+            </summary>
+        </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.RankController.GetNewsList">
+            <summary>
+            获取数据库咨讯信息
+            </summary>
+        </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.UtilController.GetAllIndex">
+            <summary>
+            获取所有三级指标
+            </summary>
+        </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.UtilController.GetCityList">
+            <summary>
+            获取城市列表
+            </summary>
+        </member>
+    </members>
+</doc>
