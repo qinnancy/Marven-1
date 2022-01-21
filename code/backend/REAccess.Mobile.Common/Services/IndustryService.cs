@@ -325,5 +325,53 @@ namespace REAccess.Mobile.Common.Services
 
             return model;
         }
+
+        /// <summary>
+        /// 获取政策数据
+        /// </summary>
+        public PolicyModel GetPolicyData(int industryId, string policyCategory,int dataCount)
+        {
+            PolicyModel model = new PolicyModel();
+            industryId = industryId == 0 ? 1 : industryId;
+            dataCount = dataCount == 0 ? 10 : dataCount;
+            //默认获取政策类数据
+            policyCategory = string.IsNullOrEmpty(policyCategory) ? SearchPageMatch.PolicyCategory : policyCategory;
+            //获取对应产业、对应分类的政策数据
+            var policyList = StaticCache.DsaPolicyIndustryFieldTagRelation.Where(x => x.IndustryFieldTagId == industryId && x.Policy.Category.Trim() == policyCategory).Take(dataCount).ToList();
+            model.IndustrialPolicis = policyList.Select(x => new IndustrialPolicy()
+            {
+                PolicyId = x.Policy.Id,
+                FileName = string.IsNullOrEmpty(x.Policy.Name) ? "-" : x.Policy.Name,
+                Province = string.IsNullOrEmpty(x.Policy.Province) ? "-" : x.Policy.Province,
+                City = string.IsNullOrEmpty(x.Policy.City) ? "-" : x.Policy.City,
+            }).ToList();
+            model.IndustrialPolicyCount = dataCount;
+
+            return model;
+        }
+        /// <summary>
+        /// 获取政策文件详细信息
+        /// </summary>
+        public PolicyDetail GetPolicyDetail(int policyId)
+        {
+            PolicyDetail model = new PolicyDetail();
+            DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
+            dtFormat.ShortDatePattern = "yyyy年MM月dd日";
+            //var dbPolicy = StaticCache.DsaPolicyFile.FirstOrDefault(x => x.Id == policyId);
+            var dbPolicy = StaticCache.DsaPolicyIndustryFieldTagRelation.FirstOrDefault(x => x.PolicyId == policyId);
+            if(dbPolicy != null)
+            {
+                model.FileName = dbPolicy.Policy.FileName;
+                model.FileLevel = dbPolicy.Policy.Level;
+                model.IssuingAgency = dbPolicy.Policy.Organization;
+                model.SupportAreas = dbPolicy.Policy.Fields;
+                model.ReleaseDate = dbPolicy.Policy.ReleaseTime == null ? IndustryRankUnit.NullVaule : Convert.ToDateTime(dbPolicy.Policy.ReleaseTime,dtFormat).ToString("yyyy年MM月dd日");
+                model.ClosingDate = dbPolicy.Policy.ExpireTime == null ? IndustryRankUnit.NullVaule : Convert.ToDateTime(dbPolicy.Policy.ExpireTime, dtFormat).ToString("yyyy年MM月dd日");
+                model.DetailsLink = dbPolicy.Policy.Link;
+                model.FileCategory = dbPolicy.IndustryFieldTag.Name;
+            }
+
+            return model;
+        }
     }
 }

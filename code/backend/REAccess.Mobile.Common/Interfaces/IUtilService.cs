@@ -18,5 +18,9 @@ namespace REAccess.Mobile.Common.Interfaces
         /// 获取城市列表
         /// </summary>
         public List<string> GetCityList();
+        /// <summary>
+        /// 获取政策类别列表
+        /// </summary>
+        public List<string> GetPolicyList();
     }
 }

@@ -58,5 +58,13 @@ namespace REAccess.Mobile.Common
             public const string EnterpriseInvestment = "企业投资";
             public const string IndustryLand = "产业用地";
         }
+        public static class SearchPageMatch
+        {
+            public const string City = "城市";
+            public const string Indicator = "指标";
+            public const string Industry = "产业";
+            public const string PolicyCategory = "政策类";
+            public const string PlanningClass = "规划类";
+        }
     }
 }

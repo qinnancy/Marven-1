@@ -18,11 +18,6 @@ namespace REAccess.Mobile.Api.Controllers
     {
         public string RequestIp { get; set; }
         public string RequestUrl { get; set; }
-        private readonly ILogger<BaseController> _logger;
-        public BaseController(ILogger<BaseController> logger) 
-        {
-            _logger = logger;
-        }
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var currentUrl = filterContext.HttpContext.Request.GetDisplayUrl();
@@ -33,7 +28,6 @@ namespace REAccess.Mobile.Api.Controllers
             }
             RequestIp = currentIp;
             RequestUrl = currentUrl;
-            _logger.LogInformation("");
         }
 
     }

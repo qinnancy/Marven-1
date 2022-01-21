@@ -23,5 +23,9 @@ namespace REAccess.Mobile.Common.Interfaces
         /// 获取数据库咨讯信息
         /// </summary>
         public List<NewsModel> GetNewsList();
+        /// <summary>
+        /// 获取资讯详细信息
+        /// </summary>
+        public NewsModel GetNewsById(int newsId);
     }
 }

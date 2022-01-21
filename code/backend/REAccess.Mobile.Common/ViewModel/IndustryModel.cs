@@ -25,4 +25,27 @@ namespace REAccess.Mobile.Common.ViewModel
         public string AnnualTax { get; set; }
         public string TransferDate { get; set; }
     }
+    public class PolicyModel
+    {
+        public List<IndustrialPolicy> IndustrialPolicis { get; set; }
+        public int IndustrialPolicyCount { get; set; }
+    }
+    public class IndustrialPolicy
+    {
+        public int PolicyId { get; set; }
+        public string FileName { get; set; }
+        public string Province { get; set; }
+        public string City { get; set; }
+    }
+    public class PolicyDetail
+    {
+        public string FileName { get; set; }
+        public string FileLevel { get; set; }
+        public string IssuingAgency { get; set; }
+        public string SupportAreas { get; set; }
+        public string ReleaseDate { get; set; }
+        public string ClosingDate { get; set; }
+        public string DetailsLink { get; set; }
+        public string FileCategory { get; set; }
+    }
 }

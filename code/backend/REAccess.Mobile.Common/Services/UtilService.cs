@@ -42,5 +42,14 @@ namespace REAccess.Mobile.Common.Services
 
             return cityList;
         }
+        /// <summary>
+        /// 获取政策类别列表
+        /// </summary>
+        public List<string> GetPolicyList()
+        {
+            List<string> policyList = _db.DsaIndustryFieldTag.Where(x => x.Category == 1).OrderBy(x => x.OrderNum).Select(x => x.Name).ToList();
+
+            return policyList;
+        }
     }
 }

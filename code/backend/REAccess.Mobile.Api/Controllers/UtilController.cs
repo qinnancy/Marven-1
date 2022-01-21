@@ -85,5 +85,34 @@ namespace REAccess.Mobile.Api.Controllers
                     });
             }
         }
+        /// <summary>
+        /// 获取政策类别列表
+        /// </summary>
+        [HttpGet("GetPolicyList")]
+        public JsonResult GetPolicyList()
+        {
+            try
+            {
+                _logger.LogInformation("Start executing GetPolicyList() method");
+                return new JsonResult(
+                    new GeneralResponse()
+                    {
+                        StatusCode = ResponseStatusCode.Success,
+                        StatusMessage = ResponseStatusMessage.Success,
+                        ReturnObj = _utilService.GetPolicyList()
+                    });
+            }
+            catch (Exception e)
+            {
+                _logger.LogInformation(e, "Error in GetPolicyList() method");
+                return new JsonResult(
+                    new GeneralResponse()
+                    {
+                        StatusCode = ResponseStatusCode.Exception,
+                        StatusMessage = ResponseStatusMessage.Failed,
+                        ReturnObj = e.Message
+                    });
+            }
+        }
     }
 }

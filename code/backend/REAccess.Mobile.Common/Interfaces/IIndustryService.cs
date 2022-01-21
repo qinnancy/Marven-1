@@ -37,5 +37,13 @@ namespace REAccess.Mobile.Common.Interfaces
         /// 获取项目信息
         /// </summary>
         public IndustryModel GetIndustryProject(string primaryCategory, string secondaryCategory, string currentId,int dataCount);
+        /// <summary>
+        /// 获取政策数据
+        /// </summary>
+        public PolicyModel GetPolicyData(int industryId, string policyCategory, int dataCount);
+        /// <summary>
+        /// 获取政策文件详细信息
+        /// </summary>
+        public PolicyDetail GetPolicyDetail(int policyId);
     }
 }
