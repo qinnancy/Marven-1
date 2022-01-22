@@ -69,6 +69,9 @@
     <None Update="RealTimeInfoImgs\shutterstock_717437125_lo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Swagger.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
