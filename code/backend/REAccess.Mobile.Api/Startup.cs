@@ -65,7 +65,7 @@ namespace REAccess.Mobile.Api
                     Contact = new OpenApiContact
                     {
                         Name = "John Jiang",
-                        Email = "sjiang@deloitte.com.cn",
+                        Email = "1033596188@qq.com",
                     }
                 });
                 var basePath = Path.GetDirectoryName(typeof(Program).Assembly.Location);//获取应用程序所在目录
@@ -93,7 +93,7 @@ namespace REAccess.Mobile.Api
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApiHelp V1");
+                c.SwaggerEndpoint("/api/swagger/v1/swagger.json", "ApiHelp V1");
             });
 
             app.UseCors();

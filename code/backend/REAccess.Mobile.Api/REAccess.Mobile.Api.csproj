@@ -35,4 +35,40 @@
     <ProjectReference Include="..\REAccess.Mobile.Database\REAccess.Mobile.Database.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="RealTimeInfoImgs\174255248_lo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="RealTimeInfoImgs\232686868_lo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="RealTimeInfoImgs\ind_man_glb_ho_2172_lo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="RealTimeInfoImgs\shutterstock_1669326868_lo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="RealTimeInfoImgs\shutterstock_1889680603_lo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="RealTimeInfoImgs\shutterstock_334223177_lo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="RealTimeInfoImgs\shutterstock_373700113_lo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="RealTimeInfoImgs\shutterstock_516050707_lo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="RealTimeInfoImgs\shutterstock_518160511_lo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="RealTimeInfoImgs\shutterstock_565260484_lo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="RealTimeInfoImgs\shutterstock_717437125_lo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
