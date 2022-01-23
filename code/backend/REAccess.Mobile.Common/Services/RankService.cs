@@ -1,5 +1,6 @@
 ﻿#region Using
 using REAccess.Mobile.Common.Interfaces;
+using REAccess.Mobile.Common.Utils;
 using REAccess.Mobile.Common.ViewModel;
 using REAccess.Mobile.Database.Utils;
 using System;
@@ -8,6 +9,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Web;
 using static REAccess.Mobile.Common.Constants;
 #endregion
 
@@ -145,8 +147,8 @@ namespace REAccess.Mobile.Common.Services
                 Id = x.Id,
                 NewsTitle = x.Title,
                 NewsContent = x.Content,
-                NewsImage = Path.Combine("RealTimeInfoImgs",x.Img),
-                //NewsImage = $"{Directory.GetCurrentDirectory()}\\RealTimeInfoImgs\\{x.Img}",
+                //NewsImage = Path.Combine("RealTimeInfoImgs",x.Img),
+                NewsImage = FileEncode.GetImageBytes($"{Directory.GetCurrentDirectory()}\\RealTimeInfoImgs\\{x.Img}"),
                 NewsReleaseDate = Convert.ToDateTime(x.ReleaseTime, dtFormat).ToString("yyyy-MM-dd"),
                 NewTags = x.Tags.Split(';').ToList()
             }).ToList();
@@ -167,7 +169,7 @@ namespace REAccess.Mobile.Common.Services
                 model.Id = dbNews.Id;
                 model.NewsTitle = dbNews.Title;
                 model.NewsContent = dbNews.Content;
-                model.NewsImage = dbNews.Img;
+                model.NewsImage = FileEncode.GetImageBytes($"{Directory.GetCurrentDirectory()}\\RealTimeInfoImgs\\{dbNews.Img}");
                 model.NewsReleaseDate = Convert.ToDateTime(dbNews.ReleaseTime, dtFormat).ToString("yyyy-MM-dd");
                 model.NewTags = dbNews.Tags.Split(';').ToList();
             }
