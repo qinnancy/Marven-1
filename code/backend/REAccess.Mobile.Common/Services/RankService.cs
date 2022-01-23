@@ -125,35 +125,9 @@ namespace REAccess.Mobile.Common.Services
                 };
                 cityRankList.Add(cityRank);
             }
-            //foreach (var indicator in indicatorList)
-            //{
-            //    CityRank cityRank = new CityRank()
-            //    {
-            //        IndexName = indicator,
-            //        IndexValue = ((double)indicatorScore.GetValueByName(indicator)).ToString("0.00")
-            //    };
-            //    cityRankList.Add(cityRank);
-            //}
-            cityRankList = cityRankList.OrderByDescending(x => float.Parse(x.IndexValue)).Take(dataCount).ToList();
-            //根据指标得分排名--得分相同则名次相同
-            for (var i = 0; i < cityRankList.Count(); i++)
-            {
-                if (i == 0)
-                {
-                    cityRankList[i].RankPlace = 1;
-                }
-                else
-                {
-                    if (cityRankList[i].IndexValue == cityRankList[i - 1].IndexValue)
-                    {
-                        cityRankList[i].RankPlace = cityRankList[i - 1].RankPlace;
-                    }
-                    else
-                    {
-                        cityRankList[i].RankPlace = i + 1;
-                    }
-                }
-            }
+
+            cityRankList = cityRankList.OrderBy(x => x.RankPlace).Take(dataCount).ToList();
+            
             model.CityRankList = cityRankList;
 
             return model;
