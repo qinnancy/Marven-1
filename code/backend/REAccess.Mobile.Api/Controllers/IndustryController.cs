@@ -59,10 +59,11 @@ namespace REAccess.Mobile.Api.Controllers
         }
 
         /// <summary>
-        ///产业投资--企业投资--热点产业
-        ///筛选规则：全国/投资项目数量/国民经济行业门类/最新年份的排名
-        /// <param name="dataCount">数据条数，可不传参，默认为5条</param>
+        /// 产业投资--企业投资--热点产业
+        /// 筛选规则：全国/投资项目数量/国民经济行业门类/最新年份的排名
         /// </summary>
+        /// <param name="dataCount">数据条数，可不传参，默认为5条</param>
+        /// <returns></returns>
         [HttpGet("GetHotIndustryRank")]
         public JsonResult GetHotIndustryRank(int dataCount)
         {
@@ -91,10 +92,11 @@ namespace REAccess.Mobile.Api.Controllers
         }
 
         /// <summary>
-        ///产业投资-产业用地-活跃区域
-        ///筛选条件：全部产业/土地成交笔数/全国/最新年份
-        ///<param name="dataCount">数据条数，可不传参，默认为5条</param>
+        /// 产业投资-产业用地-活跃区域
+        /// 筛选条件：全部产业/土地成交笔数/全国/最新年份
         /// </summary>
+        /// <param name="dataCount">数据条数，可不传参，默认为5条</param>
+        /// <returns></returns>
         [HttpGet("GetIndusrtyActiveRegion")]
         public JsonResult GetIndusrtyActiveRegion(int dataCount)
         {
@@ -123,10 +125,11 @@ namespace REAccess.Mobile.Api.Controllers
         }
 
         /// <summary>
-        ///产业投资-产业用地-看热点产业
-        ///筛选规则：全国/土地成交笔数/国民经济行业门类/最新年份的排名
-        ///<param name="dataCount">数据条数，可不传参，默认为5条</param>
+        /// 产业投资-产业用地-看热点产业
+        /// 筛选规则：全国/土地成交笔数/国民经济行业门类/最新年份的排名
         /// </summary>
+        /// <param name="dataCount">数据条数，可不传参，默认为5条</param>
+        /// <returns></returns>
         [HttpGet("GetLandHotIndustryRank")]
         public JsonResult GetLandHotIndustryRank(int dataCount)
         {
