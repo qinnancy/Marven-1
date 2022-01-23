@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
@@ -94,6 +95,17 @@ namespace REAccess.Mobile.Api
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApiHelp V1");
+            });
+
+            //这是添加的扩张方法
+            //设置访问文件
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                //配置除了默认的wwwroot文件中的静态文件以外的文件夹提供 Web 根目录外的文件 ,
+                //经过此配置以后，就可以访问非wwwroot文件下的文件
+                FileProvider = new PhysicalFileProvider(
+                  Path.Combine(Directory.GetCurrentDirectory(), "RealTimeInfoImgs")),
+                RequestPath = "/RealTimeInfoImgs",
             });
 
             app.UseCors();
