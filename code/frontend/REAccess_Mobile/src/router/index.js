@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
 
@@ -10,6 +9,11 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: () => import('../views/home/Index.vue')
+    },
+    {
+      path: '/Detail',
+      name: 'Detail',
+      component: () => import('../views/home/Detail.vue')
     },
     {
       path: '/SingleIndex',
@@ -30,6 +34,20 @@ export default new Router({
       path: '/SpecialPolicies',
       name: 'SpecialPolicies',
       component: () => import('../views/specialPolicies/Index.vue')
-    }
+    },
+    {
+      path: '/Agreement',
+      name: 'Agreement',
+      component: () => import('../views/standard/Agreement.vue')
+    },
+    {
+      path: '/Contact',
+      name: 'Contact',
+      component: () => import('../views/standard/Contact.vue')
+    }, {
+      path: '/PrivacyPolicy',
+      name: 'PrivacyPolicy',
+      component: () => import('../views/standard/PrivacyPolicy.vue')
+    },
   ]
 })
