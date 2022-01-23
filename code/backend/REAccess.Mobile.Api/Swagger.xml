@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>REAccess.Mobile.Api</name>
+    </assembly>
+    <members>
+        <member name="M:REAccess.Mobile.Api.Controllers.IndustryController.GetActiveAreaRank(System.Int32)">
+            <summary>
+            产业投资--企业投资--活跃区域
+            筛选规则：全部产业/投资项目数量/全国/最新年份的排名 
+            </summary>
+            <param name="dataCount">数据条数，可不传参，默认为5条</param>
+            <returns></returns>
+        </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.IndustryController.GetHotIndustryRank(System.Int32)">
+            <summary>
+            产业投资--企业投资--热点产业
+            筛选规则：全国/投资项目数量/国民经济行业门类/最新年份的排名
+            </summary>
+            <param name="dataCount">数据条数，可不传参，默认为5条</param>
+            <returns></returns>
+        </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.IndustryController.GetIndusrtyActiveRegion(System.Int32)">
+            <summary>
+            产业投资-产业用地-活跃区域
+            筛选条件：全部产业/土地成交笔数/全国/最新年份
+            </summary>
+            <param name="dataCount">数据条数，可不传参，默认为5条</param>
+            <returns></returns>
+        </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.IndustryController.GetLandHotIndustryRank(System.Int32)">
+            <summary>
+            产业投资-产业用地-看热点产业
+            筛选规则：全国/土地成交笔数/国民经济行业门类/最新年份的排名
+            </summary>
+            <param name="dataCount">数据条数，可不传参，默认为5条</param>
+            <returns></returns>
+        </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.IndustryController.GetIndustryProject(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            获取项目信息
+            </summary>
+            <param name="primaryCategory">参数：企业投资/产业用地</param>
+            <param name="secondaryCategory">参数：活跃区域/热点产业</param>
+            <param name="currentId">当前城市/产业的Id</param>
+            <param name="dataCount">数据条数，可不传参，默认为8条</param>
+            <returns></returns>
+        </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.IndustryController.GetPolicyData(System.Int32,System.String,System.Int32)">
+            <summary>
+            获取政策数据
+            </summary>
+            <param name="industryId">产业分类Id</param>
+            <param name="policyCategory">数据分类（政策类/规划类）可不传参</param>
+            <param name="dataCount">数据条数，默认10条，可不传参</param>
+            <returns></returns>
+        </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.IndustryController.GetPolicyDetail(System.Int32)">
+            <summary>
+            获取政策文件详细信息
+            </summary>
+            <param name="policyId">政策文件Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.RankController.GetSingleIndexRank(System.String,System.String,System.Int32)">
+            <summary>
+            单指标排名，根据用户选择的指标获取该指标的真实数据进行排名，取排名前N的数据
+            </summary>
+            <param name="selectIndex">已选指标</param>
+            <param name="selectYear">已选年份,可不传参，默认最新年份</param>
+            <param name="dataCount">数据条数,可不传参，默认5条</param>
+            <returns></returns>
+        </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.RankController.GetCityRank(System.String,System.String,System.Int32)">
+            <summary>
+            城市排名,根据用户选择的城市，获取该城市的每一个指标在所有城市中的排名，并取出排名前N的数据
+            </summary>
+            <param name="selectCity">已选城市</param>
+            <param name="selectYear">已选年份,可不传参，默认最新年份</param>
+            <param name="dataCount">数据条数,可不传参，默认5条</param>
+            <returns></returns>
+        </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.RankController.GetNewsList">
+            <summary>
+            获取数据库咨讯信息
+            </summary>
+        </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.RankController.GetNewsById(System.Int32)">
+            <summary>
+            获取资讯详细信息
+            </summary>
+            <param name="newsId">资讯Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.UtilController.GetAllIndex">
+            <summary>
+            获取所有三级指标
+            </summary>
+        </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.UtilController.GetCityList">
+            <summary>
+            获取城市列表
+            </summary>
+        </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.UtilController.GetPolicyList">
+            <summary>
+            获取政策类别列表
+            </summary>
+        </member>
+    </members>
+</doc>
