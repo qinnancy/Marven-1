@@ -20,6 +20,17 @@ namespace REAccess.Mobile.Api.Controllers
         public string RequestUrl { get; set; }
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
+            object controller;
+            object action;
+            object requestData;
+            filterContext.RouteData.Values.TryGetValue("controller", out controller);
+            filterContext.RouteData.Values.TryGetValue("action", out action);
+            requestData = filterContext.ActionArguments;
+
+            var host = filterContext.HttpContext.Request.Host;
+            var QueryString = filterContext.HttpContext.Request.QueryString;
+            var Headers = filterContext.HttpContext.Request.Headers;
+
             var currentUrl = filterContext.HttpContext.Request.GetDisplayUrl();
             var currentIp = filterContext.HttpContext.Request.Headers["X-Forwarded-For"].FirstOrDefault();
             if (string.IsNullOrEmpty(currentIp))

@@ -18,6 +18,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using REAccess.Mobile.Api.Controllers.Attributes;
 using REAccess.Mobile.Api.Extensions;
+using REAccess.Mobile.Common.Utils;
 using REAccess.Mobile.Database.Models;
 using REAccess.Mobile.Database.Utils;
 #endregion
@@ -126,6 +127,9 @@ namespace REAccess.Mobile.Api
                 //app启动后运行的程序
                 //将静态数据加载至静态类作为缓存使用
                 StaticCache.RefreshCache(null);
+                //app启动后运行的程序
+                //将大于500kb的资讯图片 压缩处理
+                ImageHelper.MagickImage();
 
                 Console.Write("ApplicationStarted");
             });
