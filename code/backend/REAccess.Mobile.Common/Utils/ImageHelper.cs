@@ -1,8 +1,10 @@
-﻿using ImageMagick;
+﻿#region Using
+using ImageMagick;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+#endregion
 
 namespace REAccess.Mobile.Common.Utils
 {

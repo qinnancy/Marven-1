@@ -1,4 +1,4 @@
-#region
+#region Using
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,17 +6,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using REAccess.Mobile.Api.Controllers.Attributes;
 using REAccess.Mobile.Api.Extensions;
 using REAccess.Mobile.Common.Utils;
 using REAccess.Mobile.Database.Models;
@@ -42,6 +39,13 @@ namespace REAccess.Mobile.Api
             services.AddControllers();
 
             NativeInjectorBootStrapper.RegisterServices(services);
+            #region Session
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(1440);
+            });
+            services.AddMvc();
+            #endregion
 
             #region CORS
             services.AddCors(c =>
@@ -89,6 +93,7 @@ namespace REAccess.Mobile.Api
                 app.UseHsts();
             }
 
+            app.UseSession();
             app.UseForwardedHeaders(new ForwardedHeadersOptions { ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto });
 
             app.UseSwagger();

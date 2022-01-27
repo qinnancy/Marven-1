@@ -138,7 +138,7 @@ namespace REAccess.Mobile.Common.Services
         /// <summary>
         /// 获取所有咨讯信息
         /// </summary>
-        public List<NewsModel> GetNewsList()
+        public List<NewsModel> GetNewsList(int currentPage,int pageSize)
         {
             DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
             dtFormat.ShortDatePattern = "yyyy-MM-dd";
@@ -152,6 +152,8 @@ namespace REAccess.Mobile.Common.Services
                 NewsReleaseDate = Convert.ToDateTime(x.ReleaseTime, dtFormat).ToString("yyyy-MM-dd"),
                 NewTags = x.Tags.Split(';').ToList()
             }).ToList();
+
+            model = PageHelper.PageUtil<NewsModel>(currentPage, pageSize, model);
 
             return model;
         }

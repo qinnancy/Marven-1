@@ -4,6 +4,12 @@
         <name>REAccess.Mobile.Api</name>
     </assembly>
     <members>
+        <member name="M:REAccess.Mobile.Api.Controllers.BaseController.GetStackTraceModelName">
+            <summary>
+            获取堆栈
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:REAccess.Mobile.Api.Controllers.IndustryController.GetActiveAreaRank(System.Int32)">
             <summary>
             产业投资--企业投资--活跃区域
@@ -80,10 +86,13 @@
             <param name="dataCount">数据条数,可不传参，默认5条</param>
             <returns></returns>
         </member>
-        <member name="M:REAccess.Mobile.Api.Controllers.RankController.GetNewsList">
+        <member name="M:REAccess.Mobile.Api.Controllers.RankController.GetNewsList(System.Int32,System.Int32)">
             <summary>
-            获取数据库咨讯信息
+            获取资讯信息
             </summary>
+            <param name="currentPage">当前页数</param>
+            <param name="pageSize">每页显示个数</param>
+            <returns></returns>
         </member>
         <member name="M:REAccess.Mobile.Api.Controllers.RankController.GetNewsById(System.Int32)">
             <summary>
