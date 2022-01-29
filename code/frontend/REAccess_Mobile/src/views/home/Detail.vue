@@ -18,7 +18,7 @@
   </div>
    <div class="footer">
         <div class="footer-img">
-           <a href="https://rea.deloitte.com.cn"><div class="link-web"></div></a>
+           <!-- <a href="https://rea.deloitte.com.cn"><div class="link-web"></div></a> -->
            <img src="@/assets/查看更多资讯.svg"/>
         </div>
    </div>
@@ -59,6 +59,7 @@ export default {
   font-size: 1rem;
   color: #333333;
   text-align: left;
+  font-weight: bold;
 }
 .news-card{
   background: #FFFFFF;
