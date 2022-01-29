@@ -1,7 +1,9 @@
-﻿using System;
+﻿#region Using
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+#endregion
 
 namespace REAccess.Mobile.Common.Utils
 {

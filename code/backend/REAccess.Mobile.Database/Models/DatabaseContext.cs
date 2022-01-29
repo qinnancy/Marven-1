@@ -131,7 +131,7 @@ namespace REAccess.Mobile.Database.Models
             if (!optionsBuilder.IsConfigured)
             {
                 var Configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-                var sqlServerDb = Configuration.GetSection("SqlServerDb").Value;
+                var sqlServerDb = Configuration.GetConnectionString("DatabaseConnection");
                 optionsBuilder.UseSqlServer(sqlServerDb);
             }
         }

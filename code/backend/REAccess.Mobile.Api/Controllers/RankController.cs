@@ -95,10 +95,13 @@ namespace REAccess.Mobile.Api.Controllers
         }
 
         /// <summary>
-        /// 获取数据库咨讯信息
+        /// 获取资讯信息
         /// </summary>
+        /// <param name="currentPage">当前页数</param>
+        /// <param name="pageSize">每页显示个数</param>
+        /// <returns></returns>
         [HttpGet("GetNewsList")]
-        public JsonResult GetNewsList()
+        public JsonResult GetNewsList(int currentPage, int pageSize)
         {
             try
             {
@@ -108,7 +111,7 @@ namespace REAccess.Mobile.Api.Controllers
                     {
                         StatusCode = ResponseStatusCode.Success,
                         StatusMessage = ResponseStatusMessage.Success,
-                        ReturnObj = _rankService.GetNewsList()
+                        ReturnObj = _rankService.GetNewsList(currentPage,pageSize)
                     });
             }
             catch (Exception e)

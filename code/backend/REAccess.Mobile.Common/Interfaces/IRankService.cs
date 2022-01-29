@@ -22,7 +22,7 @@ namespace REAccess.Mobile.Common.Interfaces
         /// <summary>
         /// 获取数据库咨讯信息
         /// </summary>
-        public List<NewsModel> GetNewsList();
+        public List<NewsModel> GetNewsList(int currentPage, int pageSize);
         /// <summary>
         /// 获取资讯详细信息
         /// </summary>
