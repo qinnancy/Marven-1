@@ -44,10 +44,21 @@ export default new Router({
       path: '/Contact',
       name: 'Contact',
       component: () => import('../views/standard/Contact.vue')
-    }, {
+    }, 
+    {
       path: '/PrivacyPolicy',
       name: 'PrivacyPolicy',
       component: () => import('../views/standard/PrivacyPolicy.vue')
+    },
+    {
+      path: '/IndustrialInvest/ListDetail',
+      name: 'ListDetail',
+      component: () => import('../views/industrialInvest/components/ListDetail.vue')
+    },
+    {
+      path: '/IndustrialInvest/LandDetail',
+      name: 'LandDetail',
+      component: () => import('../views/industrialInvest/components/LandDetail.vue')
     },
   ]
 })

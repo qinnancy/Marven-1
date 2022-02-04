@@ -84,7 +84,8 @@ export default {
     },
     showDetail(){
        const name = this.$route.name
-      if(name === 'Detail' || name === 'Contact' || name === 'Agreement' || name === 'PrivacyPolicy'){
+      if(name === 'Detail' || name === 'Contact' || name === 'Agreement' || name === 'PrivacyPolicy' 
+      || name === 'ListDetail' || name === 'LandDetail'){
         return true
       }else {
         return false
