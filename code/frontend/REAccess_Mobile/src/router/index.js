@@ -49,5 +49,10 @@ export default new Router({
       name: 'PrivacyPolicy',
       component: () => import('../views/standard/PrivacyPolicy.vue')
     },
+    {
+      path: '/PolicyDetail',
+      name: 'PolicyDetail',
+      component: () => import('../views/specialPolicies/components/PolicyDetail.vue')
+    },
   ]
 })
