@@ -1,32 +1,37 @@
 <template>
   <div >
     <div class="detail">
-      <div class="title">
+      <div class="detailTitle">
         <img class="titleIcon" src="@/assets/书签.svg"/>
-        <span>{{detailData.fileCategory}}</span>
+        <span class="fileName">《关于促进栖霞区新医药与生命健康产业高质量发展的若干政策措施》</span>
       </div>
-      <hr>
-      <div>
-        <span class="spanTitle">文件级别</span>
-        <span class="spanContent">{{detailData.fileLevel}}</span>
+      <hr class="hrStyle">
+      <div class="line-box">
+        <div>
+          <span class="spanTitle fileInfoTitle">文件级别</span>
+          <div class="spanContent fileInfo">{{detailData.fileLevel}}</div>
+        </div>
+        <div>
+          <span class="spanTitle fileInfoTitle">发文机构</span>
+          <div class="spanContent fileInfo">{{detailData.issuingAgency}}</div>
+        </div>
+        <div>
+          <span class="spanTitle fileInfoTitle">支持领域</span>
+          <div class="spanContent fileInfo">{{detailData.supportAreas}}</div>
+        </div>
       </div>
-      <div>
-        <span class="spanTitle">发文机构</span>
-        <span class="spanContent">{{detailData.issuingAgency}}</span>
-      </div>
-      <div>
-        <span class="spanTitle">支持领域</span>
-        <span class="spanContent">{{detailData.supportAreas}}</span>
-      </div>
-      <div>
-        <span class="spanContent">{{detailData.releaseDate}}</span>
-        <img class="titleIcon" src="@/assets/发布时间.svg"/>
-        <span class="spanTitle">发布时间</span>
-      </div>
-      <div>
-        <span class="spanContent">{{detailData.closingDate}}</span>
-        <img class="titleIcon" src="@/assets/截止日期.svg"/>
-        <span class="spanTitle">截止日期</span>
+      <div class="timeDiv">
+        <div class="releaseDate">
+          <div class="spanContent">{{detailData.releaseDate}}</div>
+          <img class="titleIcon" src="@/assets/发布时间.svg"/>
+          <span class="spanTitle">发布时间</span>
+        </div>
+        <div class="line-center"></div>
+        <div class="closingDate">
+          <div class="spanContent">{{detailData.closingDate}}</div>
+          <img class="titleIcon" src="@/assets/截止日期.svg"/>
+          <span class="spanTitle">截止日期</span>
+        </div>
       </div>
     </div>
     <div class="footer">
@@ -68,10 +73,11 @@ export default {
   background: #FFFFFF;
   box-shadow: 0 0 20px -4px rgba(39,49,66,0.20);
 }
-.title {
-  width: 100%;
+.detailTitle {
+  width: 94%;
   font-size: 14px;
   color: #000000;
+  padding: 4% 3% 0 3%;
 }
 .spanTitle {
   font-size: 12px;
@@ -80,5 +86,67 @@ export default {
 .spanContent {
   font-size: 12px;
   color: #333333; 
+}
+.fileInfoTitle {
+  float: left;
+  text-align: justify;
+}
+.fileName {
+  font-size: 14px;
+  color: #000000;
+  font-weight: 600;
+}
+.hrStyle {
+  opacity: 0.4;
+  width: 90%;
+  border: 1px solid #D3D7E1;
+}
+.fileInfo {
+  margin-left: 3.6rem;
+}
+.line-box{
+  text-align: left;
+  line-height: 1.5rem;
+  font-size: .75rem;
+  color: #333333;
+  margin: 0 1rem 0 1.5rem;
+}
+.closingDate {
+  text-align: left;
+  width: 26%;
+  margin: 0 0 1.5rem 1.5rem;
+  float: right;
+  height: 3rem;
+}
+.releaseDate {
+  text-align: left;
+  width: 26%;
+  margin: 0 0 1.5rem 1.5rem;
+  float: left;
+  height: 3rem;
+}
+.timeDiv {
+  margin-top: 10%;
+  height: 3.5rem;
+}
+.line-center {
+  width: 18%;
+  height: 32%;
+  border-right: solid #acc0d8 1px;
+  opacity: 0.4;
+  float: left;
+  margin-top: 3%;
+}
+.footer{
+ text-align: center;
+ width: 100%;
+ position: fixed;
+ bottom: 0;
+}
+.footer-img >>> img{
+  width: 94%;
+}
+.footer-img{
+  text-align: center;
 }
 </style>
