@@ -4,7 +4,7 @@
         <div class="search-title">{{searchName}}产业政策</div>
         <div class="unit-box">共{{rankingData.industrialPolicyCount}}条</div>
       </div>
-      <div v-for="(item,index) in rankingData.industrialPolicis" :key="String(index)" class="line-box" @click="policyDetail(item.policyId)">
+      <div v-for="(item,index) in rankingData.industrialPolicis" :key="String(index)" class="line-box" @click="policyDetail(item.policyId, item.fileName)">
         <div class="file">
           {{item.fileName}}
         </div>
@@ -39,8 +39,9 @@ export default {
   
   },
   methods:{
-    policyDetail(policyId) {
+    policyDetail(policyId, fileName) {
       this.$router.push({path: `/PolicyDetail?policyId=${policyId}`})
+      window.localStorage.setItem('fileName', fileName)
     }
   }
 }
