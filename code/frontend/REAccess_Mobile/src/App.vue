@@ -4,13 +4,17 @@
       <div class="header-left">
         <img src="@/assets/prev.svg" class="prev-img" @click="goBack()" v-if="!isShowHome">
       </div>
-      <div class="header-content" @click="returnHome()" v-if="routerName !== 'PolicyDetail'">
+      <div class="header-content" @click="returnHome()" 
+        v-if="routerName !== 'PolicyDetail' && routerName !== 'ListDetail' && routerName !== 'LandDetail'">
         <img src="@/assets/logo.svg" class="logo-img">
         <span class="title">产城智链</span>
       </div>
-      <div class="header-policy" @click="returnPolicy()" v-else>
+      <div class="header-policy" @click="returnPolicy()" v-else-if="routerName === 'PolicyDetail'">
         <span class="title">政策</span>
       </div>
+       <div class="header-detail" @click="returnDetail()" v-else-if="routerName === 'ListDetail' || routerName === 'LandDetail'">
+        <span class="title">{{titleName}}</span>
+       </div>
       <div class="header-right">
          <el-dropdown trigger="click" class="header-menu">
             <i class="el-icon-more"></i>
@@ -96,6 +100,10 @@ export default {
     },
     routerName(){
       return this.$route.name
+    },
+    titleName(){
+      const searchName = this.$route.query.searchName
+      return searchName
     }
   },
   methods:{
@@ -108,6 +116,9 @@ export default {
     returnPolicy(){
       this.$router.push("/SpecialPolicies")
     },
+    returnDetail(){
+      this.$router.push("/IndustrialInvest")
+    }
   }
 }
 </script>
@@ -152,6 +163,14 @@ body {
   font-size: 1rem;
   font-weight: bold;
   padding-left: 30%;
+}
+.header-detail{
+  float: left;
+  width: 60%;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  padding-left: 24%;
 }
 .header-right{
   float: left;

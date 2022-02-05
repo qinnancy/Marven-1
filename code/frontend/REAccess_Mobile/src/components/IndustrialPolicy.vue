@@ -14,6 +14,7 @@
         <div class="city">
           {{item.city}}
         </div>
+         <div class="goto-order"><img src="@/assets/next.svg"/></div>
         <!-- <img src="@/assets/政策 选中.svg" class="logo-box"/> -->
       </div>
   </div>
@@ -80,7 +81,7 @@ export default {
   font-size: .625rem;
   color: #666666;
   margin-top: 0.8rem;
-  margin-right: 1rem;
+  /* margin-right: 1rem; */
 }
 .unit-box::before{
     position: absolute;
@@ -141,5 +142,15 @@ export default {
   width: 30%;
   font-size: 12px;
   color: #999999;
+}
+.goto-order{
+  width: 8% !important;
+  text-align: right !important;
+  float: left;
+}
+.goto-order >>> img{
+    width: 0.7rem;
+    margin-top: 1.6rem;
+    float: right;
 }
 </style>
