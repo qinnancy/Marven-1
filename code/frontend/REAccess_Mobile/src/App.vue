@@ -4,9 +4,12 @@
       <div class="header-left">
         <img src="@/assets/prev.svg" class="prev-img" @click="goBack()" v-if="!isShowHome">
       </div>
-      <div class="header-content" @click="returnHome()">
+      <div class="header-content" @click="returnHome()" v-if="routerName !== 'PolicyDetail'">
         <img src="@/assets/logo.svg" class="logo-img">
         <span class="title">产城智链</span>
+      </div>
+      <div class="header-policy" @click="returnPolicy()" v-else>
+        <span class="title">政策</span>
       </div>
       <div class="header-right">
          <el-dropdown trigger="click" class="header-menu">
@@ -85,7 +88,7 @@ export default {
     showDetail(){
        const name = this.$route.name
       if(name === 'Detail' || name === 'Contact' || name === 'Agreement' || name === 'PrivacyPolicy' 
-      || name === 'ListDetail' || name === 'LandDetail'){
+      || name === 'ListDetail' || name === 'LandDetail' || name === 'PolicyDetail'){
         return true
       }else {
         return false
@@ -101,7 +104,10 @@ export default {
     },
     returnHome(){
       this.$router.push("/")
-    }
+    },
+    returnPolicy(){
+      this.$router.push("/SpecialPolicies")
+    },
   }
 }
 </script>
@@ -138,6 +144,14 @@ body {
   font-size: 1rem;
   font-weight: bold;
   padding-left: 11%;
+}
+.header-policy{
+  float: left;
+  width: 60%;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  padding-left: 30%;
 }
 .header-right{
   float: left;

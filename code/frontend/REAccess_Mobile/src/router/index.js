@@ -60,5 +60,10 @@ export default new Router({
       name: 'LandDetail',
       component: () => import('../views/industrialInvest/components/LandDetail.vue')
     },
+    {
+      path: '/PolicyDetail',
+      name: 'PolicyDetail',
+      component: () => import('../views/specialPolicies/components/PolicyDetail.vue')
+    },
   ]
 })
