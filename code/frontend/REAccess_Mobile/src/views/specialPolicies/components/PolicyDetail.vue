@@ -3,7 +3,7 @@
     <div class="detail">
       <div class="detailTitle">
         <img class="titleIcon" src="@/assets/书签.svg"/>
-        <span class="fileName">《关于促进栖霞区新医药与生命健康产业高质量发展的若干政策措施》</span>
+        <span class="fileName">{{fileName}}</span>
       </div>
       <hr class="hrStyle">
       <div class="line-box">
@@ -22,13 +22,13 @@
       </div>
       <div class="timeDiv">
         <div class="releaseDate">
-          <div class="spanContent">{{detailData.releaseDate}}</div>
+          <div class="spanContent dateContent">{{detailData.releaseDate}}</div>
           <img class="titleIcon" src="@/assets/发布时间.svg"/>
           <span class="spanTitle">发布时间</span>
         </div>
         <div class="line-center"></div>
         <div class="closingDate">
-          <div class="spanContent">{{detailData.closingDate}}</div>
+          <div class="spanContent dateContent">{{detailData.closingDate}}</div>
           <img class="titleIcon" src="@/assets/截止日期.svg"/>
           <span class="spanTitle">截止日期</span>
         </div>
@@ -49,9 +49,11 @@ export default {
   data () {
     return {
       detailData: {},
+      fileName: '',
     }
   }, 
   created() {
+    this.fileName = window.localStorage.getItem('fileName')
     const policyId = this.$route.query.policyId
     this.getIndexList(policyId)
   },
@@ -87,6 +89,9 @@ export default {
   font-size: 12px;
   color: #333333; 
 }
+.dateContent {
+  color: #666666; 
+}
 .fileInfoTitle {
   float: left;
   text-align: justify;
@@ -99,7 +104,7 @@ export default {
 .hrStyle {
   opacity: 0.4;
   width: 90%;
-  border: 1px solid #D3D7E1;
+  border-bottom: 1px solid #D3D7E1;
 }
 .fileInfo {
   margin-left: 3.6rem;
@@ -126,7 +131,7 @@ export default {
   height: 3rem;
 }
 .timeDiv {
-  margin-top: 10%;
+  margin-top: 15%;
   height: 3.5rem;
 }
 .line-center {
