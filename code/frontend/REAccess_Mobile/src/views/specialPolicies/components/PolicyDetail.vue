@@ -23,13 +23,13 @@
       <div class="timeDiv">
         <div class="releaseDate">
           <div class="spanContent dateContent">{{detailData.releaseDate}}</div>
-          <img class="titleIcon" src="@/assets/发布时间.svg"/>
+          <img src="@/assets/发布时间.svg"/>
           <span class="spanTitle">发布时间</span>
         </div>
         <div class="line-center"></div>
         <div class="closingDate">
           <div class="spanContent dateContent">{{detailData.closingDate}}</div>
-          <img class="titleIcon" src="@/assets/截止日期.svg"/>
+          <img src="@/assets/截止日期.svg"/>
           <span class="spanTitle">截止日期</span>
         </div>
       </div>
@@ -95,6 +95,10 @@ export default {
 .fileInfoTitle {
   float: left;
   text-align: justify;
+}
+.titleIcon {
+  float: left;
+  padding-top: 0.2rem;
 }
 .fileName {
   font-size: 14px;
