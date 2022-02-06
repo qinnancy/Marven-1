@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="city-detail">
 specialPolicies
   </div>
 </template>
@@ -18,3 +18,11 @@ export default {
   }
 }
 </script>
+<style scoped>
+.city-detail{
+  background: #fff;
+  width: 100%;
+  min-height: 79.8vh;
+  border-top: 1px solid #f0f1f4;
+}
+</style>

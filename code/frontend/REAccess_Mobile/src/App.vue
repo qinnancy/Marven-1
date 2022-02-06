@@ -2,18 +2,18 @@
   <div id="app">
     <div class="header-box">
       <div class="header-left">
-        <img src="@/assets/prev.svg" class="prev-img" @click="goBack()">
+        <img src="@/assets/prev.svg" class="prev-img" @click="goBack()" v-if="!isShowHome">
       </div>
       <div class="header-content" @click="returnHome()">
-        <img src="@/assets/logo.png" class="logo-img">
-        <span>产城智链</span>
+        <img src="@/assets/logo.svg" class="logo-img">
+        <span class="title">产城智链</span>
       </div>
       <div class="header-right">
          <el-dropdown trigger="click" class="header-menu">
             <i class="el-icon-more"></i>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item> <router-link class="header-list" to="/Contact">联系我们</router-link></el-dropdown-item>
-              <el-dropdown-item><router-link class="header-list" to="/Agreement">使用协议</router-link></el-dropdown-item>
+              <el-dropdown-item><router-link class="header-list" to="/Agreement">试用协议</router-link></el-dropdown-item>
               <el-dropdown-item><router-link class="header-list" to="/PrivacyPolicy">隐私政策</router-link></el-dropdown-item>
             </el-dropdown-menu>
         </el-dropdown>
@@ -29,29 +29,29 @@
       <el-row>
         <el-col :span="6">
           <router-link to="/SingleIndex">
-            <img src="@/assets/单项指标-选中.svg" v-if="routerName=='SingleIndex'"/>
-            <img src="@/assets/单项指标-未选中.svg" v-else/>
+            <img src="@/assets/单项指标-选中.svg" v-if="routerName=='SingleIndex'" class="img-size"/>
+            <img src="@/assets/单项指标-未选中.svg" v-else class="img-size"/>
             <div :class="routerName=='SingleIndex'?'menu-title active-menu':'menu-title'">单项指标</div>
           </router-link> 
         </el-col>
         <el-col :span="6">
            <router-link to="/CityRanking">
-              <img src="@/assets/城市排名-选中.svg" v-if="routerName=='CityRanking'"/>
-              <img src="@/assets/城市排名-未选中.svg" v-else/>
+              <img src="@/assets/城市排名-选中.svg" v-if="routerName=='CityRanking'" class="img-size"/>
+              <img src="@/assets/城市排名-未选中.svg" v-else class="img-size"/>
               <div :class="routerName=='CityRanking'?'menu-title active-menu':'menu-title'">城市排名</div>
            </router-link> 
         </el-col>
         <el-col :span="6">
            <router-link to="/IndustrialInvest">
-              <img src="@/assets/产业投资-选中.svg" v-if="routerName=='IndustrialInvest'"/>
-              <img src="@/assets/产业投资-未选中.svg" v-else/>
+              <img src="@/assets/产业投资-选中.svg" v-if="routerName=='IndustrialInvest'" class="img-size"/>
+              <img src="@/assets/产业投资-未选中.svg" v-else class="img-size"/>
               <div :class="routerName=='IndustrialInvest'?'menu-title active-menu':'menu-title'">产业投资</div>
           </router-link> 
         </el-col>
         <el-col :span="6">
            <router-link to="/SpecialPolicies">
-              <img src="@/assets/政策.svg" v-if="routerName=='SpecialPolicies'"/>
-              <img src="@/assets/专项政策未选中.svg" v-else/>
+              <img src="@/assets/政策 选中.svg" v-if="routerName=='SpecialPolicies'" class="img-size"/>
+              <img src="@/assets/专项政策未选中.svg" v-else class="img-size"/>
               <div :class="routerName=='SpecialPolicies'?'menu-title active-menu':'menu-title'">专项政策</div>
            </router-link> 
         </el-col>
@@ -108,7 +108,7 @@ export default {
 <style>
 body {
   margin: 0 !important;
-  font-family: MicrosoftYaHeiUI;
+  /* font-family: MicrosoftYaHeiUI; */
   background:#f7f8fc;
 }
 #app {
@@ -134,8 +134,9 @@ body {
   float: left;
   width: 60%;
   color: white;
-  font-size: 1.0625rem;
+  font-size: 1rem;
   font-weight: bold;
+  padding-left: 11%;
 }
 .header-right{
   float: left;
@@ -146,6 +147,13 @@ body {
 .logo-img{
   width: 5.25rem;
   margin-top: 1.1rem;
+  float: left;
+  margin-right: .125rem;
+}
+.title{
+  float: left;
+  font-size: 1.0625rem;
+  margin-top: .125rem;
 }
 .el-icon-arrow-left{
   color: white;
@@ -156,9 +164,9 @@ body {
   font-weight: bold;
 }
 .el-dropdown-menu{
-  background-color: #000000;
-  border: 1px solid #000000;
-  opacity: 0.9;
+  background-color: #000000 !important;
+  border: 1px solid #000000 !important;
+  opacity: 0.9 !important;
 }
 .el-dropdown-menu__item{
   color: #fff !important;
@@ -209,7 +217,7 @@ a {
   font-size: 2rem;
   color: #FFFFFF;
   letter-spacing: 0.15rem;
-  margin-bottom: .875rem;
+  margin-bottom: .625rem;
   padding-top: 2rem;
 }
 .bg-tag{
@@ -231,6 +239,9 @@ a {
   color: #FFFFFF;
   text-align: center;
   text-shadow: 0 .125rem .1875rem rgba(56,30,24,0.42);
+  height: 2rem;
+  line-height: 2rem;
+  font-weight: bold;
 }
 .prev-img{
   margin-top: 1.1rem;
@@ -238,5 +249,9 @@ a {
 .header-list{
   color: #fff !important;
   opacity: 1 !important;
+}
+.img-size{
+  width: 1.625rem;
+  height: 1.625rem;
 }
 </style>
