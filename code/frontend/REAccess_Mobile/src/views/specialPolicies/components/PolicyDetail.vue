@@ -3,9 +3,9 @@
     <div class="detail">
       <div class="detailTitle">
         <img class="titleIcon" src="@/assets/书签.svg"/>
-        <span class="fileName">{{fileName}}</span>
+        <div class="fileName">{{fileName}}</div>
       </div>
-      <hr class="hrStyle">
+      <div class="hrStyle"></div>
       <div class="line-box">
         <div>
           <span class="spanTitle fileInfoTitle">文件级别</span>
@@ -23,13 +23,13 @@
       <div class="timeDiv">
         <div class="releaseDate">
           <div class="spanContent dateContent">{{detailData.releaseDate}}</div>
-          <img class="titleIcon" src="@/assets/发布时间.svg"/>
+          <img class="bottom-icon" src="@/assets/发布时间.svg"/>
           <span class="spanTitle">发布时间</span>
         </div>
         <div class="line-center"></div>
         <div class="closingDate">
           <div class="spanContent dateContent">{{detailData.closingDate}}</div>
-          <img class="titleIcon" src="@/assets/截止日期.svg"/>
+          <img class="bottom-icon" src="@/assets/截止日期.svg"/>
           <span class="spanTitle">截止日期</span>
         </div>
       </div>
@@ -77,16 +77,21 @@ export default {
 }
 .detailTitle {
   width: 94%;
-  font-size: 14px;
+  font-size: .875rem;
   color: #000000;
   padding: 4% 3% 0 3%;
 }
+.detailTitle::after{
+  content: "1";
+  opacity: 0;
+  clear: both;
+}
 .spanTitle {
-  font-size: 12px;
+  font-size: .75rem;
   color: #999999;
 }
 .spanContent {
-  font-size: 12px;
+  font-size: .75rem;
   color: #333333; 
 }
 .dateContent {
@@ -97,14 +102,19 @@ export default {
   text-align: justify;
 }
 .fileName {
-  font-size: 14px;
+  font-size: .875rem;
   color: #000000;
-  font-weight: 600;
+  font-weight: bold;
+  float: left;
+  text-align: left;
+  width: 94%;
 }
 .hrStyle {
   opacity: 0.4;
   width: 90%;
   border-bottom: 1px solid #D3D7E1;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
 }
 .fileInfo {
   margin-left: 3.6rem;
@@ -122,11 +132,12 @@ export default {
   margin: 0 0 1.5rem 1.5rem;
   float: right;
   height: 3rem;
+  padding-right: 2rem;
 }
 .releaseDate {
   text-align: left;
   width: 26%;
-  margin: 0 0 1.5rem 1.5rem;
+  margin: 0 0 1.5rem 3rem;
   float: left;
   height: 3rem;
 }
@@ -135,7 +146,7 @@ export default {
   height: 3.5rem;
 }
 .line-center {
-  width: 18%;
+  width: 10%;
   height: 32%;
   border-right: solid #acc0d8 1px;
   opacity: 0.4;
@@ -153,5 +164,15 @@ export default {
 }
 .footer-img{
   text-align: center;
+}
+.titleIcon{
+  float: left;
+  margin-top: 0.2rem;
+  margin-right: 2%;
+}
+.bottom-icon{
+  float: left;
+  margin-top: 0.35rem;
+  margin-right: 0.2rem;
 }
 </style>

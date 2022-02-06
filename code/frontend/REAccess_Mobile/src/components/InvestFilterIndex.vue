@@ -75,7 +75,7 @@ export default {
 .drawer-box >>> .el-drawer__open .el-drawer.ttb{
   padding: 1rem  0.5rem !important;
   margin-top: 3.125rem !important;
-  height: 15% !important;
+  height: 8rem !important;
 }
 .drawer-titile{
   border-bottom: 1px solid rgb(211 215 225 / 40%);

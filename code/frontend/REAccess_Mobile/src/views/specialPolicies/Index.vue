@@ -25,6 +25,7 @@ export default {
     return{
       searchName:"",
       filterList:[],
+      dataList:[],
       rankingData:{}
     }
   },
@@ -34,8 +35,16 @@ export default {
   methods:{
    searchData(cityName){
     this.searchName = cityName
+    const industryId = this.dataList.filter((item)=>
+    item.policyName === cityName)[0].policyId
+    // {
+      // if(item.policyName === cityName){
+      //     return item
+      // }
+    // })
+    console.log(industryId)
      api
-      .get(`/Industry/GetPolicyData?dataCount=5`)
+      .get(`/Industry/GetPolicyData?industryId=${industryId}&dataCount=5`)
       .then((res) => {
         this.rankingData = res.data.returnObj
       });
@@ -43,8 +52,11 @@ export default {
    getIndexList(){
       api
       .get('/Util/GetPolicyList')
-      .then((res) => {
-        this.filterList = res.data.returnObj
+      .then((res) =>  {
+        this.dataList = res.data.returnObj
+        this.dataList.map((item)=>{
+          this.filterList.push(item.policyName)
+        })
         this.searchData(this.filterList[0])
       });
    },

@@ -1,6 +1,6 @@
 <template>
   <div class="filter-data">
-      <div v-for="(item,index) in filterList" :key="String(index)" class="line-box" @click="goToDetail()">
+      <div v-for="(item,index) in filterList" :key="String(index)" class="line-box" @click="goToDetail(item)">
         <div class="line-item num-order" v-if="index===0">
             <img src="@/assets/1.svg" class="order-img"/>
         </div>
@@ -45,11 +45,13 @@ export default {
   
   },
   methods:{
-    goToDetail(){
+    goToDetail(item){
+      console.log(item)
+      const id = item.districtSk?item.districtSk:item.indexId
       if(this.tabName === 'list'){
-         this.$router.push(`/IndustrialInvest/ListDetail?searchName=${this.searchName}`)
+         this.$router.push(`/IndustrialInvest/ListDetail?searchName=${this.searchName}&id=${id}`)
       }else{
-        this.$router.push(`/IndustrialInvest/LandDetail?searchName=${this.searchName}`)
+        this.$router.push(`/IndustrialInvest/LandDetail?searchName=${this.searchName}&id=${id}`)
       }
     }
   }

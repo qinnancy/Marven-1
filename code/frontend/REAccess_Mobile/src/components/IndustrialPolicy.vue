@@ -127,7 +127,7 @@ export default {
   margin-right: 1.25rem
 }
 .file{
-  width: 45%;
+  width: 40%;
   float: left;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -136,7 +136,11 @@ export default {
 }
 .province{
   float: left;
-  width: 15%;
+  width: 20%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
 }
 .city{
   float: left;

@@ -102,7 +102,7 @@ export default {
       return this.$route.name
     },
     titleName(){
-      const searchName = this.$route.query.searchName
+      const searchName = this.$route.query.searchName.replace("看","")
       return searchName
     }
   },
