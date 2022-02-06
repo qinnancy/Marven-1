@@ -152,6 +152,8 @@ namespace REAccess.Mobile.Common.Services
                 NewsReleaseDate = Convert.ToDateTime(x.ReleaseTime, dtFormat).ToString("yyyy-MM-dd"),
                 NewTags = x.Tags.Split(';').ToList()
             }).ToList();
+            currentPage = currentPage == 0 ? 1 : currentPage;
+            pageSize = pageSize == 0 ? 10 : pageSize;
 
             model = PageHelper.PageUtil<NewsModel>(currentPage, pageSize, model);
 
