@@ -215,7 +215,7 @@ export default {
     margin-bottom: 1.2rem;
 }
 .bottom-item {
-    width: 21%;
+    width: 24.5%;
     float: left;
     text-align: center;
 }
@@ -229,7 +229,7 @@ export default {
 }
 .center-item{
     text-align: center;
-     width: 28% !important;
+    width: 24.5% !important;
 }
 .item-name >>> img{
     margin-right: 0.2rem;

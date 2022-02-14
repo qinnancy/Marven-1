@@ -84,7 +84,7 @@ export default {
   margin-top: 0.8rem;
   /* margin-right: 1rem; */
 }
-.unit-box::before{
+/* .unit-box::before{
     position: absolute;
     content: '';
     width: 0;
@@ -93,14 +93,22 @@ export default {
     border-left: 14px solid transparent;
     margin-left: -1.2rem;
     margin-top: 14px;
-}
+} */
 .line-box{
-  height: 4rem;
+  min-height: 4rem;
   line-height: 4rem;
   font-size: .75rem;
   color: #333333;
   margin: 0 2rem 0 2rem;
   border-bottom: 1px solid #EEEFF3;
+}
+.line-box::after{
+    content:"";
+    height:0px;
+    width:0px;
+    clear:both;
+    display:block;
+    overflow: hidden;
 }
 .num-order{
   width: 10% !important;
@@ -129,10 +137,16 @@ export default {
 .file{
   width: 40%;
   float: left;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  line-height: 1.2rem;
+  /* height: 3rem; */
+  text-overflow: -o-ellipsis-lastline;
   overflow: hidden;
-  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-top: 1rem;
 }
 .province{
   float: left;
@@ -157,5 +171,8 @@ export default {
     width: 0.7rem;
     margin-top: 1.6rem;
     float: right;
+}
+.filter-data{
+  min-height: 23.5rem;
 }
 </style>

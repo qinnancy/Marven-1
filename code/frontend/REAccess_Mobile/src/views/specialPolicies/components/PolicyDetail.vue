@@ -5,7 +5,7 @@
         <img class="titleIcon" src="@/assets/书签.svg"/>
         <div class="fileName">{{fileName}}</div>
       </div>
-      <div class="hrStyle"></div>
+      <!-- <div class="hrStyle"></div> -->
       <div class="line-box">
         <div>
           <span class="spanTitle fileInfoTitle">文件级别</span>
@@ -79,11 +79,16 @@ export default {
   width: 94%;
   font-size: .875rem;
   color: #000000;
-  padding: 4% 3% 0 3%;
+  padding: 4% 3% 3% 3%;
+  border-bottom: 1px solid rgb(211 215 225 / 40%);
+  margin-bottom: 0.5rem;
 }
 .detailTitle::after{
-  content: "1";
-  opacity: 0;
+  content: '';
+  visibility: hidden;
+  display: block;
+  width: 0;
+  height: 0;
   clear: both;
 }
 .spanTitle {
@@ -168,7 +173,7 @@ export default {
 .titleIcon{
   float: left;
   margin-top: 0.2rem;
-  margin-right: 2%;
+  width: 4%;
 }
 .bottom-icon{
   float: left;

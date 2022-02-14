@@ -1,8 +1,9 @@
 <template>
   <div class="filter-data">
       <div class="filter-title"><img src="@/assets/城市排名.svg" class="logo-box"/>
-        <div class="search-title">{{searchName}}排名</div>
-        <div class="unit-box">单位：{{rankingData.unit}}</div>
+        <div class="search-title">{{searchName}}</div>
+        <!-- <div class="unit-box">单位：{{rankingData.unit}}</div> -->
+        <div class="unit-box">2020年 排名</div>
       </div>
       <div v-for="(item,index) in rankingData.singleIndexList" :key="String(index)" class="line-box">
         <div class="line-item num-order" v-if="index===0">
@@ -17,7 +18,7 @@
         <div class="line-item num-order" v-if="index>2">#{{index+1}}</div>
         <div :class="index>2?'line-item uni-font':'line-item'">{{item.cityName}}</div>
         <div class="line-item uni-font">{{item.provinceName}}</div>
-        <div class="line-item uni-font amount-box">{{item.rankValue}}</div>
+        <div class="line-item uni-font amount-box">{{item.rankValue}} 亿元</div>
       </div>
   </div>
 </template>
@@ -84,7 +85,7 @@ export default {
   margin-top: 0.8rem;
   margin-right: 1rem;
 }
-.unit-box::before{
+/* .unit-box::before{
     position: absolute;
     content: '';
     width: 0;
@@ -94,7 +95,7 @@ export default {
     border-color: #E3EBFF transparent transparent;
     margin-left: -0.5rem;
     margin-top: 1.125rem;
-}
+} */
 .line-box{
   height: 4rem;
   line-height: 4rem;
@@ -117,9 +118,13 @@ export default {
 .order-img{
   float: left;
   margin-top: 1.25rem;
+  margin-left: -0.1875rem;
 }
 .amount-box{
   margin-left: 0%;
   text-align: center;
+}
+.filter-data{
+  min-height: 23.5rem;
 }
 </style>

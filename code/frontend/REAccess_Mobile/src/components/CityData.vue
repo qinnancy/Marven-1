@@ -1,8 +1,8 @@
 <template>
   <div class="filter-data">
       <div class="filter-title"><img src="@/assets/城市排名.svg" class="logo-box"/>
-        <div class="search-title">{{searchName}}城市排名</div>
-        <div class="unit-box">{{rankingData.year}}年排名</div>
+        <div class="search-title">{{searchName}}</div>
+        <div class="unit-box">{{rankingData.year}}年 排名</div>
       </div>
       <div v-for="(item,index) in rankingData.cityRankList" :key="String(index)" class="line-box">
         <div :class="index>2?'item-box uni-font':'item-box'">
@@ -107,7 +107,7 @@ export default {
   margin-top: 0.8rem;
   margin-right: 1rem;
 }
-.unit-box::before{
+/* .unit-box::before{
     position: absolute;
     content: '';
     width: 0;
@@ -116,7 +116,7 @@ export default {
     border-left: 14px solid transparent;
     margin-left: -1.2rem;
     margin-top: 14px;
-}
+} */
 .line-box{
   height: 4rem;
   line-height: 4rem;
@@ -139,6 +139,7 @@ export default {
 .order-img{
   float: left;
   margin-top: 1.25rem;
+  margin-left: -0.1875rem;
 }
 .amount-box{
   margin-left: 0%;
@@ -153,5 +154,8 @@ export default {
   float: left;
   margin-top: 1.375rem;
   margin-right: 1.25rem
+}
+.filter-data{
+  min-height: 23.5rem;
 }
 </style>

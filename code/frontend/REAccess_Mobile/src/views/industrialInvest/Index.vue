@@ -2,9 +2,11 @@
   <div class="city-detail">
    <div :class="chooseItem==='list'?'shift-tab active-tab':'shift-tab'" @click="shiftTag('list')">
      <img src="@/assets/上市.svg" class="tab-img"/><span>A股上市企业投资</span>
+     <div class="year-box" v-if="chooseItem==='list'">2021 <a class="el-icon-arrow-down"></a></div>
    </div>
    <div :class="chooseItem==='land'?'shift-tab active-tab':'shift-tab'"  @click="shiftTag('land')">
-     <img src="@/assets/产业用地.svg" class="tab-img"/><span>产业用地获取</span>         
+     <img src="@/assets/产业用地.svg" class="tab-img"/><span>产业用地获取</span>      
+     <div class="year-box" v-if="chooseItem==='land'">2021年 <a class="el-icon-arrow-down"></a></div>   
    </div>
      <invest-filter-index :title="chooseOption" :filterList="options" @searchData="searchData"></invest-filter-index>
      <invest-data :filterList="filterList" :searchName="chooseOption" :tabName="chooseItem"></invest-data>
@@ -35,7 +37,17 @@ export default {
     }
   },
   created(){
+    const searchName = window.localStorage.getItem('searchName')
+    const routerName = window.localStorage.getItem('routerName')
+    if(routerName === 'LandDetail'){
+        this.chooseItem = 'land'
+    }
+    if(searchName === '看热点产业'){
+        this.chooseOption = '看热点产业'
+    }
     this.getInvestList()
+    window.localStorage.setItem('searchName', '')
+    window.localStorage.setItem('routerName', '')
   },
   methods:{
     shiftTag(value){
@@ -93,8 +105,8 @@ export default {
   border-radius: 4px 4px 0 0;
   width: 50%;
   float: left;
-  height: 4rem;
-  line-height: 4rem;
+  height: 3.5rem;
+  line-height: 3.5rem;
   font-size: .875rem;
   color: #666666;
   margin-bottom: 1rem;
@@ -104,7 +116,7 @@ export default {
 }
 .tab-img {
     position: absolute;
-    margin-top: 1.55rem;
+    margin-top: 1.3rem;
 }
 .active-tab{
   color: #333333;
@@ -113,9 +125,10 @@ export default {
 .footer{
  text-align: center;
  width: 100%;
- position: fixed;
+ /* position: fixed; */
  bottom: 0;
  background: #fff;
+ margin-top: 2rem;
  /* padding: 1rem; */
 }
 .footer-img >>> img{
@@ -123,5 +136,10 @@ export default {
 }
 .footer-img{
   text-align: center;
+}
+.year-box{
+  font-size: 0.75rem;
+  color: #666666;
+  margin-top: -2rem;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="city-detail">
-   <filter-index title="产业类别" :filterList="filterList" @searchData="searchData"></filter-index>
+   <filter-index title="产业类别" :filterList="filterList" @searchData="searchData" :filterName="filterName"></filter-index>
    <industrial-policy title="产业类别" :searchName="searchName" :rankingData="rankingData"></industrial-policy>
    <div class="footer">
       <div class="footer-img">
@@ -24,25 +24,22 @@ export default {
   data(){
     return{
       searchName:"",
+      filterName:"",
       filterList:[],
       dataList:[],
       rankingData:{}
     }
   },
   created(){
+   this.filterName = window.localStorage.getItem('filterName')
    this.getIndexList()
   },
   methods:{
    searchData(cityName){
+    window.localStorage.setItem('filterName', cityName)
     this.searchName = cityName
     const industryId = this.dataList.filter((item)=>
     item.policyName === cityName)[0].policyId
-    // {
-      // if(item.policyName === cityName){
-      //     return item
-      // }
-    // })
-    console.log(industryId)
      api
       .get(`/Industry/GetPolicyData?industryId=${industryId}&dataCount=5`)
       .then((res) => {
@@ -57,7 +54,11 @@ export default {
         this.dataList.map((item)=>{
           this.filterList.push(item.policyName)
         })
-        this.searchData(this.filterList[0])
+        if(this.filterName){
+          this.searchData(this.filterName)
+        }else{
+          this.searchData(this.filterList[0])
+        }
       });
    },
   }
@@ -73,9 +74,10 @@ export default {
 .footer{
  text-align: center;
  width: 100%;
- position: fixed;
+ /* position: fixed; */
  bottom: 0;
  background: #fff;
+ margin-top: 2rem;
  /* padding: 1rem; */
 }
 .footer-img >>> img{

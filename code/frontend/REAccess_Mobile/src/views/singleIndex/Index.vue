@@ -61,9 +61,10 @@ export default {
 .footer{
  text-align: center;
  width: 100%;
- position: fixed;
+ /* position: fixed; */
  bottom: 0;
  background: #fff;
+ margin-top: 2rem;
  /* padding: 1rem; */
 }
 .footer-img >>> img{

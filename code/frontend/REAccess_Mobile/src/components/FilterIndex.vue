@@ -7,7 +7,7 @@
           :direction="direction"
           :before-close="handleClose">
           <div class="filter-name drawer-titile">{{title}}<a class="el-icon-arrow-up"></a></div>
-          <div v-for="(item,index) in filterList" :key="String(index)" :class="selectValue===item || (!selectValue && index === 0)? 'filter-item active-item':'filter-item'" @click="chooseIndex(item,index)">
+          <div v-for="(item,index) in filterList" :key="String(index)" :class="selectValue===item || (filterName===item && !selectValue)|| (!filterName && !selectValue && index === 0)? 'filter-item active-item':'filter-item'" @click="chooseIndex(item,index)">
             {{item}}
           </div>
         </el-drawer>
@@ -21,7 +21,8 @@ export default {
   name: 'FilterIndex',
   props:{
    title: String,
-   filterList: Array
+   filterList: Array,
+   filterName: String
   },
   data () {
     return {
@@ -77,7 +78,7 @@ export default {
 .drawer-box >>> .el-drawer__open .el-drawer.ttb{
   padding: 1rem  0.5rem !important;
   margin-top: 3.125rem !important;
-  height: 60% !important;
+  height: 62% !important;
 }
 .drawer-titile{
   border-bottom: 1px solid rgb(211 215 225 / 40%);

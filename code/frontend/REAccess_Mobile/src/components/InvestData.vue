@@ -146,9 +146,13 @@ export default {
 .order-img{
   float: left;
   margin-top: 1.25rem;
+  margin-left: -0.1875rem;
 }
 .amount-box{
   margin-left: 0%;
   text-align: center;
+}
+.filter-data{
+  min-height: 20.5rem;
 }
 </style>
