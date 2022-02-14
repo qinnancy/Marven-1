@@ -21,6 +21,6 @@ namespace REAccess.Mobile.Common.Interfaces
         /// <summary>
         /// 获取政策类别列表
         /// </summary>
-        public List<string> GetPolicyList();
+        public List<PolicyListModel> GetPolicyList();
     }
 }

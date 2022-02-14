@@ -29,6 +29,7 @@ namespace REAccess.Mobile.Api.Controllers
 
             //获取url
             var currentUrl = filterContext.HttpContext.Request.GetDisplayUrl();
+            var rawUrl = filterContext.HttpContext.Request.GetEncodedPathAndQuery();
             RequestUrl = currentUrl;
             //获取用户IP地址
             var currentIp = filterContext.HttpContext.Request.Headers["X-Forwarded-For"].FirstOrDefault();
@@ -43,9 +44,15 @@ namespace REAccess.Mobile.Api.Controllers
             {
                 SessionId = filterContext.HttpContext.Session.Id;
             }
+            string paramInfo = string.Empty;
+
             //获取地址栏参数
-            if(filterContext.ActionArguments.Count() > 0)
+            if (filterContext.ActionArguments.Count() > 0)
             {
+                var paramsList = filterContext.ActionArguments;
+                for(var i = 0; i < paramsList.Count(); i++)
+                {
+                }
                 requestData = JsonConvert.SerializeObject(filterContext.ActionArguments);
             }
             else
@@ -58,12 +65,17 @@ namespace REAccess.Mobile.Api.Controllers
                 {
                     Entered = DateTime.Now,
                     Url = RequestUrl,
-                    RawUrl = filterContext.HttpContext.Request.Path,
+                    RawUrl = rawUrl,
                     StackTrace = GetStackTraceModelName(),
-                    SessionId = filterContext.HttpContext.Session.Id,
+                    SessionId = SessionId,
                     CityIndexPolicyIndustryParamName = requestData,
                     IpDetail = RequestIp,
-                    BrowseType = filterContext.HttpContext.Request.Headers["User-Agent"]
+                    BrowseType = filterContext.HttpContext.Request.Headers["User-Agent"],
+                    PageName = "",
+                    SectionName = "",
+                    PreviousPage = "",
+                    Description = "",
+                    Message = ""
                 };
             }
         }

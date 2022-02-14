@@ -50,6 +50,7 @@ namespace REAccess.Mobile.Common
             public const string TransactionAmountUnitOfTable = "万元";
             public const string TransactionAreaUnit = "万㎡";
             public const string TransactionSumUnit = "笔";
+            public const string TransactionCountUnit = "个";
         }
         public static class Industrycategory
         {

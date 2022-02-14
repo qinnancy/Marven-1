@@ -277,19 +277,22 @@ namespace REAccess.Mobile.Common.Services
                     industryProject = industryProject.Where(x => x.IndustryPrimaryClassKey == currentId).ToList();
                     model.PrimaryName = industryTypeList.FirstOrDefault(x => x.Id.ToString() == currentId).IndustryName;
                 }
-                model.InvestProjectCount = industryProject.Count().ToString() + LandRankUnit.TransactionSumUnit;
-                model.InvestProjectAmount = ((double)industryProject.Sum(x => x.InvestAmount10k / 10000)).ToString("N0") + IndustryRankUnit.ByAmount;
+                model.InvestProjectCount = industryProject.Count().ToString();
+                model.InvestProjectCountUnit = LandRankUnit.TransactionCountUnit;
+                model.InvestProjectAmount = ((double)industryProject.Sum(x => x.InvestAmount10k / 10000)).ToString("N0");
+                model.InvestProjectAmountUnit = IndustryRankUnit.ByAmount;
                 industryProject = industryProject.OrderByDescending(x => x.InvestAmount10k).Take(dataCount).ToList();
                 model.ProjectList = industryProject.Select(x => new ProjectDetail()
                 {
+                    ProjectName = x.ProjectName,
                     InvestmentCompany = x.InvestCompany == null ? IndustryRankUnit.NullVaule : x.InvestCompany,
                     ProjectLocation = x.ProjectLocation == null ? IndustryRankUnit.NullVaule : x.ProjectLocation,
                     ProjectIndustry = industryTypeList.FirstOrDefault(a => a.Id.ToString() == x.IndustrySecondaryClassKey).IndustryName,
                     ProjectCapacity = x.ProjectCapacity == null ? IndustryRankUnit.NullVaule : x.ProjectCapacity,
                     AreaCovered = x.LandSize == null ? IndustryRankUnit.NullVaule : ((double)x.LandSize).ToString("N0") + IndustryRankUnit.ByLandSize,
-                    TransactionAmount = x.InvestAmount10k == null ? IndustryRankUnit.NullVaule : ((double)x.InvestAmount10k).ToString("N0") + IndustryRankUnit.ByAmount,
-                    AnnualOutput = x.ProjectAnnualProduction10k == null ? IndustryRankUnit.NullVaule : ((double)x.ProjectAnnualProduction10k).ToString("N0") + IndustryRankUnit.ByAmount,
-                    AnnualTax = x.ProjectAnnualTax10k == null ? IndustryRankUnit.NullVaule : ((double)x.ProjectAnnualTax10k).ToString("N0") + IndustryRankUnit.ByAmount,
+                    TransactionAmount = x.InvestAmount10k == null ? IndustryRankUnit.NullVaule : ((double)x.InvestAmount10k/10000).ToString("N0") + IndustryRankUnit.ByAmount,
+                    AnnualOutput = x.ProjectAnnualProduction10k == null ? IndustryRankUnit.NullVaule : ((double)x.ProjectAnnualProduction10k/10000).ToString("N0") + IndustryRankUnit.ByAmount,
+                    AnnualTax = x.ProjectAnnualTax10k == null ? IndustryRankUnit.NullVaule : ((double)x.ProjectAnnualTax10k/10000).ToString("N0") + IndustryRankUnit.ByAmount,
                 }).ToList();
             }
             else   //产业用地
@@ -310,11 +313,14 @@ namespace REAccess.Mobile.Common.Services
                     industryLand = industryLand.Where(x => x.BuyerIndustryPrimaryClassKey == currentId).ToList();
                     model.PrimaryName = industryTypeList.FirstOrDefault(x => x.Id.ToString() == currentId).IndustryName;
                 }
-                model.InvestProjectCount = industryLand.Count().ToString("N0") + LandRankUnit.TransactionSumUnit;
-                model.InvestProjectAmount = ((double)industryLand.Sum(x => x.LandPrice / 10000)).ToString("N0") + LandRankUnit.TransactionAmountUnit;
+                model.InvestProjectCount = industryLand.Count().ToString("N0");
+                model.InvestProjectCountUnit = LandRankUnit.TransactionSumUnit;
+                model.InvestProjectAmount = ((double)industryLand.Sum(x => x.LandPrice / 10000)).ToString("N0");
+                model.InvestProjectAmountUnit = IndustryRankUnit.ByAmount;
                 industryLand = industryLand.OrderByDescending(x => x.LandPrice).Take(dataCount).ToList();
                 model.ProjectList = industryLand.Select(x => new ProjectDetail()
                 {
+                    ProjectName = x.BuyerName,
                     ProjectLocation = x.LandLocation == null ? IndustryRankUnit.NullVaule : x.LandLocation,
                     ProjectIndustry = industryTypeList.FirstOrDefault(a => a.Id.ToString() == x.BuyerIndustryPrimaryClassKey).IndustryName,
                     AreaCovered = x.LandTotalArea == null ? IndustryRankUnit.NullVaule : ((double)x.LandTotalArea).ToString("N0") + LandRankUnit.TransactionAreaUnit,

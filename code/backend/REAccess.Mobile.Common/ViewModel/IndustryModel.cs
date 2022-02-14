@@ -10,11 +10,14 @@ namespace REAccess.Mobile.Common.ViewModel
     {
         public string PrimaryName { get; set; }
         public string InvestProjectCount { get; set; }
+        public string InvestProjectCountUnit { get; set; }
         public string InvestProjectAmount { get; set; }
+        public string InvestProjectAmountUnit { get; set; }
         public List<ProjectDetail> ProjectList { get; set; }
     }
     public class ProjectDetail
     {
+        public string ProjectName { get; set; }
         public string InvestmentCompany { get; set; }
         public string ProjectLocation { get; set; }
         public string ProjectIndustry { get; set; }
@@ -29,6 +32,11 @@ namespace REAccess.Mobile.Common.ViewModel
     {
         public List<IndustrialPolicy> IndustrialPolicis { get; set; }
         public int IndustrialPolicyCount { get; set; }
+    }
+    public class PolicyListModel
+    {
+        public int PolicyId { get; set; }
+        public string PolicyName { get; set; }
     }
     public class IndustrialPolicy
     {
