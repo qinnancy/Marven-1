@@ -15,7 +15,7 @@
      <div class="contract-box">
        <div class="img-box"><img src="@/assets/联系我们.svg"/></div>
        <img src="@/assets/邮箱.svg" class="email-img"/><span class="email-font">邮箱</span>
-       <div class="address-font">rea@deloitte.com.hk</div>
+       <div class="address-font">rea@deloitte.com.cn</div>
      </div>
   </div>
 </template>

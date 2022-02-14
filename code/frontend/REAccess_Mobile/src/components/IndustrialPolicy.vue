@@ -1,38 +1,28 @@
 <template>
   <div class="filter-data">
-      <div class="filter-title"><img src="@/assets/城市排名.svg" class="logo-box"/>
-        <div class="search-title">{{searchName}}</div>
-        <div class="unit-box">{{rankingData.year}}年 排名</div>
+      <div class="filter-title"><img src="@/assets/政策.svg" class="logo-box"/>
+        <div class="search-title">{{searchName}}产业政策</div>
+        <div class="unit-box">共{{rankingData.industrialPolicyCount}}条</div>
       </div>
-      <div v-for="(item,index) in rankingData.cityRankList" :key="String(index)" class="line-box">
-        <div :class="index>2?'item-box uni-font':'item-box'">
-          <img :src='imgList[index].url' class="img-item"/>
-          <!-- <div v-for="(imgObj,i) in imgList" :key="String(i)"/><img :src="imgObj.url"/></div> -->
-          {{item.indexName}}
-          </div>
-        <div class="line-item num-order" v-if="index===0">
-            <img src="@/assets/1.svg" class="order-img"/>
+      <div v-for="(item,index) in rankingData.industrialPolicis" :key="String(index)" class="line-box" @click="policyDetail(item.policyId, item.fileName)">
+        <div class="file">
+          {{item.fileName}}
         </div>
-        <div class="line-item num-order" v-if="index===1">
-            <img src="@/assets/2.svg" class="order-img"/>
+        <div class="province">
+          {{item.province}}
         </div>
-         <div class="line-item num-order" v-if="index===2">
-            <img src="@/assets/3.svg" class="order-img"/>
+        <div class="city">
+          {{item.city}}
         </div>
-        <div class="line-item num-order" v-if="index>2">#{{index+1}}</div>
-       
+         <div class="goto-order"><img src="@/assets/next.svg"/></div>
+        <!-- <img src="@/assets/政策 选中.svg" class="logo-box"/> -->
       </div>
   </div>
 </template>
 
 <script>
-import price from '../assets/工业用地平均出让价格.svg';
-import scenic from '../assets/景区.svg';
-import cost from '../assets/商办载体出租成本.svg';
-import rate from '../assets/全社会用电量增速.svg';
-import company from '../assets/上市企业营业收入增速.svg';
 export default {
-  name: 'cityData',
+  name: 'IndustrialPolicy',
   props:{
    title: String,
    searchName: String,
@@ -40,22 +30,6 @@ export default {
   },
   data () {
     return {
-     imgList:[
-       {
-         url:price
-       },
-       {
-        url:scenic
-       },
-       {
-        url:cost
-       },
-       {
-        url:rate
-       },
-       {
-        url:company
-       },]
     }
   },
   created(){
@@ -65,7 +39,10 @@ export default {
   
   },
   methods:{
-    
+    policyDetail(policyId, fileName) {
+      this.$router.push({path: `/PolicyDetail?policyId=${policyId}`})
+      window.localStorage.setItem('fileName', fileName)
+    }
   }
 }
 </script>
@@ -105,7 +82,7 @@ export default {
   font-size: .625rem;
   color: #666666;
   margin-top: 0.8rem;
-  margin-right: 1rem;
+  /* margin-right: 1rem; */
 }
 /* .unit-box::before{
     position: absolute;
@@ -118,12 +95,20 @@ export default {
     margin-top: 14px;
 } */
 .line-box{
-  height: 4rem;
+  min-height: 4rem;
   line-height: 4rem;
   font-size: .75rem;
   color: #333333;
   margin: 0 2rem 0 2rem;
   border-bottom: 1px solid #EEEFF3;
+}
+.line-box::after{
+    content:"";
+    height:0px;
+    width:0px;
+    clear:both;
+    display:block;
+    overflow: hidden;
 }
 .num-order{
   width: 10% !important;
@@ -139,21 +124,53 @@ export default {
 .order-img{
   float: left;
   margin-top: 1.25rem;
-  margin-left: -0.1875rem;
 }
 .amount-box{
   margin-left: 0%;
   text-align: center;
 }
-.item-box{
-  width: 80%;
-  float: left;
-  text-align: left;
-}
 .img-item{
   float: left;
   margin-top: 1.375rem;
   margin-right: 1.25rem
+}
+.file{
+  width: 40%;
+  float: left;
+  line-height: 1.2rem;
+  /* height: 3rem; */
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-top: 1rem;
+}
+.province{
+  float: left;
+  width: 20%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+}
+.city{
+  float: left;
+  width: 30%;
+  font-size: 12px;
+  color: #999999;
+}
+.goto-order{
+  width: 8% !important;
+  text-align: right !important;
+  float: left;
+}
+.goto-order >>> img{
+    width: 0.7rem;
+    margin-top: 1.6rem;
+    float: right;
 }
 .filter-data{
   min-height: 23.5rem;
