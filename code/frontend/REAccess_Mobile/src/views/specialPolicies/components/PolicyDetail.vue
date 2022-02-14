@@ -106,10 +106,6 @@ export default {
   float: left;
   text-align: justify;
 }
-.titleIcon {
-  float: left;
-  padding-top: 0.2rem;
-}
 .fileName {
   font-size: .875rem;
   color: #000000;
