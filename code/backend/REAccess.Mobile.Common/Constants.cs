@@ -27,6 +27,10 @@ namespace REAccess.Mobile.Common
             public const string Yes = "Y";
             public const string No = "N";
         }
+        public static class NoData
+        {
+            public const string NotPublished = "-999,999";
+        }
         public static class DistrictData
         {
             public const string China = "中华人民共和国";

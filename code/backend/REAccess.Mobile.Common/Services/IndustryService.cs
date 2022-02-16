@@ -343,15 +343,15 @@ namespace REAccess.Mobile.Common.Services
             //默认获取政策类数据
             policyCategory = string.IsNullOrEmpty(policyCategory) ? SearchPageMatch.PolicyCategory : policyCategory;
             //获取对应产业、对应分类的政策数据
-            var policyList = StaticCache.DsaPolicyIndustryFieldTagRelation.Where(x => x.IndustryFieldTagId == industryId && x.Policy.Category.Trim() == policyCategory).Take(dataCount).ToList();
-            model.IndustrialPolicis = policyList.Select(x => new IndustrialPolicy()
+            var policyList = StaticCache.DsaPolicyIndustryFieldTagRelation.Where(x => x.IndustryFieldTagId == industryId && x.Policy.Category.Trim() == policyCategory).ToList();
+            model.IndustrialPolicis = policyList.Take(dataCount).Select(x => new IndustrialPolicy()
             {
                 PolicyId = x.Policy.Id,
                 FileName = string.IsNullOrEmpty(x.Policy.Name) ? "-" : x.Policy.Name,
                 Province = string.IsNullOrEmpty(x.Policy.Province) ? "-" : x.Policy.Province,
                 City = string.IsNullOrEmpty(x.Policy.City) ? "-" : x.Policy.City,
             }).ToList();
-            model.IndustrialPolicyCount = dataCount;
+            model.IndustrialPolicyCount = policyList.Count();
 
             return model;
         }

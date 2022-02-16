@@ -120,15 +120,18 @@ namespace REAccess.Mobile.Common.Services
             foreach(var indicator in indicatorList)
             {
                 var singleIndexRank = GetSingleIndexRank(indicator, selectYear, StaticCache.Districts.Count(x => x.CityName == x.DistrictName));
+                var currentRank = singleIndexRank.SingleIndexList.FirstOrDefault(x => x.DistrictSk == districtSk);
                 CityRank cityRank = new CityRank()
                 {
                     IndexName = indicator,
-                    RankPlace = singleIndexRank.SingleIndexList.FirstOrDefault(x => x.DistrictSk == districtSk).RankPlace
+                    RankPlace = currentRank.RankPlace,
+                    IndexValue = currentRank.RankValue,
+                    Unit = singleIndexRank.Unit
                 };
                 cityRankList.Add(cityRank);
             }
 
-            cityRankList = cityRankList.OrderBy(x => x.RankPlace).Take(dataCount).ToList();
+            cityRankList = cityRankList.Where(x => x.IndexValue != NoData.NotPublished).OrderBy(x => x.RankPlace).Take(dataCount).ToList();
             
             model.CityRankList = cityRankList;
 

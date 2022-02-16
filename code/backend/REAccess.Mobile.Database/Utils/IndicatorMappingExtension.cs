@@ -42,7 +42,7 @@ namespace REAccess.Mobile.Database.Utils
                 case "城镇化率":
                     value = null;
                     break;
-                case "辖区土地面积":
+                case "行政区域土地面积（全市）":
                     value = entity.LandSizeRatio ?? 0;
                     break;
                 case "建成区比例":
@@ -84,7 +84,7 @@ namespace REAccess.Mobile.Database.Utils
                 case "对外交通联系度":
                     value = entity.ExternalTrafficConnectionRatio ?? 0;
                     break;
-                case "高等级铁路车站":
+                case "二等站及以上铁路车站":
                     value = entity.HighLevelRailwayStationCountRatio ?? 0;
                     break;
                 case "干线高速出入口数量":
@@ -216,7 +216,7 @@ namespace REAccess.Mobile.Database.Utils
                 case "工业载体出租成本":
                     value = entity.AverageIndustrialRentRateRatio ?? 0;
                     break;
-                case "商办用地平均出让价格":
+                case "商业用地平均出让价格":
                     value = entity.AverageCommercialLandPriceRatio ?? 0;
                     break;
                 case "商办载体出租成本":
@@ -246,13 +246,13 @@ namespace REAccess.Mobile.Database.Utils
                 case "优质医院数量":
                     value = entity.HospitalCountRatio ?? 0;
                     break;
-                case "每十万人K12教育学校数量":
+                case "每十万人基础教育学校数量":
                     value = entity.NumberOfK12EducationSchoolsPer10kPplRatio ?? 0;
                     break;
                 case "每十万人国际学校数量":
                     value = entity.NumberOfInternationalSchoolsPer10kPplRatio ?? 0;
                     break;
-                case "每十万人国际高等级酒店数量":
+                case "每十万人高等级酒店数量":
                     value = entity.NumberOfHotelsPer10kPplRatio ?? 0;
                     break;
                 case "每十万人电影院数量":
@@ -276,10 +276,10 @@ namespace REAccess.Mobile.Database.Utils
                 case "房租收入比":
                     value = entity.RentToIncomeRatioRatio ?? 0;
                     break;
-                case "空气质量指数":
+                case "PM2.5年均浓度":
                     value = entity.AirQualityRatio ?? 0;
                     break;
-                case "信贷对经济支撑度":
+                case "本外币各项贷款余额占GDP比重":
                     value = entity.CreditSupportsTheRealEconomyRatio ?? 0;
                     break;
                 case "金融机构数量":
@@ -303,7 +303,7 @@ namespace REAccess.Mobile.Database.Utils
                 case "单位GDP耗电量":
                     value = entity.UnitGdpElectricityConsumptionRatio ?? 0;
                     break;
-                case "财政自给度":
+                case "一般公共预算自给率":
                     value = entity.FiscalSelfSupplimentRatio ?? 0;
                     break;
                 case "产业投资性价比":
@@ -433,16 +433,16 @@ namespace REAccess.Mobile.Database.Utils
                 case "地方政府债务余额":
                     value = entity.LocalGovernmentDebtRatio ?? 0;
                     break;
-                case "银行贷款余额":
+                case "本外币各项贷款余额":
                     value = entity.BankLoanBalanceRatio ?? 0;
                     break;
-                case "航空班次":
+                case "航班起降架次":
                     value = entity.AirlineYearlyTakeoffLandingTimesRatio ?? 0;
                     break;
-                case "高铁班次":
+                case "旅客列车车次总量":
                     value = entity.TrainYearlyDepartTimesRatio ?? 0;
                     break;
-                case "公路班次":
+                case "汽车客运站发出车次总量":
                     value = entity.BusYearlyDepartTimesRatio ?? 0;
                     break;
                 case "银行业金融机构法人数量":
@@ -478,19 +478,19 @@ namespace REAccess.Mobile.Database.Utils
                 case "二三甲医院床位数量":
                     value = entity.HospitalBedsCountRatio ?? 0;
                     break;
-                case "K12教育学校数量":
+                case "基础教育学校数量":
                     value = entity.K12CountRatio ?? 0;
                     break;
                 case "国际学校数量":
                     value = entity.InternationSchoolCountRatio ?? 0;
                     break;
-                case "轨道交通站点数量":
+                case "地铁站点数量":
                     value = entity.RailwayStationCountRatio ?? 0;
                     break;
                 case "超市便利店数量":
                     value = entity.SupermarketAndStoreCountRatio ?? 0;
                     break;
-                case "国际高等级酒店数量":
+                case "高等级酒店数量":
                     value = entity.HotelCountRatio ?? 0;
                     break;
                 case "星巴克数量":
@@ -507,6 +507,30 @@ namespace REAccess.Mobile.Database.Utils
                     break;
                 case "平均购房价格":
                     value = entity.AvgHousePriceRatio ?? 0;
+                    break;
+                case "地方政府负债率":
+                    value = entity.LocalGovernmentDebtPressureByGdpRatio ?? 0;
+                    break;
+                case "规上工业增加值":
+                    value = entity.LargeIndustrialCompanyValueAddedRatio ?? 0;
+                    break;
+                case "保税物流中心（B型）数量":
+                    value = entity.BondedLogisticsCenterBAmountRatio ?? 0;
+                    break;
+                case "国家重点实验室数量":
+                    value = entity.NationalResearchLabsRatio ?? 0;
+                    break;
+                case "国家企业技术中心数量":
+                    value = entity.NationalEnterpriseTechCentersRatio ?? 0;
+                    break;
+                case "普通高等学校数量":
+                    value = entity.UndergraduateAndAcademyRatio ?? 0;
+                    break;
+                case "二三甲医院数量":
+                    value = entity.HospitalCountRatio ?? 0;
+                    break;
+                case "获投企业融资额":
+                    value = entity.InvestedCompaniesInvestedAmountRatio ?? 0;
                     break;
             }
 
@@ -552,7 +576,7 @@ namespace REAccess.Mobile.Database.Utils
                 case "城镇化率":
                     value = null;
                     break;
-                case "辖区土地面积":
+                case "行政区域土地面积（全市）":
                     value = entity.LandSize ?? (decimal)-999999.0;
                     break;
                 case "建成区比例":
@@ -594,7 +618,7 @@ namespace REAccess.Mobile.Database.Utils
                 case "对外交通联系度":
                     value = entity.ExternalTrafficConnection ?? (decimal)-999999.0;
                     break;
-                case "高等级铁路车站":
+                case "二等站及以上铁路车站":
                     value = entity.HighLevelRailwayStationCount ?? (decimal)-999999.0;
                     break;
                 case "干线高速出入口数量":
@@ -726,7 +750,7 @@ namespace REAccess.Mobile.Database.Utils
                 case "工业载体出租成本":
                     value = entity.AverageIndustrialRentRate ?? (decimal)-999999.0;
                     break;
-                case "商办用地平均出让价格":
+                case "商业用地平均出让价格":
                     value = entity.AverageCommercialLandPrice ?? (decimal)-999999.0;
                     break;
                 case "商办载体出租成本":
@@ -756,13 +780,13 @@ namespace REAccess.Mobile.Database.Utils
                 case "优质医院数量":
                     value = entity.HospitalCount ?? (decimal)-999999.0;
                     break;
-                case "每十万人K12教育学校数量":
+                case "每十万人基础教育学校数量":
                     value = entity.NumberOfK12EducationSchoolsPer10kPpl ?? (decimal)-999999.0;
                     break;
                 case "每十万人国际学校数量":
                     value = entity.NumberOfInternationalSchoolsPer10kPpl ?? (decimal)-999999.0;
                     break;
-                case "每十万人国际高等级酒店数量":
+                case "每十万人高等级酒店数量":
                     value = entity.NumberOfHotelsPer10kPpl ?? (decimal)-999999.0;
                     break;
                 case "每十万人电影院数量":
@@ -786,10 +810,10 @@ namespace REAccess.Mobile.Database.Utils
                 case "房租收入比":
                     value = entity.RentToIncomeRatio ?? (decimal)-999999.0;
                     break;
-                case "空气质量指数":
+                case "PM2.5年均浓度":
                     value = entity.AirQuality ?? (decimal)-999999.0;
                     break;
-                case "信贷对经济支撑度":
+                case "本外币各项贷款余额占GDP比重":
                     value = entity.CreditSupportsTheRealEconomy ?? (decimal)-999999.0;
                     break;
                 case "金融机构数量":
@@ -813,7 +837,7 @@ namespace REAccess.Mobile.Database.Utils
                 case "单位GDP耗电量":
                     value = entity.UnitGdpElectricityConsumption ?? (decimal)-999999.0;
                     break;
-                case "财政自给度":
+                case "一般公共预算自给率":
                     value = entity.FiscalSelfSuppliment ?? (decimal)-999999.0;
                     break;
                 case "产业投资性价比":
@@ -949,16 +973,16 @@ namespace REAccess.Mobile.Database.Utils
                 case "地方政府债务余额":
                     value = entity.LocalGovernmentDebt ?? (decimal)-999999.0;
                     break;
-                case "银行贷款余额":
+                case "本外币各项贷款余额":
                     value = entity.BankLoanBalance ?? (decimal)-999999.0;
                     break;
-                case "航空班次":
+                case "航班起降架次":
                     value = entity.AirlineYearlyTakeoffLandingTimes ?? (decimal)-999999.0;
                     break;
-                case "高铁班次":
+                case "旅客列车车次总量":
                     value = entity.TrainYearlyDepartTimes ?? (decimal)-999999.0;
                     break;
-                case "公路班次":
+                case "汽车客运站发出车次总量":
                     value = entity.BusYearlyDepartTimes ?? (decimal)-999999.0;
                     break;
                 case "银行业金融机构法人数量":
@@ -994,19 +1018,19 @@ namespace REAccess.Mobile.Database.Utils
                 case "二三甲医院床位数量":
                     value = entity.HospitalBedsCount ?? (decimal)-999999.0;
                     break;
-                case "K12教育学校数量":
+                case "基础教育学校数量":
                     value = entity.K12Count ?? (decimal)-999999.0;
                     break;
                 case "国际学校数量":
                     value = entity.InternationSchoolCount ?? (decimal)-999999.0;
                     break;
-                case "轨道交通站点数量":
+                case "地铁站点数量":
                     value = entity.RailwayStationCount ?? (decimal)-999999.0;
                     break;
                 case "超市便利店数量":
                     value = entity.SupermarketAndStoreCount ?? (decimal)-999999.0;
                     break;
-                case "国际高等级酒店数量":
+                case "高等级酒店数量":
                     value = entity.HotelCount ?? (decimal)-999999.0;
                     break;
                 case "星巴克数量":
@@ -1024,11 +1048,35 @@ namespace REAccess.Mobile.Database.Utils
                 case "平均购房价格":
                     value = entity.AvgHousePrice ?? (decimal)-999999.0;
                     break;
+                case "地方政府负债率":
+                    value = entity.LocalGovernmentDebtPressureByGdp ?? (decimal)-999999.0;
+                    break;
+                case "规上工业增加值":
+                    value = entity.LargeIndustrialCompanyValueAdded ?? (decimal)-999999.0;
+                    break;
+                case "保税物流中心（B型）数量":
+                    value = entity.BondedLogisticsCenterBAmount ?? (decimal)-999999.0;
+                    break;
+                case "国家重点实验室数量":
+                    value = entity.NationalResearchLabs ?? (decimal)-999999.0;
+                    break;
+                case "国家企业技术中心数量":
+                    value = entity.NationalEnterpriseTechCenters ?? (decimal)-999999.0;
+                    break;
+                case "普通高等学校数量":
+                    value = entity.UndergraduateAndAcademy ?? (decimal)-999999.0;
+                    break;
+                case "二三甲医院数量":
+                    value = entity.HospitalCount ?? (decimal)-999999.0;
+                    break;
+                case "获投企业融资额":
+                    value = entity.InvestedCompaniesInvestedAmount ?? (decimal)-999999.0;
+                    break;
             }
 
 
             //如果value是空就返回0；该方法内的null代表数据库没有对应的该字段。后期可以有相应的不同处理。
-            value ??= 0;
+            value ??= (decimal)-999999.0;
 
             return value;
         }

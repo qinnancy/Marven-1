@@ -26,6 +26,7 @@ namespace REAccess.Mobile.Api.Controllers
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             string requestData = string.Empty;
+            string paramsInfo = string.Empty;
 
             //获取url
             var currentUrl = filterContext.HttpContext.Request.GetDisplayUrl();
@@ -50,8 +51,9 @@ namespace REAccess.Mobile.Api.Controllers
             if (filterContext.ActionArguments.Count() > 0)
             {
                 var paramsList = filterContext.ActionArguments;
-                for(var i = 0; i < paramsList.Count(); i++)
+                foreach(var param in paramsList)
                 {
+                    paramsInfo += "(Key: " + param.Key + ")" + "(Value: " + param.Value + ")";
                 }
                 requestData = JsonConvert.SerializeObject(filterContext.ActionArguments);
             }
@@ -74,7 +76,7 @@ namespace REAccess.Mobile.Api.Controllers
                     PageName = "",
                     SectionName = "",
                     PreviousPage = "",
-                    Description = "",
+                    Description = paramsInfo,
                     Message = ""
                 };
             }
