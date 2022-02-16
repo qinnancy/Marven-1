@@ -98,8 +98,16 @@ export default {
   background: #FFFFFF;
   box-shadow: 0 1px 20px 1px rgba(0,0,0,0.06);
   margin-bottom: 0.8rem;
-  height: 5rem;
+  min-height: 5rem;
   padding: 1rem;
+}
+.news-card::after{
+    content:"";
+    height:0px;
+    width:0px;
+    clear:both;
+    display:block;
+    overflow: hidden;
 }
 .news-img-box{
   width: 33%;
@@ -122,9 +130,9 @@ export default {
   font-size: .875rem;
   color: #333333;
   width: 100%;
-  overflow: hidden;
+  /* overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; */
   padding-left: 0.5rem;
   margin-top: 0.2rem;
   font-weight: bold;

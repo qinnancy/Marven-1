@@ -1,15 +1,6 @@
 <template>
   <div class="filter-data">
-      <div class="filter-title"><img src="@/assets/城市排名.svg" class="logo-box"/>
-        <div class="search-title">{{searchName}}</div>
-        <div class="unit-box">{{rankingData.year}}年 排名</div>
-      </div>
-      <div v-for="(item,index) in rankingData.cityRankList" :key="String(index)" class="line-box">
-        <div :class="index>2?'item-box uni-font':'item-box'">
-          <img :src='imgList[index].url' class="img-item"/>
-          <!-- <div v-for="(imgObj,i) in imgList" :key="String(i)"/><img :src="imgObj.url"/></div> -->
-          {{item.indexName}}
-          </div>
+      <div v-for="(item,index) in filterList" :key="String(index)" class="line-box" @click="goToDetail(item)">
         <div class="line-item num-order" v-if="index===0">
             <img src="@/assets/1.svg" class="order-img"/>
         </div>
@@ -20,42 +11,31 @@
             <img src="@/assets/3.svg" class="order-img"/>
         </div>
         <div class="line-item num-order" v-if="index>2">#{{index+1}}</div>
-       
+        <template v-if="searchName==='看活跃区域'">
+          <div :class="index>2?'line-item uni-font':'line-item'">{{item.cityName}}</div>
+          <div class="line-item uni-font">{{item.provinceName}}</div>
+          <div class="line-item uni-font amount-box">{{item.rankValue}}{{item.unit}}</div>
+        </template>
+        <template v-else>
+          <div class="line-item content-item">{{item.indexName}}</div>
+          <div class="line-item uni-font amount-box search-else">{{item.indexValue}}{{item.unit}}</div>
+        </template>
+        <div class="line-item goto-order"><img src="@/assets/next.svg"/></div>
       </div>
   </div>
 </template>
 
 <script>
-import price from '../assets/工业用地平均出让价格.svg';
-import scenic from '../assets/景区.svg';
-import cost from '../assets/商办载体出租成本.svg';
-import rate from '../assets/全社会用电量增速.svg';
-import company from '../assets/上市企业营业收入增速.svg';
 export default {
-  name: 'cityData',
+  name: 'FilterIndex',
   props:{
-   title: String,
+   filterList: Array,
    searchName: String,
-   rankingData: Object
+   tabName:String
   },
   data () {
     return {
-     imgList:[
-       {
-         url:price
-       },
-       {
-        url:scenic
-       },
-       {
-        url:cost
-       },
-       {
-        url:rate
-       },
-       {
-        url:company
-       },]
+     
     }
   },
   created(){
@@ -65,7 +45,15 @@ export default {
   
   },
   methods:{
-    
+    goToDetail(item){
+      console.log(item)
+      const id = item.districtSk?item.districtSk:item.indexId
+      if(this.tabName === 'list'){
+         this.$router.push(`/IndustrialInvest/ListDetail?searchName=${this.searchName}&id=${id}`)
+      }else{
+        this.$router.push(`/IndustrialInvest/LandDetail?searchName=${this.searchName}&id=${id}`)
+      }
+    }
   }
 }
 </script>
@@ -107,16 +95,17 @@ export default {
   margin-top: 0.8rem;
   margin-right: 1rem;
 }
-/* .unit-box::before{
+.unit-box::before{
     position: absolute;
     content: '';
     width: 0;
     height: 0;
-    border-bottom: 6px solid #E3EBFF;
-    border-left: 14px solid transparent;
-    margin-left: -1.2rem;
-    margin-top: 14px;
-} */
+    border-width: 6px 3px;
+    border-style: solid;
+    border-color: #E3EBFF transparent transparent;
+    margin-left: -0.5rem;
+    margin-top: 1.125rem;
+}
 .line-box{
   height: 4rem;
   line-height: 4rem;
@@ -128,10 +117,28 @@ export default {
 .num-order{
   width: 10% !important;
 }
+.goto-order{
+  width: 10% !important;
+  text-align: right !important;
+}
+.goto-order >>> img{
+    width: 0.7rem;
+    margin-top: 1.6rem;
+    float: right;
+}
 .line-item{
   float: left;
-  width: 20%;
+  width: 26%;
   text-align: left;
+}
+.content-item{
+  width: 58% !important;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.search-else{
+  width: 20% !important;
 }
 .uni-font{
  color: #666666;
@@ -145,17 +152,7 @@ export default {
   margin-left: 0%;
   text-align: center;
 }
-.item-box{
-  width: 80%;
-  float: left;
-  text-align: left;
-}
-.img-item{
-  float: left;
-  margin-top: 1.375rem;
-  margin-right: 1.25rem
-}
 .filter-data{
-  min-height: 23.5rem;
+  min-height: 20.5rem;
 }
 </style>
