@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using REAccess.Mobile.Common.Interfaces;
 using REAccess.Mobile.Common.ViewModel;
+using REAccess.Mobile.Database.LogModels;
 using static REAccess.Mobile.Common.Constants;
 #endregion
 
@@ -105,6 +106,38 @@ namespace REAccess.Mobile.Api.Controllers
             catch (Exception e)
             {
                 _logger.LogInformation(e, "Error in GetPolicyList() method");
+                return new JsonResult(
+                    new GeneralResponse()
+                    {
+                        StatusCode = ResponseStatusCode.Exception,
+                        StatusMessage = ResponseStatusMessage.Failed,
+                        ReturnObj = e.Message
+                    });
+            }
+        }
+        /// <summary>
+        /// 记录页面跳转系统日志
+        /// </summary>
+        /// <param name="pageName">当前页面</param>
+        /// <param name="previousPage">上一个页面</param>
+        /// <returns></returns>
+        [HttpPost("SysLog")]
+        public JsonResult SysLog(string pageName, string previousPage)
+        {
+            try
+            {
+                _logger.LogInformation("Start executing SysLog() method");
+                return new JsonResult(
+                    new GeneralResponse()
+                    {
+                        StatusCode = ResponseStatusCode.Success,
+                        StatusMessage = ResponseStatusMessage.Success,
+                        ReturnObj = _utilService.SysLog(pageName,previousPage)
+                    });
+            }
+            catch (Exception e)
+            {
+                _logger.LogInformation(e, "Error in SysLog() method");
                 return new JsonResult(
                     new GeneralResponse()
                     {

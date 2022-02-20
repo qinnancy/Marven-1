@@ -1,4 +1,5 @@
 ﻿#region Using
+using Castle.Core;
 using Castle.Core.Interceptor;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
@@ -8,11 +9,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using REAccess.Mobile.Api.Controllers.Attributes;
+using REAccess.Mobile.Common.ViewModel;
 using REAccess.Mobile.Database.LogModels;
 using Serilog;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net;
 #endregion
 
 namespace REAccess.Mobile.Api.Controllers
@@ -23,44 +27,89 @@ namespace REAccess.Mobile.Api.Controllers
         public string RequestIp { get; set; }
         public string RequestUrl { get; set; }
         public string SessionId { get; set; }
-        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        public string PageName { get; set; }
+        public string PreviousPage { get; set; }
+        public string ParamsInfo { get; set; }
+        public override void OnActionExecuted(ActionExecutedContext filterContext)
         {
-            string requestData = string.Empty;
-            string paramsInfo = string.Empty;
 
-            //获取url
+            #region 获取url
             var currentUrl = filterContext.HttpContext.Request.GetDisplayUrl();
-            var rawUrl = filterContext.HttpContext.Request.GetEncodedPathAndQuery();
-            RequestUrl = currentUrl;
-            //获取用户IP地址
+            var rawUrl = WebUtility.UrlDecode(filterContext.HttpContext.Request.GetEncodedPathAndQuery());
+            RequestUrl = WebUtility.UrlDecode(currentUrl);
+            #endregion
+
+            #region 获取用户IP地址
             var currentIp = filterContext.HttpContext.Request.Headers["X-Forwarded-For"].FirstOrDefault();
             if (string.IsNullOrEmpty(currentIp))
             {
                 currentIp = filterContext.HttpContext.Connection.RemoteIpAddress.MapToIPv4().ToString() + ":" + filterContext.HttpContext.Connection.RemotePort;
             }
             RequestIp = currentIp;
+            #endregion
 
-            //获取session id
-            if(filterContext.HttpContext.Session != null)
+            #region 获取session id
+            if (filterContext.HttpContext.Session != null)
             {
                 SessionId = filterContext.HttpContext.Session.Id;
             }
-            string paramInfo = string.Empty;
+            #endregion
 
-            //获取地址栏参数
-            if (filterContext.ActionArguments.Count() > 0)
+            #region 获取地址栏参数
+            var query = filterContext.HttpContext.Request.Query.ToList();
+            if(query.Count() > 0)
             {
-                var paramsList = filterContext.ActionArguments;
-                foreach(var param in paramsList)
+                foreach(var param in query)
                 {
-                    paramsInfo += "(Key: " + param.Key + ")" + "(Value: " + param.Value + ")";
+                    if(param.Key == "PageName")
+                    {
+                        PageName = param.Value;
+                    }
+                    else if(param.Key == "PreviousPage")
+                    {
+                        PreviousPage = param.Value;
+                    }
+                    ParamsInfo += "(Key: " + param.Key + ")" + "(Value: " + param.Value + ")";
                 }
-                requestData = JsonConvert.SerializeObject(filterContext.ActionArguments);
             }
-            else
+            #endregion
+
+            #region 获取接口返回结果
+            GeneralResponse jsonResult = new GeneralResponse();
+            if (filterContext.Result != null)
             {
-                requestData = JsonConvert.SerializeObject(filterContext.HttpContext.Request.QueryString.ToString());
+                var result = filterContext.Result as JsonResult;
+                if (filterContext.Result is JsonResult)
+                {
+                    var json = JsonConvert.SerializeObject(result.Value);
+                    jsonResult = JsonConvert.DeserializeObject<GeneralResponse>(json);
+                }
+                else
+                {
+                    throw new Exception($"未经处理的Result类型:{ filterContext.Result.GetType().Name}");
+                }
             }
+            #endregion
+
+            #region 获取SectionName
+            string sectionName = string.Empty;
+            var action = filterContext.RouteData.Values["action"].ToString().ToLower();
+            if (action.Contains("industry"))
+            {
+                sectionName = "Industry";
+            }else if (action.Contains("policy"))
+            {
+                sectionName = "Policy";
+            }else if (action.Contains("singleindex"))
+            {
+                sectionName = "SingleIndex";
+            }else if (action.Contains("cityrank"))
+            {
+                sectionName = "CityRank";
+            }
+            #endregion
+
+            #region 记录log
             using (LogDatabaseContext db = new LogDatabaseContext())
             {
                 ReaMobileSysLog sysLog = new ReaMobileSysLog()
@@ -70,16 +119,19 @@ namespace REAccess.Mobile.Api.Controllers
                     RawUrl = rawUrl,
                     StackTrace = GetStackTraceModelName(),
                     SessionId = SessionId,
-                    CityIndexPolicyIndustryParamName = requestData,
+                    CityIndexPolicyIndustryParamName = WebUtility.UrlDecode(filterContext.HttpContext.Request.QueryString.ToString()),
                     IpDetail = RequestIp,
                     BrowseType = filterContext.HttpContext.Request.Headers["User-Agent"],
-                    PageName = "",
-                    SectionName = "",
-                    PreviousPage = "",
-                    Description = paramsInfo,
-                    Message = ""
+                    PageName = PageName,
+                    SectionName = string.IsNullOrEmpty(sectionName) ? PageName : sectionName,
+                    PreviousPage = PreviousPage,
+                    Description = ParamsInfo,
+                    Message = jsonResult.StatusMessage
                 };
+                db.Add(sysLog);
+                db.SaveChanges();
             }
+            #endregion
         }
 
         /// <summary>

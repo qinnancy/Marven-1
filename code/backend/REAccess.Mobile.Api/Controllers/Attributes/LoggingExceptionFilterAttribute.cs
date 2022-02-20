@@ -25,7 +25,7 @@ namespace REAccess.Mobile.Api.Controllers.Attributes
             var response = new GeneralResponse
             {
                 StatusCode = Constants.ResponseStatusCode.Error,
-                StatusMessage = HostingEnvironment.IsDevelopment() ? context.Exception.ToString() : context.Exception.Message
+                StatusMessage = context.Exception.Message
                 //StatusMessage = context.Exception.StackTrace
             };
             context.Result = new JsonResult(response);

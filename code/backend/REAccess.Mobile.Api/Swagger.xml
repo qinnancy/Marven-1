@@ -116,5 +116,13 @@
             获取政策类别列表
             </summary>
         </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.UtilController.SysLog(System.String,System.String)">
+            <summary>
+            记录页面跳转系统日志
+            </summary>
+            <param name="pageName">当前页面</param>
+            <param name="previousPage">上一个页面</param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

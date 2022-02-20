@@ -1,5 +1,6 @@
 ﻿#region Using
 using REAccess.Mobile.Common.ViewModel;
+using REAccess.Mobile.Database.LogModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -22,5 +23,9 @@ namespace REAccess.Mobile.Common.Interfaces
         /// 获取政策类别列表
         /// </summary>
         public List<PolicyListModel> GetPolicyList();
+        /// <summary>
+        /// 记录系统日志
+        /// </summary>
+        public string SysLog(string pageName, string previousPage);
     }
 }

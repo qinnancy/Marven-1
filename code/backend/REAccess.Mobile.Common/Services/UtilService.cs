@@ -1,6 +1,7 @@
 ﻿#region Using
 using REAccess.Mobile.Common.Interfaces;
 using REAccess.Mobile.Common.ViewModel;
+using REAccess.Mobile.Database.LogModels;
 using REAccess.Mobile.Database.Utils;
 using System;
 using System.Collections.Generic;
@@ -54,6 +55,29 @@ namespace REAccess.Mobile.Common.Services
             }).ToList();
 
             return policyList;
+        }
+        /// <summary>
+        /// 记录系统日志
+        /// </summary>
+        public string SysLog(string pageName, string previousPage)
+        {
+            string result = ResponseStatusMessage.Failed;
+            using (LogDatabaseContext sysDb = new LogDatabaseContext())
+            {
+                ReaMobileSysLog sysLog = new ReaMobileSysLog();
+                if (!string.IsNullOrEmpty(pageName))
+                {
+                    sysLog.PageName = pageName;
+                }
+                if (!string.IsNullOrEmpty(previousPage))
+                {
+                    sysLog.PreviousPage = previousPage;
+                }
+                result = ResponseStatusMessage.Success;
+            }
+            
+
+            return result;
         }
     }
 }
