@@ -72,6 +72,7 @@
 
 <script>
 import NewsCard from "./views/home/Index.vue"
+import api from "@/request/api";
 export default {
   name: 'App',
   components:{
@@ -107,7 +108,66 @@ export default {
       return searchName
     }
   },
+  watch: {
+   $route: {
+    handler: function(val, oldVal){
+      const routerName = this.getRouterName(val.name)
+      const oldName = this.getRouterName(oldVal.name)
+      const obj = {
+        pageName:routerName,
+        previousPage:oldName
+      }
+      api
+      .post('/Util/SysLog',obj)
+      .then((res) => {
+      //  console.log('-----',res);
+      });
+      },
+      // 深度观察监听
+      deep: true
+    }
+  },
   methods:{
+    getRouterName(routerValue){
+      let routerName = ""
+      if(routerValue === "Home"){
+         routerName = "首页"
+      }
+      if(routerValue === "Detail"){
+         routerName = "资讯详情"
+      }
+      if(routerValue === "SingleIndex"){
+         routerName = "单项指标"
+      }
+      if(routerValue === "CityRanking"){
+         routerName = "城市排名"
+      }
+      if(routerValue === "IndustrialInvest"){
+         routerName = "产业投资"
+      }
+      if(routerValue === "SpecialPolicies"){
+         routerName = "专项政策"
+      }
+      if(routerValue === "PolicyDetail"){
+         routerName = "专项政策详情"
+      }
+      if(routerValue === "Agreement"){
+         routerName = "试用协议"
+      }
+      if(routerValue === "Contact"){
+         routerName = "联系我们"
+      }
+      if(routerValue === "PrivacyPolicy"){
+         routerName = "隐私政策"
+      }
+      if(routerValue === "ListDetail"){
+         routerName = "A股上市企业投资详情"
+      }
+      if(routerValue === "LandDetail"){
+         routerName = "产业用地获取详情"
+      }
+      return routerName
+    },
     goBack(){
       this.$router.go(-1)
     },
@@ -119,7 +179,7 @@ export default {
     },
     returnDetail(titleName,routerName){
       this.$router.push(`/IndustrialInvest`)
-      window.localStorage.setItem('searchName', '看'+titleName)
+      window.localStorage.setItem('searchName', titleName)
       window.localStorage.setItem('routerName', routerName)
     },
     goToPolice(){
@@ -294,5 +354,41 @@ a {
 .img-size{
   width: 1.625rem;
   height: 1.625rem;
+}
+.footer-img{
+  text-align: left;
+  margin-bottom:1rem;
+}
+.footer-img-bg{
+  /* width: 100%; */
+  height: 100px;
+  background: url('./assets/底图.svg') no-repeat center;
+  background-size: 100% 103%;
+  margin-top: -1rem;
+}
+.footer-icon-size{
+  width: .875rem;
+  float: left;
+  margin-top: 0.25rem;
+  margin-right: 0.4rem;
+}
+.footer-img-font{
+  font-size: .75rem;
+  color: #333333;
+}
+.footer-img-font2{
+  font-size: .75rem;
+  color: #525E75;
+}
+.footer-line-box{
+  padding-top: 2.2rem;
+  padding-left: 8%;
+  float: left;
+  width: 92%;
+}
+.footer-line-box1{
+  float: left;
+  width: 92%;
+  padding-left: 8%;
 }
 </style>

@@ -11,7 +11,7 @@
             <img src="@/assets/3.svg" class="order-img"/>
         </div>
         <div class="line-item num-order" v-if="index>2">#{{index+1}}</div>
-        <template v-if="searchName==='看活跃区域'">
+        <template v-if="searchName==='所在区域'">
           <div :class="index>2?'line-item uni-font':'line-item'">{{item.cityName}}</div>
           <div class="line-item uni-font">{{item.provinceName}}</div>
           <div class="line-item uni-font amount-box">{{item.rankValue}}{{item.unit}}</div>
