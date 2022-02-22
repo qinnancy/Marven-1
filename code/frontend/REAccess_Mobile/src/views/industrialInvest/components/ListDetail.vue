@@ -1,7 +1,7 @@
 <template>
 <div class="list-detail">
   <div class="list-title">
-      <img src="@/assets/城市.svg" class="img-box" v-if="searchName === '看活跃区域'"/>
+      <img src="@/assets/城市.svg" class="img-box" v-if="searchName === '所在区域'"/>
       <img src="@/assets/产业.svg" class="img-box" v-else/>
       <div class="city-name">{{detailInfor.primaryName}}</div>
       <div class="total-box">
@@ -59,7 +59,17 @@
   </div>
       <div class="footer">
         <div class="footer-img">
-           <img src="@/assets/解锁更多投资项目.svg"/>
+           <!-- <img src="@/assets/解锁更多投资项目.svg"/> -->
+           <div class="footer-img-bg">
+             <div class="footer-line-box">
+              <img src="@/assets/解锁.svg" class="footer-icon-size"/>
+              <span class="footer-img-font">解锁更多投资项目</span>
+             </div>
+             <div class="footer-line-box1">
+               <img src="@/assets/登录.svg" class="footer-icon-size"/>
+               <span class="footer-img-font2">请登录PC端 (rea.deloitte.com.cn)</span>
+             </div>
+            </div>
         </div>
      </div>
 </div>
@@ -91,7 +101,7 @@ export default {
   methods:{
     getDetail(name,id){
         let secondaryCategory = ''
-        if(name === '看活跃区域'){
+        if(name === '所在区域'){
           secondaryCategory = '活跃区域'
         }else{
           secondaryCategory = '热点城市'
@@ -243,9 +253,9 @@ export default {
  padding-top: 1rem;
 }
 .footer-img >>> img{
-  width: 94%;
+  /* width: 94%; */
 }
 .footer-img{
-  text-align: center;
+  /* text-align: center; */
 }
 </style>

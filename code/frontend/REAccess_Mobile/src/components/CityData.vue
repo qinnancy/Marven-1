@@ -9,7 +9,8 @@
           <img :src='imgList[index].url' class="img-item"/>
           <!-- <div v-for="(imgObj,i) in imgList" :key="String(i)"/><img :src="imgObj.url"/></div> -->
           {{item.indexName}}
-          </div>
+        </div>
+        <div class="value-item">{{item.indexValue}} {{item.unit}}</div>
         <div class="line-item num-order" v-if="index===0">
             <img src="@/assets/1.svg" class="order-img"/>
         </div>
@@ -126,7 +127,7 @@ export default {
   border-bottom: 1px solid #EEEFF3;
 }
 .num-order{
-  width: 10% !important;
+  width: 5% !important;
 }
 .line-item{
   float: left;
@@ -146,7 +147,7 @@ export default {
   text-align: center;
 }
 .item-box{
-  width: 80%;
+  width: 60%;
   float: left;
   text-align: left;
 }
@@ -157,5 +158,10 @@ export default {
 }
 .filter-data{
   min-height: 23.5rem;
+}
+.value-item{
+  width: 35%;
+  float: left;
+  text-align: left;
 }
 </style>

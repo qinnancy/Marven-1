@@ -12,7 +12,17 @@
      <invest-data :filterList="filterList" :searchName="chooseOption" :tabName="chooseItem"></invest-data>
      <div class="footer">
         <div class="footer-img">
-           <img src="@/assets/解锁更多投资项目.svg"/>
+           <!-- <img src="@/assets/解锁更多投资项目.svg"/> -->
+            <div class="footer-img-bg">
+             <div class="footer-line-box">
+              <img src="@/assets/解锁.svg" class="footer-icon-size"/>
+              <span class="footer-img-font">解锁更多投资项目</span>
+             </div>
+             <div class="footer-line-box1">
+               <img src="@/assets/登录.svg" class="footer-icon-size"/>
+               <span class="footer-img-font2">请登录PC端 (rea.deloitte.com.cn)</span>
+             </div>
+            </div>
         </div>
      </div>
   </div>
@@ -31,8 +41,8 @@ export default {
   data(){
     return{
        chooseItem:"list",
-       chooseOption:"看活跃区域",
-       options: ['看活跃区域','看热点产业'],
+       chooseOption:"所在区域",
+       options: ['所在区域','所属产业'],
        filterList: []
     }
   },
@@ -42,8 +52,8 @@ export default {
     if(routerName === 'LandDetail'){
         this.chooseItem = 'land'
     }
-    if(searchName === '看热点产业'){
-        this.chooseOption = '看热点产业'
+    if(searchName === '所属产业'){
+        this.chooseOption = '所属产业'
     }
     this.getInvestList()
     window.localStorage.setItem('searchName', '')
@@ -60,7 +70,7 @@ export default {
     },
     getInvestList(){
       if(this.chooseItem === 'list'){
-        if(this.chooseOption === '看活跃区域'){
+        if(this.chooseOption === '所在区域'){
             api
             .get('/Industry/GetActiveAreaRank')
             .then((res) => {
@@ -74,7 +84,7 @@ export default {
             });
         }
       }else{
-        if(this.chooseOption === '看活跃区域'){
+        if(this.chooseOption === '所在区域'){
             api
             .get('/Industry/GetIndusrtyActiveRegion')
             .then((res) => {
@@ -132,10 +142,10 @@ export default {
  /* padding: 1rem; */
 }
 .footer-img >>> img{
-  width: 94%;
+  /* width: 94%; */
 }
 .footer-img{
-  text-align: center;
+  /* text-align: center; */
 }
 .year-box{
   font-size: 0.75rem;
