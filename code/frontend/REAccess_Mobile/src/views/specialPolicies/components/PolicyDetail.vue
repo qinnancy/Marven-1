@@ -36,7 +36,17 @@
     </div>
     <div class="footer">
       <div class="footer-img">
-          <img src="@/assets/查看政策详情.svg"/>
+          <!-- <img src="@/assets/查看政策详情.svg"/> -->
+           <div class="footer-img-bg">
+             <div class="footer-line-box">
+              <img src="@/assets/解锁.svg" class="footer-icon-size"/>
+              <span class="footer-img-font">查看更多政策详情</span>
+             </div>
+             <div class="footer-line-box1">
+               <img src="@/assets/登录.svg" class="footer-icon-size"/>
+               <span class="footer-img-font2">请登录PC端 (rea.deloitte.com.cn)</span>
+             </div>
+            </div>
       </div>
    </div>
   </div>
@@ -165,10 +175,10 @@ export default {
  bottom: 0;
 }
 .footer-img >>> img{
-  width: 94%;
+  /* width: 94%; */
 }
 .footer-img{
-  text-align: center;
+  /* text-align: center; */
 }
 .titleIcon{
   float: left;

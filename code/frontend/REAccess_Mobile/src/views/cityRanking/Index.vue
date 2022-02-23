@@ -5,7 +5,17 @@
     <div class="footer">
         <div class="footer-img">
            <!-- <a href="https://rea.deloitte.com.cn"><div class="link-web"></div></a> -->
-           <img src="@/assets/解锁城市.svg"/>
+           <!-- <img src="@/assets/解锁城市.svg"/> -->
+            <div class="footer-img-bg">
+             <div class="footer-line-box">
+              <img src="@/assets/解锁.svg" class="footer-icon-size"/>
+              <span class="footer-img-font">解锁更多城市排名</span>
+             </div>
+             <div class="footer-line-box1">
+               <img src="@/assets/登录.svg" class="footer-icon-size"/>
+               <span class="footer-img-font2">请登录PC端 (rea.deloitte.com.cn)</span>
+             </div>
+            </div>
         </div>
    </div>
   </div>
@@ -68,10 +78,7 @@ export default {
  /* padding: 1rem; */
 }
 .footer-img >>> img{
-  width: 94%;
-}
-.footer-img{
-  text-align: center;
+  /* width: 94%; */
 }
 </style>
 

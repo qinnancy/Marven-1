@@ -65,10 +65,11 @@ export default {
       api
       .get(`/Rank/GetNewsList?currentPage=${this.currentPage}&pageSize=${this.pageSize}`)
       .then((res) => {
+        // console.log('-----',res.data);
         const data = res.data.returnObj
         if(data.length !== 0){
           data.map((item)=>{
-                this.newsList.push(item)
+              this.newsList.push(item)
           })
           this.newsList.map((item)=>{
             if(item.newsImage.indexOf("http://reaapi.ftechsoftware.com/") === -1){
