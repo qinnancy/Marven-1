@@ -112,13 +112,13 @@ export default {
    $route: {
     handler: function(val, oldVal){
       const routerName = this.getRouterName(val.name)
-      const oldName = this.getRouterName(oldVal.name)
+      const oldName = this.getRouterName(oldVal.name) === "" ? "首页" : this.getRouterName(oldVal.name)
       const obj = {
         pageName:routerName,
         previousPage:oldName
       }
       api
-      .post('/Util/SysLog',obj)
+      .post('/Util/SysLog/' + routerName + '/' + oldName)
       .then((res) => {
       //  console.log('-----',res);
       });

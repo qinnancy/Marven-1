@@ -17,6 +17,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using static REAccess.Mobile.Common.Constants;
 #endregion
 
 namespace REAccess.Mobile.Api.Controllers
@@ -96,21 +97,25 @@ namespace REAccess.Mobile.Api.Controllers
                 #region 获取SectionName
                 string sectionName = string.Empty;
                 var action = filterContext.RouteData.Values["action"].ToString().ToLower();
-                if (action.Contains("industry"))
+                if (action.ToLower().Contains("industry"))
                 {
-                    sectionName = "Industry";
+                    sectionName = "产业";
                 }
-                else if (action.Contains("policy"))
+                else if (action.ToLower().Contains("policy"))
                 {
-                    sectionName = "Policy";
+                    sectionName = "政策";
                 }
-                else if (action.Contains("singleindex"))
+                else if (action.ToLower().Contains("singleindex"))
                 {
-                    sectionName = "SingleIndex";
+                    sectionName = "单项排名";
                 }
-                else if (action.Contains("cityrank"))
+                else if (action.ToLower().Contains("cityrank"))
                 {
-                    sectionName = "CityRank";
+                    sectionName = "城市排名";
+                }
+                else if (action.ToLower().Contains("news"))
+                {
+                    sectionName = "资讯";
                 }
                 #endregion
 
@@ -127,11 +132,11 @@ namespace REAccess.Mobile.Api.Controllers
                         CityIndexPolicyIndustryParamName = WebUtility.UrlDecode(filterContext.HttpContext.Request.QueryString.ToString()),
                         IpDetail = RequestIp,
                         BrowseType = filterContext.HttpContext.Request.Headers["User-Agent"],
-                        PageName = pageName.ToString(),
-                        SectionName = string.IsNullOrEmpty(sectionName) ? pageName.ToString() : sectionName,
-                        PreviousPage = previousPage.ToString(),
+                        PageName = pageName == null ? "" : pageName.ToString(),
+                        SectionName = string.IsNullOrEmpty(sectionName) ? (pageName == null ? "" : pageName.ToString()) : sectionName,
+                        PreviousPage = previousPage == null? "" : previousPage.ToString(),
                         Description = ParamsInfo,
-                        Message = jsonResult.StatusMessage
+                        Message = jsonResult.StatusMessage == ResponseStatusMessage.Success ? jsonResult.StatusMessage : jsonResult.ReturnObj == null ? ResponseStatusMessage.Failed : ResponseStatusMessage.Failed + ": " + jsonResult.ReturnObj.ToString()
                     };
                     db.Add(sysLog);
                     db.SaveChanges();
@@ -141,6 +146,7 @@ namespace REAccess.Mobile.Api.Controllers
             catch (Exception e)
             {
                 Log.Error(e.Message,"ControllerBase Error");
+                Log.Error(e.InnerException,"ControllerBase Error");
                 throw new Exception(e.Message, e);
             }
 
