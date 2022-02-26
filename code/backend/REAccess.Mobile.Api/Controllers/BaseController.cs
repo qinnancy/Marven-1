@@ -147,7 +147,7 @@ namespace REAccess.Mobile.Api.Controllers
             {
                 Log.Error(e.Message,"ControllerBase Error");
                 Log.Error(e.InnerException,"ControllerBase Error");
-                throw new Exception(e.Message, e);
+                throw new Exception(e.Message,e.InnerException);
             }
 
 
@@ -159,28 +159,34 @@ namespace REAccess.Mobile.Api.Controllers
         /// <returns></returns>
         public static string GetStackTraceModelName()
         {
-            //当前堆栈信息
-            StackTrace st = new StackTrace();
-            StackFrame[] sfs = st.GetFrames();
-            //过滤的方法名称，以下方法将不会出现在返回的方法调用列表中
-            string fullName = string.Empty;
-            string methodName = string.Empty;
-            for(var i = 1; i < sfs.Length; ++i)
+            try
             {
-                //非用户代码,系统方法及后面的都是系统调用，不获取用户代码调用结束
-                if(StackFrame.OFFSET_UNKNOWN == sfs[i].GetILOffset())
+                //当前堆栈信息
+                StackTrace st = new StackTrace();
+                StackFrame[] sfs = st.GetFrames();
+                //过滤的方法名称，以下方法将不会出现在返回的方法调用列表中
+                string fullName = string.Empty;
+                string methodName = string.Empty;
+                for (var i = 1; i < sfs.Length; ++i)
                 {
-                    break;
+                    //非用户代码,系统方法及后面的都是系统调用，不获取用户代码调用结束
+                    if (StackFrame.OFFSET_UNKNOWN == sfs[i].GetILOffset())
+                    {
+                        break;
+                    }
+                    var methodInfo = sfs[i].GetMethod();
+                    methodName = methodInfo.ReflectedType.FullName + "." + methodInfo.Name;//方法名称
+
+                    fullName = methodName + "()\r\n->" + fullName;
                 }
-                var methodInfo = sfs[i].GetMethod();
-                methodName = methodInfo.ReflectedType.FullName + "." + methodInfo.Name;//方法名称
+                st = null;
+                sfs = null;
+                return fullName.TrimEnd('-', '>');
 
-                fullName = methodName + "()\r\n->" + fullName;
+            }catch (Exception e)
+            {
+                throw new Exception(e.Message,e.InnerException);
             }
-            st = null;
-            sfs = null;
-
-            return fullName.TrimEnd('-','>');
 
         }
 
