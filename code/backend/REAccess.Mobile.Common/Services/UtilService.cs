@@ -61,19 +61,10 @@ namespace REAccess.Mobile.Common.Services
         /// </summary>
         public string SysLog(string pageName, string previousPage)
         {
-            string result = ResponseStatusMessage.Failed;
-            using (LogDatabaseContext sysDb = new LogDatabaseContext())
+            string result = ResponseStatusMessage.Success;
+            if (string.IsNullOrEmpty(previousPage) && string.IsNullOrEmpty(pageName))
             {
-                ReaMobileSysLog sysLog = new ReaMobileSysLog();
-                if (!string.IsNullOrEmpty(pageName))
-                {
-                    sysLog.PageName = pageName;
-                }
-                if (!string.IsNullOrEmpty(previousPage))
-                {
-                    sysLog.PreviousPage = previousPage;
-                }
-                result = ResponseStatusMessage.Success;
+                result = ResponseStatusMessage.Failed;
             }
             
 

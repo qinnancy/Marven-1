@@ -118,11 +118,11 @@ namespace REAccess.Mobile.Api.Controllers
         /// <summary>
         /// 记录页面跳转系统日志
         /// </summary>
-        /// <param name="pageName">当前页面</param>
-        /// <param name="previousPage">上一个页面</param>
+        /// <param name="pageName">当前页</param>
+        /// <param name="previousPage">上一页</param>
         /// <returns></returns>
-        [HttpPost("SysLog")]
-        public JsonResult SysLog(string pageName, string previousPage)
+        [HttpPost("SysLog/{pageName}/{previousPage}")]
+        public JsonResult SysLog([FromRoute] string pageName,string previousPage)
         {
             try
             {

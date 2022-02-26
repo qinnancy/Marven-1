@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -79,6 +80,10 @@ namespace REAccess.Mobile.Api
                 options.IncludeXmlComments(xmlPath);
             });
             #endregion
+            services.Configure<KestrelServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -102,6 +107,13 @@ namespace REAccess.Mobile.Api
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApiHelp V1");
             });
+            app.Use(next => new RequestDelegate(
+              async context =>
+              {
+                  context.Request.EnableBuffering();
+                  await next(context);
+              }
+            ));
 
             //这是添加的扩张方法
             //设置访问文件

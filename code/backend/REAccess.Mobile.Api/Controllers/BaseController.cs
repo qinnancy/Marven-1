@@ -27,111 +27,124 @@ namespace REAccess.Mobile.Api.Controllers
         public string RequestIp { get; set; }
         public string RequestUrl { get; set; }
         public string SessionId { get; set; }
-        public string PageName { get; set; }
-        public string PreviousPage { get; set; }
         public string ParamsInfo { get; set; }
         public override void OnActionExecuted(ActionExecutedContext filterContext)
         {
-
-            #region 获取url
-            var currentUrl = filterContext.HttpContext.Request.GetDisplayUrl();
-            var rawUrl = WebUtility.UrlDecode(filterContext.HttpContext.Request.GetEncodedPathAndQuery());
-            RequestUrl = WebUtility.UrlDecode(currentUrl);
-            #endregion
-
-            #region 获取用户IP地址
-            var currentIp = filterContext.HttpContext.Request.Headers["X-Forwarded-For"].FirstOrDefault();
-            if (string.IsNullOrEmpty(currentIp))
+            try
             {
-                currentIp = filterContext.HttpContext.Connection.RemoteIpAddress.MapToIPv4().ToString() + ":" + filterContext.HttpContext.Connection.RemotePort;
-            }
-            RequestIp = currentIp;
-            #endregion
+                #region 获取url
+                var currentUrl = filterContext.HttpContext.Request.GetDisplayUrl();
+                var rawUrl = WebUtility.UrlDecode(filterContext.HttpContext.Request.GetEncodedPathAndQuery());
+                RequestUrl = WebUtility.UrlDecode(currentUrl);
+                #endregion
 
-            #region 获取session id
-            if (filterContext.HttpContext.Session != null)
-            {
-                SessionId = filterContext.HttpContext.Session.Id;
-            }
-            #endregion
-
-            #region 获取地址栏参数
-            var query = filterContext.HttpContext.Request.Query.ToList();
-            if(query.Count() > 0)
-            {
-                foreach(var param in query)
+                #region 获取用户IP地址
+                var currentIp = filterContext.HttpContext.Request.Headers["X-Forwarded-For"].FirstOrDefault();
+                if (string.IsNullOrEmpty(currentIp))
                 {
-                    if(param.Key == "PageName")
+                    currentIp = filterContext.HttpContext.Connection.RemoteIpAddress.MapToIPv4().ToString() + ":" + filterContext.HttpContext.Connection.RemotePort;
+                }
+                RequestIp = currentIp;
+                #endregion
+
+                #region 获取session id
+                if (filterContext.HttpContext.Session != null)
+                {
+                    SessionId = filterContext.HttpContext.Session.Id;
+                }
+                #endregion
+
+                #region 获取地址栏参数
+                object pageName = null;
+                object previousPage = null;
+                var routeData = filterContext.RouteData.Values;
+                if (routeData.ContainsKey("pageName"))
+                {
+                    routeData.TryGetValue("pageName", out pageName);
+                }
+                if (routeData.ContainsKey("previousPage"))
+                {
+                    routeData.TryGetValue("previousPage", out previousPage);
+                }
+                var query = filterContext.HttpContext.Request.Query.ToList();
+                if (query.Count() > 0)
+                {
+                    foreach (var param in query)
                     {
-                        PageName = param.Value;
+                        ParamsInfo += "(Key: " + param.Key + ")" + "(Value: " + param.Value + ")";
                     }
-                    else if(param.Key == "PreviousPage")
+                }
+                #endregion
+
+                #region 获取接口返回结果
+                GeneralResponse jsonResult = new GeneralResponse();
+                if (filterContext.Result != null)
+                {
+                    var result = filterContext.Result as JsonResult;
+                    if (filterContext.Result is JsonResult)
                     {
-                        PreviousPage = param.Value;
+                        var json = JsonConvert.SerializeObject(result.Value);
+                        jsonResult = JsonConvert.DeserializeObject<GeneralResponse>(json);
                     }
-                    ParamsInfo += "(Key: " + param.Key + ")" + "(Value: " + param.Value + ")";
+                    else
+                    {
+                        throw new Exception($"未经处理的Result类型:{ filterContext.Result.GetType().Name}");
+                    }
                 }
-            }
-            #endregion
+                #endregion
 
-            #region 获取接口返回结果
-            GeneralResponse jsonResult = new GeneralResponse();
-            if (filterContext.Result != null)
-            {
-                var result = filterContext.Result as JsonResult;
-                if (filterContext.Result is JsonResult)
+                #region 获取SectionName
+                string sectionName = string.Empty;
+                var action = filterContext.RouteData.Values["action"].ToString().ToLower();
+                if (action.Contains("industry"))
                 {
-                    var json = JsonConvert.SerializeObject(result.Value);
-                    jsonResult = JsonConvert.DeserializeObject<GeneralResponse>(json);
+                    sectionName = "Industry";
                 }
-                else
+                else if (action.Contains("policy"))
                 {
-                    throw new Exception($"未经处理的Result类型:{ filterContext.Result.GetType().Name}");
+                    sectionName = "Policy";
                 }
-            }
-            #endregion
-
-            #region 获取SectionName
-            string sectionName = string.Empty;
-            var action = filterContext.RouteData.Values["action"].ToString().ToLower();
-            if (action.Contains("industry"))
-            {
-                sectionName = "Industry";
-            }else if (action.Contains("policy"))
-            {
-                sectionName = "Policy";
-            }else if (action.Contains("singleindex"))
-            {
-                sectionName = "SingleIndex";
-            }else if (action.Contains("cityrank"))
-            {
-                sectionName = "CityRank";
-            }
-            #endregion
-
-            #region 记录log
-            using (LogDatabaseContext db = new LogDatabaseContext())
-            {
-                ReaMobileSysLog sysLog = new ReaMobileSysLog()
+                else if (action.Contains("singleindex"))
                 {
-                    Entered = DateTime.Now,
-                    Url = RequestUrl,
-                    RawUrl = rawUrl,
-                    StackTrace = GetStackTraceModelName(),
-                    SessionId = SessionId,
-                    CityIndexPolicyIndustryParamName = WebUtility.UrlDecode(filterContext.HttpContext.Request.QueryString.ToString()),
-                    IpDetail = RequestIp,
-                    BrowseType = filterContext.HttpContext.Request.Headers["User-Agent"],
-                    PageName = PageName,
-                    SectionName = string.IsNullOrEmpty(sectionName) ? PageName : sectionName,
-                    PreviousPage = PreviousPage,
-                    Description = ParamsInfo,
-                    Message = jsonResult.StatusMessage
-                };
-                db.Add(sysLog);
-                db.SaveChanges();
+                    sectionName = "SingleIndex";
+                }
+                else if (action.Contains("cityrank"))
+                {
+                    sectionName = "CityRank";
+                }
+                #endregion
+
+                #region 记录log            
+                using (LogDatabaseContext db = new LogDatabaseContext())
+                {
+                    ReaMobileSysLog sysLog = new ReaMobileSysLog()
+                    {
+                        Entered = DateTime.Now,
+                        Url = string.IsNullOrEmpty(RequestUrl) ? string.Empty : RequestUrl,
+                        RawUrl = string.IsNullOrEmpty(rawUrl) ? string.Empty : rawUrl,
+                        StackTrace = GetStackTraceModelName(),
+                        SessionId = SessionId,
+                        CityIndexPolicyIndustryParamName = WebUtility.UrlDecode(filterContext.HttpContext.Request.QueryString.ToString()),
+                        IpDetail = RequestIp,
+                        BrowseType = filterContext.HttpContext.Request.Headers["User-Agent"],
+                        PageName = pageName.ToString(),
+                        SectionName = string.IsNullOrEmpty(sectionName) ? pageName.ToString() : sectionName,
+                        PreviousPage = previousPage.ToString(),
+                        Description = ParamsInfo,
+                        Message = jsonResult.StatusMessage
+                    };
+                    db.Add(sysLog);
+                    db.SaveChanges();
+                }
+                #endregion
             }
-            #endregion
+            catch (Exception e)
+            {
+                Log.Error(e.Message,"ControllerBase Error");
+                throw new Exception(e.Message, e);
+            }
+
+
         }
 
         /// <summary>
