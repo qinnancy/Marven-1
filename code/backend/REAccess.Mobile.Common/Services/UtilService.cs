@@ -111,7 +111,7 @@ namespace REAccess.Mobile.Common.Services
             List<string> yearList = new List<string>();
             var indicatorRankList = StaticCache.IndicatorScore.ToList();
             string indexName = IndicatorMappingExtension.GetIndexName(indicator);
-            if (string.IsNullOrEmpty(indexName))
+            if (!string.IsNullOrEmpty(indexName))
             {
                 yearList = indicatorRankList.Where(x => x.GetType().GetProperty(indexName).GetValue(x, null) != null)
                                                       .GroupBy(x => x.SnapshotPeriod)
