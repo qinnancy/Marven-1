@@ -17,6 +17,7 @@ namespace REAccess.Mobile.Database.Models
         {
         }
 
+        public virtual DbSet<AllIndustryDevelopTrend> AllIndustryDevelopTrend { get; set; }
         public virtual DbSet<AppAccessLog> AppAccessLog { get; set; }
         public virtual DbSet<AppConfig> AppConfig { get; set; }
         public virtual DbSet<AppDictGroup> AppDictGroup { get; set; }
@@ -43,6 +44,7 @@ namespace REAccess.Mobile.Database.Models
         public virtual DbSet<AppSurveyQuestion> AppSurveyQuestion { get; set; }
         public virtual DbSet<AppSurveyUserAnswer> AppSurveyUserAnswer { get; set; }
         public virtual DbSet<AppUser> AppUser { get; set; }
+        public virtual DbSet<AppUserInvitationcode> AppUserInvitationcode { get; set; }
         public virtual DbSet<AppUserLimitLog> AppUserLimitLog { get; set; }
         public virtual DbSet<AppUserLoginSession> AppUserLoginSession { get; set; }
         public virtual DbSet<AppUserPageLimittimes> AppUserPageLimittimes { get; set; }
@@ -61,6 +63,9 @@ namespace REAccess.Mobile.Database.Models
         public virtual DbSet<DdsFRailwayClass> DdsFRailwayClass { get; set; }
         public virtual DbSet<DdsFTransit> DdsFTransit { get; set; }
         public virtual DbSet<DdsNews> DdsNews { get; set; }
+        public virtual DbSet<DdsNewsBack> DdsNewsBack { get; set; }
+        public virtual DbSet<DdsNewsOld> DdsNewsOld { get; set; }
+        public virtual DbSet<DdsNewsTags> DdsNewsTags { get; set; }
         public virtual DbSet<DdsSDataIndicator> DdsSDataIndicator { get; set; }
         public virtual DbSet<DdsSDataIndicatorFixed> DdsSDataIndicatorFixed { get; set; }
         public virtual DbSet<DdsSDataIndicatorRank> DdsSDataIndicatorRank { get; set; }
@@ -69,7 +74,10 @@ namespace REAccess.Mobile.Database.Models
         public virtual DbSet<DsaAirportsThroughput> DsaAirportsThroughput { get; set; }
         public virtual DbSet<DsaAnjukeResidentialPrice> DsaAnjukeResidentialPrice { get; set; }
         public virtual DbSet<DsaAnjukeResidentialRent> DsaAnjukeResidentialRent { get; set; }
+        public virtual DbSet<DsaCountry> DsaCountry { get; set; }
+        public virtual DbSet<DsaDeloitteList> DsaDeloitteList { get; set; }
         public virtual DbSet<DsaDistricts> DsaDistricts { get; set; }
+        public virtual DbSet<DsaDistrictsNew> DsaDistrictsNew { get; set; }
         public virtual DbSet<DsaDrivingTime> DsaDrivingTime { get; set; }
         public virtual DbSet<DsaGanjiIndustrialRent> DsaGanjiIndustrialRent { get; set; }
         public virtual DbSet<DsaGdcGeneralData> DsaGdcGeneralData { get; set; }
@@ -77,25 +85,25 @@ namespace REAccess.Mobile.Database.Models
         public virtual DbSet<DsaGdcInvestedCompanies> DsaGdcInvestedCompanies { get; set; }
         public virtual DbSet<DsaHospitalBeds> DsaHospitalBeds { get; set; }
         public virtual DbSet<DsaIfindLandSales> DsaIfindLandSales { get; set; }
+        public virtual DbSet<DsaIndividualChampion> DsaIndividualChampion { get; set; }
         public virtual DbSet<DsaIndustrialPark> DsaIndustrialPark { get; set; }
         public virtual DbSet<DsaIndustryChains> DsaIndustryChains { get; set; }
         public virtual DbSet<DsaIndustryFieldTag> DsaIndustryFieldTag { get; set; }
         public virtual DbSet<DsaIndustryLand> DsaIndustryLand { get; set; }
         public virtual DbSet<DsaInvestedProjects> DsaInvestedProjects { get; set; }
         public virtual DbSet<DsaLianjiaCommercialRent> DsaLianjiaCommercialRent { get; set; }
+        public virtual DbSet<DsaListCompaniesA> DsaListCompaniesA { get; set; }
         public virtual DbSet<DsaListedCompanies> DsaListedCompanies { get; set; }
         public virtual DbSet<DsaListedCompanyInvestment> DsaListedCompanyInvestment { get; set; }
+        public virtual DbSet<DsaLittleGiantCompanies> DsaLittleGiantCompanies { get; set; }
         public virtual DbSet<DsaMainIndustryConfiguration> DsaMainIndustryConfiguration { get; set; }
+        public virtual DbSet<DsaMainIndustryConfigurationBak> DsaMainIndustryConfigurationBak { get; set; }
+        public virtual DbSet<DsaNationalHighTech> DsaNationalHighTech { get; set; }
         public virtual DbSet<DsaParkGov> DsaParkGov { get; set; }
-        public virtual DbSet<DsaParkGovBak> DsaParkGovBak { get; set; }
         public virtual DbSet<DsaParkGovWebsite> DsaParkGovWebsite { get; set; }
-        public virtual DbSet<DsaParkGovWebsiteBak> DsaParkGovWebsiteBak { get; set; }
         public virtual DbSet<DsaParkInfo> DsaParkInfo { get; set; }
-        public virtual DbSet<DsaParkInfoBak> DsaParkInfoBak { get; set; }
         public virtual DbSet<DsaParkMainIndustry> DsaParkMainIndustry { get; set; }
-        public virtual DbSet<DsaParkMainIndustryBak> DsaParkMainIndustryBak { get; set; }
         public virtual DbSet<DsaParkWebsites> DsaParkWebsites { get; set; }
-        public virtual DbSet<DsaParkWebsitesBak> DsaParkWebsitesBak { get; set; }
         public virtual DbSet<DsaPolicyFiles> DsaPolicyFiles { get; set; }
         public virtual DbSet<DsaPolicyIndustryFieldTagRelation> DsaPolicyIndustryFieldTagRelation { get; set; }
         public virtual DbSet<DsaRailwayClass> DsaRailwayClass { get; set; }
@@ -103,8 +111,16 @@ namespace REAccess.Mobile.Database.Models
         public virtual DbSet<DsaSolidSmallMediumCompanies> DsaSolidSmallMediumCompanies { get; set; }
         public virtual DbSet<EmailLog> EmailLog { get; set; }
         public virtual DbSet<Geo> Geo { get; set; }
+        public virtual DbSet<IndicatorForDevelopTrend> IndicatorForDevelopTrend { get; set; }
         public virtual DbSet<IndicatorInstruction> IndicatorInstruction { get; set; }
+        public virtual DbSet<IndicatorInstructionBak> IndicatorInstructionBak { get; set; }
+        public virtual DbSet<IndicatorRankMapping> IndicatorRankMapping { get; set; }
+        public virtual DbSet<IndicatorRankType> IndicatorRankType { get; set; }
         public virtual DbSet<IndustryCategory> IndustryCategory { get; set; }
+        public virtual DbSet<IndustryCategoryForDevelopTrend> IndustryCategoryForDevelopTrend { get; set; }
+        public virtual DbSet<IndustryTypesForDevelopTrend> IndustryTypesForDevelopTrend { get; set; }
+        public virtual DbSet<LargeCompanyDevelopTrend> LargeCompanyDevelopTrend { get; set; }
+        public virtual DbSet<ListCompanyDevelopTrend> ListCompanyDevelopTrend { get; set; }
         public virtual DbSet<Sor12306TrainScheduleDetail> Sor12306TrainScheduleDetail { get; set; }
         public virtual DbSet<SorAirportsThroughput> SorAirportsThroughput { get; set; }
         public virtual DbSet<SorAnjukeResidentialData> SorAnjukeResidentialData { get; set; }
@@ -125,6 +141,10 @@ namespace REAccess.Mobile.Database.Models
         public virtual DbSet<SorQicheBusScheduleDetail> SorQicheBusScheduleDetail { get; set; }
         public virtual DbSet<SorReaIndustryMapping> SorReaIndustryMapping { get; set; }
         public virtual DbSet<VcityParkList> VcityParkList { get; set; }
+        public virtual DbSet<VdevelopTrendAllIndustry> VdevelopTrendAllIndustry { get; set; }
+        public virtual DbSet<VdevelopTrendLargeCompany> VdevelopTrendLargeCompany { get; set; }
+        public virtual DbSet<VdevelopTrendListedCompany> VdevelopTrendListedCompany { get; set; }
+        public virtual DbSet<VnetProfitRate> VnetProfitRate { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -138,6 +158,29 @@ namespace REAccess.Mobile.Database.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<AllIndustryDevelopTrend>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("all_industry_develop_trend", "dds");
+
+                entity.Property(e => e.CityCode).HasColumnName("City_Code");
+
+                entity.Property(e => e.DistrictCode).HasColumnName("District_Code");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .ValueGeneratedOnAdd();
+
+                entity.Property(e => e.IndexValue).HasColumnType("decimal(18, 2)");
+
+                entity.Property(e => e.IndexYoy).HasColumnType("decimal(18, 2)");
+
+                entity.Property(e => e.IndicatorValueOfLastYear).HasColumnType("decimal(18, 2)");
+
+                entity.Property(e => e.ProvCode).HasColumnName("Prov_Code");
+            });
+
             modelBuilder.Entity<AppAccessLog>(entity =>
             {
                 entity.ToTable("app_access_log");
@@ -714,7 +757,7 @@ namespace REAccess.Mobile.Database.Models
                     .WithMany(p => p.AppRankingListDetail)
                     .HasForeignKey(d => d.IndicatorClass3Id)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_app_ranking_list_detail_indicator_instruction");
+                    .HasConstraintName("fk_indicator_instruction_id_new");
 
                 entity.HasOne(d => d.RankingList)
                     .WithMany(p => p.AppRankingListDetail)
@@ -1152,6 +1195,30 @@ namespace REAccess.Mobile.Database.Models
                 entity.Property(e => e.UserZone)
                     .HasColumnName("user_zone")
                     .HasMaxLength(1024);
+            });
+
+            modelBuilder.Entity<AppUserInvitationcode>(entity =>
+            {
+                entity.ToTable("app_user_invitationcode");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.InvitationCode)
+                    .IsRequired()
+                    .HasColumnName("invitation_code")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.IsUsed)
+                    .IsRequired()
+                    .HasColumnName("is_Used")
+                    .HasMaxLength(1)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.IsValid)
+                    .IsRequired()
+                    .HasColumnName("is_valid")
+                    .HasMaxLength(1)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<AppUserLimitLog>(entity =>
@@ -1952,7 +2019,87 @@ namespace REAccess.Mobile.Database.Models
 
             modelBuilder.Entity<DdsNews>(entity =>
             {
+                entity.HasNoKey();
+
                 entity.ToTable("dds_news", "dds");
+
+                entity.Property(e => e.Category)
+                    .IsRequired()
+                    .HasColumnName("category")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.Content)
+                    .HasColumnName("content")
+                    .HasMaxLength(300);
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .ValueGeneratedOnAdd();
+
+                entity.Property(e => e.Img)
+                    .HasColumnName("img")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.IsHot).HasColumnName("is_hot");
+
+                entity.Property(e => e.IsTop).HasColumnName("is_top");
+
+                entity.Property(e => e.IsValid).HasColumnName("is_valid");
+
+                entity.Property(e => e.ReleaseTime)
+                    .HasColumnName("release_time")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.Tags)
+                    .HasColumnName("tags")
+                    .HasMaxLength(200);
+
+                entity.Property(e => e.Title)
+                    .HasColumnName("title")
+                    .HasMaxLength(100);
+            });
+
+            modelBuilder.Entity<DdsNewsBack>(entity =>
+            {
+                entity.ToTable("dds_news_back", "dds");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Category)
+                    .IsRequired()
+                    .HasColumnName("category")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.CategoryOrder).HasColumnName("category_order");
+
+                entity.Property(e => e.Content)
+                    .HasColumnName("content")
+                    .HasMaxLength(300);
+
+                entity.Property(e => e.Img)
+                    .HasColumnName("img")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.IsValid)
+                    .IsRequired()
+                    .HasColumnName("is_valid")
+                    .HasMaxLength(1)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.NewsOrder).HasColumnName("news_order");
+
+                entity.Property(e => e.ReleaseTime)
+                    .HasColumnName("release_time")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.Title)
+                    .HasColumnName("title")
+                    .HasMaxLength(100);
+            });
+
+            modelBuilder.Entity<DdsNewsOld>(entity =>
+            {
+                entity.ToTable("dds_news_old", "dds");
 
                 entity.HasIndex(e => new { e.Title, e.Category, e.ReleaseTime, e.Content })
                     .HasName("unique_news")
@@ -1990,6 +2137,37 @@ namespace REAccess.Mobile.Database.Models
                 entity.Property(e => e.Title)
                     .HasColumnName("title")
                     .HasMaxLength(100);
+            });
+
+            modelBuilder.Entity<DdsNewsTags>(entity =>
+            {
+                entity.ToTable("dds_news_tags", "dds");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Isvalid)
+                    .IsRequired()
+                    .HasColumnName("isvalid")
+                    .HasMaxLength(1)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.NewsId).HasColumnName("news_id");
+
+                entity.Property(e => e.NewsTag)
+                    .HasColumnName("news_tag")
+                    .HasMaxLength(1024);
+
+                entity.Property(e => e.TagsRoute)
+                    .HasColumnName("tags_route")
+                    .HasMaxLength(1024);
+
+                entity.HasOne(d => d.News)
+                    .WithMany(p => p.DdsNewsTags)
+                    .HasForeignKey(d => d.NewsId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Fk_dds_news");
             });
 
             modelBuilder.Entity<DdsSDataIndicator>(entity =>
@@ -2318,7 +2496,19 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.AirlineYearlyTakeoffLandingTimes)
                     .HasColumnName("airline_yearly_takeoff_landing_times")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.AirportGoodsCapacity)
+                    .HasColumnName("airport_goods_capacity")
+                    .HasColumnType("decimal(38, 10)");
+
+                entity.Property(e => e.AirportPassengerCapacity)
+                    .HasColumnName("airport_passenger_capacity")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.Aqi)
+                    .HasColumnName("aqi")
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.AverageCommercialLandArea)
                     .HasColumnName("average_commercial_land_area")
@@ -2350,31 +2540,47 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.AvgRent)
                     .HasColumnName("avg_rent")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.BankLoanBalance)
                     .HasColumnName("bank_loan_balance")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.BankingFinancialInstitutionCount)
                     .HasColumnName("banking_financial_institution_count")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.BankingFinancialInstitutionLegalEntityCount)
                     .HasColumnName("banking_financial_institution_legal_entity_count")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.BedsPerThousandInHospitalCount)
+                    .HasColumnName("beds_per_thousand_in_hospital_count")
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.BondedLogisticsCenterBAmount)
                     .HasColumnName("bonded_logistics_center_B_amount")
                     .HasColumnType("decimal(18, 8)");
 
+                entity.Property(e => e.BuildUpAreaCity)
+                    .HasColumnName("build_up_area_city")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.BuildUpGreenCoverageCity)
+                    .HasColumnName("build_up_green_coverage_city")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.BuildUpGreenLandArea)
+                    .HasColumnName("build_up_green_land_area")
+                    .HasColumnType("decimal(18, 8)");
+
                 entity.Property(e => e.BusYearlyDepartTimes)
                     .HasColumnName("bus_yearly_depart_times")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.CinemaCount)
                     .HasColumnName("cinema_count")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.College211985)
                     .HasColumnName("college_211_985")
@@ -2384,13 +2590,21 @@ namespace REAccess.Mobile.Database.Models
                     .HasColumnName("consumer_goods_retail_sales")
                     .HasColumnType("decimal(18, 8)");
 
+                entity.Property(e => e.ConsumptionIntentionIndexCity)
+                    .HasColumnName("consumption_intention_index_city")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.ConsumptionIntentionIndexTown)
+                    .HasColumnName("consumption_intention_index_town")
+                    .HasColumnType("decimal(18, 8)");
+
                 entity.Property(e => e.CreditSupportsTheRealEconomy)
                     .HasColumnName("credit_supports_the_real_economy")
                     .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.CultureFacilitiesCount)
                     .HasColumnName("culture_facilities_count")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.DirectUseOfForeignCapital)
                     .HasColumnName("direct_use_of_foreign_capital")
@@ -2405,6 +2619,10 @@ namespace REAccess.Mobile.Database.Models
                     .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.DistrictSk).HasColumnName("district_sk");
+
+                entity.Property(e => e.DoubleFirstClassDisciplineCount)
+                    .HasColumnName("double_first_class_discipline_count")
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.ExternalTrafficConnection)
                     .HasColumnName("external_traffic_connection")
@@ -2432,7 +2650,7 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.FuturesCompanyLegalEntityCount)
                     .HasColumnName("futures_company_legal_entity_count")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.Gdp)
                     .HasColumnName("gdp")
@@ -2448,6 +2666,14 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.GdpYoy)
                     .HasColumnName("gdp_yoy")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.GoodsTransportTotalAmount)
+                    .HasColumnName("goods_transport_total_amount")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.GoodsTurnoverTotalAmount)
+                    .HasColumnName("goods_turnover_total_amount")
                     .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.GraduatesAtSchoolCount)
@@ -2468,7 +2694,7 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.HospitalBedsCount)
                     .HasColumnName("hospital_beds_count")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.HospitalCount)
                     .HasColumnName("hospital_count")
@@ -2476,7 +2702,7 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.HotelCount)
                     .HasColumnName("hotel_count")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.HousePriceIncomeRatio)
                     .HasColumnName("house_price_income_ratio")
@@ -2508,11 +2734,11 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.InsuranceInstitutionCount)
                     .HasColumnName("insurance_institution_count")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.InsuranceInstitutionLegalEntityCount)
                     .HasColumnName("insurance_institution_legal_entity_count")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.InternalTrafficConnection)
                     .HasColumnName("internal_traffic_connection")
@@ -2520,7 +2746,7 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.InternationSchoolCount)
                     .HasColumnName("internation_school_count")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.InventionPatentsPer10kPpl)
                     .HasColumnName("invention_patents_per_10k_ppl")
@@ -2556,7 +2782,7 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.K12Count)
                     .HasColumnName("K12_count")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.LabourOutputEfficiency)
                     .HasColumnName("labour_output_efficiency")
@@ -2656,7 +2882,7 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.LocalGovernmentDebt)
                     .HasColumnName("local_government_debt")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.LocalGovernmentDebtPressureByGdp)
                     .HasColumnName("local_government_debt_pressure_by_gdp")
@@ -2706,6 +2932,18 @@ namespace REAccess.Mobile.Database.Models
                     .HasColumnName("new_permenant_residents")
                     .HasColumnType("decimal(18, 8)");
 
+                entity.Property(e => e.NumberOf4a)
+                    .HasColumnName("number_of_4a")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.NumberOf5a)
+                    .HasColumnName("number_of_5a")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.NumberOfBedsInHospital)
+                    .HasColumnName("number_of_beds_in_hospital")
+                    .HasColumnType("decimal(18, 8)");
+
                 entity.Property(e => e.NumberOfBedsPerThousand)
                     .HasColumnName("number_of_beds_per_thousand")
                     .HasColumnType("decimal(18, 8)");
@@ -2728,6 +2966,26 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.NumberOfK12EducationSchoolsPer10kPpl)
                     .HasColumnName("number_of_K12_education_schools_per_10k_ppl")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.NumberOfKindergarden)
+                    .HasColumnName("number_of_kindergarden")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.NumberOfMedicalInstitution)
+                    .HasColumnName("number_of_medical_institution")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.NumberOfMiddleSchool)
+                    .HasColumnName("number_of_middle_school")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.NumberOfPrimarySchool)
+                    .HasColumnName("number_of_primary_school")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.NumberOfRailwayStationPer10kPpl)
+                    .HasColumnName("number_of_railway_station_per_10k_ppl")
                     .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.NumberOfSupermarketConvenienceStoresPer10kPpl)
@@ -2758,6 +3016,14 @@ namespace REAccess.Mobile.Database.Models
                     .HasColumnName("population_net_inflow")
                     .HasColumnType("decimal(18, 8)");
 
+                entity.Property(e => e.PortContainerCapacity)
+                    .HasColumnName("port_container_capacity")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.PortGoodsCapacity)
+                    .HasColumnName("port_goods_capacity")
+                    .HasColumnType("decimal(18, 8)");
+
                 entity.Property(e => e.PostdoctoralResearchStation)
                     .HasColumnName("postdoctoral_research_station")
                     .HasColumnType("decimal(18, 8)");
@@ -2770,17 +3036,21 @@ namespace REAccess.Mobile.Database.Models
                     .HasColumnName("primary_industry_value_added_yoy")
                     .HasColumnType("decimal(18, 8)");
 
+                entity.Property(e => e.PrivateFundManagerCount)
+                    .HasColumnName("private_fund_manager_count")
+                    .HasColumnType("decimal(18, 8)");
+
                 entity.Property(e => e.ProvincialDevelopmentZoneAmount)
                     .HasColumnName("provincial_development_zone_amount")
                     .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.PublicFundInstitutionLegalEntityCount)
                     .HasColumnName("public_fund_institution_legal_entity_count")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.RailwayStationCount)
                     .HasColumnName("railway_station_count")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.RailwayStationCountRatio)
                     .HasColumnName("railway_station_count_ratio")
@@ -2820,7 +3090,7 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.ScenicSpotCountPer100kPpl)
                     .HasColumnName("scenic_spot_count_per_100k_ppl")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.SecondaryIndustryValueAdded)
                     .HasColumnName("secondary_industry_value_added")
@@ -2832,7 +3102,7 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.SecurityCompanyLegalEntityCount)
                     .HasColumnName("security_company_legal_entity_count")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.SnapshotPeriod)
                     .IsRequired()
@@ -2849,7 +3119,7 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.StarbucksCount)
                     .HasColumnName("starbucks_count")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.StarbucksPer10kPpl)
                     .HasColumnName("starbucks_per_10k_ppl")
@@ -2857,7 +3127,7 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.SupermarketAndStoreCount)
                     .HasColumnName("supermarket_and_store_count")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.TechBasedSme)
                     .HasColumnName("tech_based_sme")
@@ -2871,9 +3141,13 @@ namespace REAccess.Mobile.Database.Models
                     .HasColumnName("tertiary_industry_value_added_yoy")
                     .HasColumnType("decimal(18, 8)");
 
+                entity.Property(e => e.TotalWaterResource)
+                    .HasColumnName("total_water_resource")
+                    .HasColumnType("decimal(18, 8)");
+
                 entity.Property(e => e.TrainYearlyDepartTimes)
                     .HasColumnName("train_yearly_depart_times")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.UndergraduateAndAcademy)
                     .HasColumnName("undergraduate_and_academy")
@@ -2905,11 +3179,11 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.UrbanResidentExpenditurePerCapita)
                     .HasColumnName("urban_resident_expenditure_per_capita")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.UrbanResidentsDisposableIncome)
                     .HasColumnName("urban_residents_disposable_income")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.WholeSocietyElectricityConsumption)
                     .HasColumnName("whole_society_electricity_consumption")
@@ -2932,7 +3206,19 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.AirlineYearlyTakeoffLandingTimesRatio)
                     .HasColumnName("airline_yearly_takeoff_landing_times_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.AirportGoodsCapacityRatio)
+                    .HasColumnName("airport_goods_capacity_ratio")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.AirportPassengerCapacityRatio)
+                    .HasColumnName("airport_passenger_capacity_ratio")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.AqiRatio)
+                    .HasColumnName("aqi_ratio")
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.AverageCommercialLandAreaRatio)
                     .HasColumnName("average_commercial_land_area_ratio")
@@ -2960,35 +3246,51 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.AvgHousePriceRatio)
                     .HasColumnName("avg_house_price_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.AvgRentRatio)
                     .HasColumnName("avg_rent_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.BankLoanBalanceRatio)
                     .HasColumnName("bank_loan_balance_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.BankingFinancialInstitutionCountRatio)
                     .HasColumnName("banking_financial_institution_count_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.BankingFinancialInstitutionLegalEntityCountRatio)
                     .HasColumnName("banking_financial_institution_legal_entity_count_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.BedsPerThousandInHospitalCountRatio)
+                    .HasColumnName("beds_per_thousand_in_hospital_count_ratio")
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.BondedLogisticsCenterBAmountRatio)
                     .HasColumnName("bonded_logistics_center_B_amount_ratio")
                     .HasColumnType("decimal(18, 8)");
 
+                entity.Property(e => e.BuildUpAreaCityRatio)
+                    .HasColumnName("build_up_area_city_ratio")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.BuildUpGreenCoverageCityRatio)
+                    .HasColumnName("build_up_green_coverage_city_ratio")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.BuildUpGreenLandAreaRatio)
+                    .HasColumnName("build_up_green_land_area_ratio")
+                    .HasColumnType("decimal(18, 8)");
+
                 entity.Property(e => e.BusYearlyDepartTimesRatio)
                     .HasColumnName("bus_yearly_depart_times_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.CinemaCountRatio)
                     .HasColumnName("cinema_count_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.College211985Ratio)
                     .HasColumnName("college_211_985_ratio")
@@ -2998,13 +3300,21 @@ namespace REAccess.Mobile.Database.Models
                     .HasColumnName("consumer_goods_retail_sales_ratio")
                     .HasColumnType("decimal(18, 8)");
 
+                entity.Property(e => e.ConsumptionIntentionIndexCityRatio)
+                    .HasColumnName("consumption_intention_index_city_ratio")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.ConsumptionIntentionIndexTownRatio)
+                    .HasColumnName("consumption_intention_index_town_ratio")
+                    .HasColumnType("decimal(18, 8)");
+
                 entity.Property(e => e.CreditSupportsTheRealEconomyRatio)
                     .HasColumnName("credit_supports_the_real_economy_ratio")
                     .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.CultureFacilitiesCountRatio)
                     .HasColumnName("culture_facilities_count_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.DirectUseOfForeignCapitalRatio)
                     .HasColumnName("direct_use_of_foreign_capital_ratio")
@@ -3019,6 +3329,10 @@ namespace REAccess.Mobile.Database.Models
                     .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.DistrictSk).HasColumnName("district_sk");
+
+                entity.Property(e => e.DoubleFirstClassDisciplineCountRatio)
+                    .HasColumnName("double_first_class_discipline_count_ratio")
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.ExternalTrafficConnectionRatio)
                     .HasColumnName("external_traffic_connection_ratio")
@@ -3046,7 +3360,7 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.FuturesCompanyLegalEntityCountRatio)
                     .HasColumnName("futures_company_legal_entity_count_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.GdpPerCapitaPermenantResidentRatio)
                     .HasColumnName("gdp_per_capita_permenant_resident_ratio")
@@ -3062,6 +3376,14 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.GdpYoyRatio)
                     .HasColumnName("gdp_yoy_ratio")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.GoodsTransportTotalAmountRatio)
+                    .HasColumnName("goods_transport_total_amount_ratio")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.GoodsTurnoverTotalAmountRatio)
+                    .HasColumnName("goods_turnover_total_amount_ratio")
                     .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.GraduatesAtSchoolCountRatio)
@@ -3082,7 +3404,7 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.HospitalBedsCountRatio)
                     .HasColumnName("hospital_beds_count_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.HospitalCountRatio)
                     .HasColumnName("hospital_count_ratio")
@@ -3090,7 +3412,7 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.HotelCountRatio)
                     .HasColumnName("hotel_count_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.HousePriceIncomeRatioRatio)
                     .HasColumnName("house_price_income_ratio_ratio")
@@ -3122,11 +3444,11 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.InsuranceInstitutionCountRatio)
                     .HasColumnName("insurance_institution_count_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.InsuranceInstitutionLegalEntityCountRatio)
                     .HasColumnName("insurance_institution_legal_entity_count_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.InternalTrafficConnectionRatio)
                     .HasColumnName("internal_traffic_connection_ratio")
@@ -3134,7 +3456,7 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.InternationSchoolCountRatio)
                     .HasColumnName("internation_school_count_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.InventionPatentsPer10kPplRatio)
                     .HasColumnName("invention_patents_per_10k_ppl_ratio")
@@ -3170,7 +3492,7 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.K12CountRatio)
                     .HasColumnName("K12_count_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.LabourOutputEfficiencyRatio)
                     .HasColumnName("labour_output_efficiency_ratio")
@@ -3274,7 +3596,7 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.LocalGovernmentDebtRatio)
                     .HasColumnName("local_government_debt_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.LogisticsStationCountRatio)
                     .HasColumnName("logistics_station_count_ratio")
@@ -3320,6 +3642,18 @@ namespace REAccess.Mobile.Database.Models
                     .HasColumnName("new_permenant_residents_ratio")
                     .HasColumnType("decimal(18, 8)");
 
+                entity.Property(e => e.NumberOf4aRatio)
+                    .HasColumnName("number_of_4a_ratio")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.NumberOf5aRatio)
+                    .HasColumnName("number_of_5a_ratio")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.NumberOfBedsInHospitalRatio)
+                    .HasColumnName("number_of_beds_in_hospital_ratio")
+                    .HasColumnType("decimal(18, 8)");
+
                 entity.Property(e => e.NumberOfBedsPerThousandRatio)
                     .HasColumnName("number_of_beds_per_thousand_ratio")
                     .HasColumnType("decimal(18, 8)");
@@ -3342,6 +3676,26 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.NumberOfK12EducationSchoolsPer10kPplRatio)
                     .HasColumnName("number_of_K12_education_schools_per_10k_ppl_ratio")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.NumberOfKindergardenRatio)
+                    .HasColumnName("number_of_kindergarden_ratio")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.NumberOfMedicalInstitutionRatio)
+                    .HasColumnName("number_of_medical_institution_ratio")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.NumberOfMiddleSchoolRatio)
+                    .HasColumnName("number_of_middle_school_ratio")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.NumberOfPrimarySchoolRatio)
+                    .HasColumnName("number_of_primary_school_ratio")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.NumberOfRailwayStationPer10kPplRatio)
+                    .HasColumnName("number_of_railway_station_per_10k_ppl_ratio")
                     .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.NumberOfSupermarketConvenienceStoresPer10kPplRatio)
@@ -3368,6 +3722,14 @@ namespace REAccess.Mobile.Database.Models
                     .HasColumnName("population_net_inflow_ratio")
                     .HasColumnType("decimal(18, 8)");
 
+                entity.Property(e => e.PortContainerCapacityRatio)
+                    .HasColumnName("port_container_capacity_ratio")
+                    .HasColumnType("decimal(18, 8)");
+
+                entity.Property(e => e.PortGoodsCapacityRatio)
+                    .HasColumnName("port_goods_capacity_ratio")
+                    .HasColumnType("decimal(18, 8)");
+
                 entity.Property(e => e.PostdoctoralResearchStationRatio)
                     .HasColumnName("postdoctoral_research_station_ratio")
                     .HasColumnType("decimal(18, 8)");
@@ -3380,17 +3742,21 @@ namespace REAccess.Mobile.Database.Models
                     .HasColumnName("primary_industry_value_added_yoy_ratio")
                     .HasColumnType("decimal(18, 8)");
 
+                entity.Property(e => e.PrivateFundManagerCountRatio)
+                    .HasColumnName("private_fund_manager_count_ratio")
+                    .HasColumnType("decimal(18, 8)");
+
                 entity.Property(e => e.ProvincialDevelopmentZoneAmountRatio)
                     .HasColumnName("provincial_development_zone_amount_ratio")
                     .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.PublicFundInstitutionLegalEntityCountRatio)
                     .HasColumnName("public_fund_institution_legal_entity_count_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.RailwayStationCountRatio)
                     .HasColumnName("railway_station_count_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.RailwayStationCountRatioRatio)
                     .HasColumnName("railway_station_count_ratio_ratio")
@@ -3426,7 +3792,7 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.ScenicSpotCountPer100kPplRatio)
                     .HasColumnName("scenic_spot_count_per_100k_ppl_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.ScenicSpotCountRatio)
                     .HasColumnName("scenic_spot_count_ratio")
@@ -3442,7 +3808,7 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.SecurityCompanyLegalEntityCountRatio)
                     .HasColumnName("security_company_legal_entity_count_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.SnapshotPeriod)
                     .IsRequired()
@@ -3459,7 +3825,7 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.StarbucksCountRatio)
                     .HasColumnName("starbucks_count_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.StarbucksPer10kPplRatio)
                     .HasColumnName("starbucks_per_10k_ppl_ratio")
@@ -3467,7 +3833,7 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.SupermarketAndStoreCountRatio)
                     .HasColumnName("supermarket_and_store_count_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.TechBasedSmeRatio)
                     .HasColumnName("tech_based_sme_ratio")
@@ -3481,9 +3847,13 @@ namespace REAccess.Mobile.Database.Models
                     .HasColumnName("tertiary_industry_value_added_yoy_ratio")
                     .HasColumnType("decimal(18, 8)");
 
+                entity.Property(e => e.TotalWaterResourceRatio)
+                    .HasColumnName("total_water_resource_ratio")
+                    .HasColumnType("decimal(18, 8)");
+
                 entity.Property(e => e.TrainYearlyDepartTimesRatio)
                     .HasColumnName("train_yearly_depart_times_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.UndergraduateAndAcademyRatio)
                     .HasColumnName("undergraduate_and_academy_ratio")
@@ -3515,11 +3885,11 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.UrbanResidentExpenditurePerCapitaRatio)
                     .HasColumnName("urban_resident_expenditure_per_capita_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.UrbanResidentsDisposableIncomeRatio)
                     .HasColumnName("urban_residents_disposable_income_ratio")
-                    .HasColumnType("decimal(18, 6)");
+                    .HasColumnType("decimal(18, 8)");
 
                 entity.Property(e => e.WholeSocietyElectricityConsumptionRatio)
                     .HasColumnName("whole_society_electricity_consumption_ratio")
@@ -3681,11 +4051,92 @@ namespace REAccess.Mobile.Database.Models
                     .HasMaxLength(4);
             });
 
+            modelBuilder.Entity<DsaCountry>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("dsa_country", "dsa");
+
+                entity.Property(e => e.Country)
+                    .HasColumnName("country")
+                    .HasMaxLength(1000);
+
+                entity.Property(e => e.Description)
+                    .HasColumnName("description")
+                    .HasMaxLength(1000);
+            });
+
+            modelBuilder.Entity<DsaDeloitteList>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("dsa_deloitte_list", "dsa");
+
+                entity.Property(e => e.CityId)
+                    .HasColumnName("CityID")
+                    .HasMaxLength(1000);
+
+                entity.Property(e => e.CountryId)
+                    .HasColumnName("CountryID")
+                    .HasMaxLength(1000);
+
+                entity.Property(e => e.DistrictId)
+                    .HasColumnName("DistrictID")
+                    .HasMaxLength(1000);
+
+                entity.Property(e => e.Dlist)
+                    .HasColumnName("DList")
+                    .HasMaxLength(1000);
+
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+
+                entity.Property(e => e.Location).HasMaxLength(1000);
+
+                entity.Property(e => e.MainProduct).HasMaxLength(1000);
+
+                entity.Property(e => e.Name).HasMaxLength(1000);
+
+                entity.Property(e => e.ProvId)
+                    .HasColumnName("ProvID")
+                    .HasMaxLength(1000);
+
+                entity.Property(e => e.SecondaryIndustryKey).HasMaxLength(1000);
+
+                entity.Property(e => e.Website).HasMaxLength(1000);
+            });
+
             modelBuilder.Entity<DsaDistricts>(entity =>
             {
                 entity.HasNoKey();
 
                 entity.ToTable("dsa_districts", "dsa");
+
+                entity.Property(e => e.City)
+                    .HasColumnName("city")
+                    .HasMaxLength(500);
+
+                entity.Property(e => e.District)
+                    .HasColumnName("district")
+                    .HasMaxLength(500);
+
+                entity.Property(e => e.DistrictSk).HasColumnName("district_sk");
+
+                entity.Property(e => e.Prov)
+                    .HasColumnName("prov")
+                    .HasMaxLength(500);
+
+                entity.Property(e => e.RankOfCities).HasColumnName("rank_of_cities");
+
+                entity.Property(e => e.RankOfDistricts).HasColumnName("rank_of_districts");
+
+                entity.Property(e => e.RankOfProvinces).HasColumnName("rank_of_provinces");
+            });
+
+            modelBuilder.Entity<DsaDistrictsNew>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("dsa_districts_new", "dsa");
 
                 entity.Property(e => e.City)
                     .HasColumnName("city")
@@ -4079,6 +4530,35 @@ namespace REAccess.Mobile.Database.Models
                     .HasMaxLength(100);
             });
 
+            modelBuilder.Entity<DsaIndividualChampion>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("dsa_individual_champion", "dsa");
+
+                entity.Property(e => e.Batch).HasMaxLength(1000);
+
+                entity.Property(e => e.CityCode).HasMaxLength(1000);
+
+                entity.Property(e => e.DistrictCode).HasMaxLength(1000);
+
+                entity.Property(e => e.Dlist)
+                    .HasColumnName("DList")
+                    .HasMaxLength(1000);
+
+                entity.Property(e => e.Location).HasMaxLength(1000);
+
+                entity.Property(e => e.MainProduct).HasMaxLength(1000);
+
+                entity.Property(e => e.Name).HasMaxLength(1000);
+
+                entity.Property(e => e.ProvCode).HasMaxLength(1000);
+
+                entity.Property(e => e.SecondaryIndustryKey).HasMaxLength(1000);
+
+                entity.Property(e => e.Website).HasMaxLength(1000);
+            });
+
             modelBuilder.Entity<DsaIndustrialPark>(entity =>
             {
                 entity.HasNoKey();
@@ -4171,6 +4651,11 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.Category).HasColumnName("category");
 
+                entity.Property(e => e.IsValid)
+                    .HasColumnName("is_valid")
+                    .HasMaxLength(1)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Name)
                     .HasColumnName("name")
                     .HasMaxLength(100);
@@ -4180,13 +4665,9 @@ namespace REAccess.Mobile.Database.Models
 
             modelBuilder.Entity<DsaIndustryLand>(entity =>
             {
+                entity.HasNoKey();
+
                 entity.ToTable("dsa_industry_land", "dsa");
-
-                entity.HasIndex(e => new { e.BuyerName, e.DistrictSk, e.BuyerIndustrySecondaryClassKey, e.LandPrice, e.LandTotalArea, e.LandClosingTime })
-                    .HasName("land_unique")
-                    .IsUnique();
-
-                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.BuyerBusiness).HasColumnName("buyer_business");
 
@@ -4216,6 +4697,8 @@ namespace REAccess.Mobile.Database.Models
                 entity.Property(e => e.CitySk).HasColumnName("city_sk");
 
                 entity.Property(e => e.DistrictSk).HasColumnName("district_sk");
+
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.LandClosingTime)
                     .HasColumnName("land_closing_time")
@@ -4262,19 +4745,17 @@ namespace REAccess.Mobile.Database.Models
 
             modelBuilder.Entity<DsaInvestedProjects>(entity =>
             {
+                entity.HasNoKey();
+
                 entity.ToTable("dsa_invested_projects", "dsa");
-
-                entity.HasIndex(e => new { e.InvestCompany, e.ProjectName, e.InvestDate, e.InvestAmount10k })
-                    .HasName("project_unique")
-                    .IsUnique();
-
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CitySk).HasColumnName("city_sk");
 
                 entity.Property(e => e.DistrictSk).HasColumnName("district_sk");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.IndustryPrimaryClassKey)
                     .IsRequired()
@@ -4432,6 +4913,55 @@ namespace REAccess.Mobile.Database.Models
                 entity.Property(e => e.UpdatedTime)
                     .HasColumnName("updated_time")
                     .HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<DsaListCompaniesA>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("dsa_list_companies_a", "dsa");
+
+                entity.Property(e => e.CityCode).HasMaxLength(1000);
+
+                entity.Property(e => e.Code).HasMaxLength(1000);
+
+                entity.Property(e => e.DistrictCode).HasMaxLength(1000);
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.LaunchDate).HasColumnType("datetime");
+
+                entity.Property(e => e.Location).HasMaxLength(1000);
+
+                entity.Property(e => e.MarketValueYoY).HasMaxLength(1000);
+
+                entity.Property(e => e.NetProfit).HasMaxLength(1000);
+
+                entity.Property(e => e.NetProfitYoY).HasMaxLength(1000);
+
+                entity.Property(e => e.PrimaryIndustryKey).HasMaxLength(1000);
+
+                entity.Property(e => e.PrimaryProduct).HasMaxLength(1000);
+
+                entity.Property(e => e.ProvCode).HasMaxLength(1000);
+
+                entity.Property(e => e.Revenue).HasMaxLength(1000);
+
+                entity.Property(e => e.RevenueYoY).HasMaxLength(1000);
+
+                entity.Property(e => e.RndCost).HasMaxLength(1000);
+
+                entity.Property(e => e.RndCostYoY).HasMaxLength(1000);
+
+                entity.Property(e => e.SecondaryIndustryKey).HasMaxLength(1000);
+
+                entity.Property(e => e.StockName).HasMaxLength(1000);
+
+                entity.Property(e => e.Tax).HasMaxLength(1000);
+
+                entity.Property(e => e.TaxYoY).HasMaxLength(1000);
+
+                entity.Property(e => e.Website).HasMaxLength(1000);
             });
 
             modelBuilder.Entity<DsaListedCompanies>(entity =>
@@ -4616,6 +5146,31 @@ namespace REAccess.Mobile.Database.Models
                     .HasMaxLength(255);
             });
 
+            modelBuilder.Entity<DsaLittleGiantCompanies>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("dsa_little_giant_companies", "dsa");
+
+                entity.Property(e => e.Batch).HasMaxLength(1000);
+
+                entity.Property(e => e.CityCode).HasMaxLength(1000);
+
+                entity.Property(e => e.DistrictCode).HasMaxLength(1000);
+
+                entity.Property(e => e.Location).HasMaxLength(1000);
+
+                entity.Property(e => e.MainProduct).HasMaxLength(1000);
+
+                entity.Property(e => e.Name).HasMaxLength(1000);
+
+                entity.Property(e => e.ProvCode).HasMaxLength(1000);
+
+                entity.Property(e => e.SecondaryIndustryKey).HasMaxLength(1000);
+
+                entity.Property(e => e.Website).HasMaxLength(1000);
+            });
+
             modelBuilder.Entity<DsaMainIndustryConfiguration>(entity =>
             {
                 entity.HasNoKey();
@@ -4624,31 +5179,58 @@ namespace REAccess.Mobile.Database.Models
 
                 entity.Property(e => e.MainIndustry).HasMaxLength(1000);
 
+                entity.Property(e => e.MainIndustryId).HasColumnName("Main_Industry_Id");
+
                 entity.Property(e => e.ParkIndustryDesc).HasMaxLength(1000);
+            });
+
+            modelBuilder.Entity<DsaMainIndustryConfigurationBak>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("dsa_main_industry_configuration_bak", "dsa");
+
+                entity.Property(e => e.MainIndustry).HasMaxLength(1000);
+
+                entity.Property(e => e.ParkIndustryDesc).HasMaxLength(1000);
+            });
+
+            modelBuilder.Entity<DsaNationalHighTech>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("dsa_national_high_tech", "dsa");
+
+                entity.HasIndex(e => e.CollectedYear)
+                    .HasName("Index-CollectedYear")
+                    .IsClustered();
+
+                entity.HasIndex(e => e.MainIndustryKey)
+                    .HasName("Index-MainIndustryKey");
+
+                entity.HasIndex(e => e.SecondaryIndustryKey)
+                    .HasName("Index-SecondaryIndustryKey");
+
+                entity.Property(e => e.Batch).HasMaxLength(1000);
+
+                entity.Property(e => e.CityCode).HasMaxLength(1000);
+
+                entity.Property(e => e.DistrictCode).HasMaxLength(1000);
+
+                entity.Property(e => e.Location).HasMaxLength(2000);
+
+                entity.Property(e => e.Name).HasMaxLength(1000);
+
+                entity.Property(e => e.ProvCode).HasMaxLength(1000);
+
+                entity.Property(e => e.SecondaryIndustryKey).HasMaxLength(1000);
             });
 
             modelBuilder.Entity<DsaParkGov>(entity =>
             {
                 entity.ToTable("dsa_park_gov", "dsa");
 
-                entity.Property(e => e.City).HasMaxLength(1000);
-
-                entity.Property(e => e.CityFullName).HasMaxLength(1000);
-
-                entity.Property(e => e.CityLevel).HasMaxLength(1000);
-
-                entity.Property(e => e.District).HasMaxLength(1000);
-
-                entity.Property(e => e.DistrictFullName).HasMaxLength(1000);
-
-                entity.Property(e => e.Prov).HasMaxLength(1000);
-            });
-
-            modelBuilder.Entity<DsaParkGovBak>(entity =>
-            {
-                entity.HasNoKey();
-
-                entity.ToTable("dsa_park_gov_bak", "dsa");
+                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.City).HasMaxLength(1000);
 
@@ -4659,8 +5241,6 @@ namespace REAccess.Mobile.Database.Models
                 entity.Property(e => e.District).HasMaxLength(1000);
 
                 entity.Property(e => e.DistrictFullName).HasMaxLength(1000);
-
-                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Prov).HasMaxLength(1000);
             });
@@ -4669,6 +5249,8 @@ namespace REAccess.Mobile.Database.Models
             {
                 entity.ToTable("dsa_park_gov_website", "dsa");
 
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
                 entity.Property(e => e.GovName).HasMaxLength(1000);
 
                 entity.Property(e => e.Website).HasMaxLength(2000);
@@ -4676,44 +5258,19 @@ namespace REAccess.Mobile.Database.Models
                 entity.HasOne(d => d.Gov)
                     .WithMany(p => p.DsaParkGovWebsite)
                     .HasForeignKey(d => d.GovId)
-                    .HasConstraintName("FK__dsa_park___GovId__116138B1");
-            });
-
-            modelBuilder.Entity<DsaParkGovWebsiteBak>(entity =>
-            {
-                entity.HasNoKey();
-
-                entity.ToTable("dsa_park_gov_website_bak", "dsa");
-
-                entity.Property(e => e.GovName).HasMaxLength(1000);
-
-                entity.Property(e => e.Id).ValueGeneratedOnAdd();
-
-                entity.Property(e => e.Website).HasMaxLength(2000);
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_dsa_park_gov_website_dsa_park_gov");
             });
 
             modelBuilder.Entity<DsaParkInfo>(entity =>
             {
+                entity.HasNoKey();
+
                 entity.ToTable("dsa_park_info", "dsa");
 
                 entity.Property(e => e.City).HasMaxLength(1000);
 
-                entity.Property(e => e.Prov).HasMaxLength(1000);
-
-                entity.Property(e => e.ZoneClass).HasMaxLength(1000);
-
-                entity.Property(e => e.ZoneName).HasMaxLength(1000);
-
-                entity.Property(e => e.ZoneType).HasMaxLength(1000);
-            });
-
-            modelBuilder.Entity<DsaParkInfoBak>(entity =>
-            {
-                entity.HasNoKey();
-
-                entity.ToTable("dsa_park_info_bak", "dsa");
-
-                entity.Property(e => e.City).HasMaxLength(1000);
+                entity.Property(e => e.HasGovWebsite).HasMaxLength(1000);
 
                 entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
@@ -4728,21 +5285,9 @@ namespace REAccess.Mobile.Database.Models
 
             modelBuilder.Entity<DsaParkMainIndustry>(entity =>
             {
-                entity.ToTable("dsa_park_main_industry", "dsa");
-
-                entity.Property(e => e.MainIndustry).HasMaxLength(1000);
-
-                entity.HasOne(d => d.Park)
-                    .WithMany(p => p.DsaParkMainIndustry)
-                    .HasForeignKey(d => d.ParkId)
-                    .HasConstraintName("FK__dsa_park___ParkI__1625EDCE");
-            });
-
-            modelBuilder.Entity<DsaParkMainIndustryBak>(entity =>
-            {
                 entity.HasNoKey();
 
-                entity.ToTable("dsa_park_main_industry_bak", "dsa");
+                entity.ToTable("dsa_park_main_industry", "dsa");
 
                 entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
@@ -4751,23 +5296,9 @@ namespace REAccess.Mobile.Database.Models
 
             modelBuilder.Entity<DsaParkWebsites>(entity =>
             {
-                entity.ToTable("dsa_park_websites", "dsa");
-
-                entity.Property(e => e.GovName).HasMaxLength(1000);
-
-                entity.Property(e => e.Website).HasMaxLength(2000);
-
-                entity.HasOne(d => d.Park)
-                    .WithMany(p => p.DsaParkWebsites)
-                    .HasForeignKey(d => d.ParkId)
-                    .HasConstraintName("FK__dsa_park___ParkI__19025A79");
-            });
-
-            modelBuilder.Entity<DsaParkWebsitesBak>(entity =>
-            {
                 entity.HasNoKey();
 
-                entity.ToTable("dsa_park_websites_bak", "dsa");
+                entity.ToTable("dsa_park_websites", "dsa");
 
                 entity.Property(e => e.GovName).HasMaxLength(1000);
 
@@ -4780,7 +5311,9 @@ namespace REAccess.Mobile.Database.Models
             {
                 entity.ToTable("dsa_policy_files", "dsa");
 
-                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.Category)
                     .HasColumnName("category")
@@ -4851,13 +5384,13 @@ namespace REAccess.Mobile.Database.Models
                     .WithMany(p => p.DsaPolicyIndustryFieldTagRelation)
                     .HasForeignKey(d => d.IndustryFieldTagId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_industry_field_tag");
+                    .HasConstraintName("FK_industry_field_tag");
 
                 entity.HasOne(d => d.Policy)
                     .WithMany(p => p.DsaPolicyIndustryFieldTagRelation)
                     .HasForeignKey(d => d.PolicyId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_policy_file");
+                    .HasConstraintName("FK_dsa_policy_files");
             });
 
             modelBuilder.Entity<DsaRailwayClass>(entity =>
@@ -5013,9 +5546,85 @@ namespace REAccess.Mobile.Database.Models
                     .HasComment("????");
             });
 
+            modelBuilder.Entity<IndicatorForDevelopTrend>(entity =>
+            {
+                entity.ToTable("indicator_for_develop_trend", "dds");
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.Function).HasMaxLength(1000);
+
+                entity.Property(e => e.IndicatorName).HasMaxLength(1000);
+
+                entity.Property(e => e.Unit).HasMaxLength(1000);
+            });
+
             modelBuilder.Entity<IndicatorInstruction>(entity =>
             {
                 entity.ToTable("indicator_instruction");
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.Class).HasColumnName("class");
+
+                entity.Property(e => e.Class1Id).HasColumnName("class1_id");
+
+                entity.Property(e => e.Class2Id).HasColumnName("class2_id");
+
+                entity.Property(e => e.ComentsRemarks)
+                    .HasColumnName("coments_remarks")
+                    .HasMaxLength(3072);
+
+                entity.Property(e => e.ComentsUpdateDate)
+                    .HasColumnName("coments_update_date")
+                    .HasMaxLength(3072);
+
+                entity.Property(e => e.DataSource)
+                    .HasColumnName("data_source")
+                    .HasMaxLength(1024);
+
+                entity.Property(e => e.Description)
+                    .HasColumnName("description")
+                    .HasMaxLength(3072);
+
+                entity.Property(e => e.DisplayDataUnit)
+                    .HasColumnName("display_data_unit")
+                    .HasMaxLength(1024);
+
+                entity.Property(e => e.Formula)
+                    .HasColumnName("formula")
+                    .HasMaxLength(1024);
+
+                entity.Property(e => e.IsDisplay).HasColumnName("is_display");
+
+                entity.Property(e => e.MinimumDisplayDecimal)
+                    .HasColumnName("minimum_display_decimal")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Name)
+                    .HasColumnName("name")
+                    .HasMaxLength(1024);
+
+                entity.Property(e => e.NumberOfDecimalPlaces).HasColumnName("number_of_decimal_places");
+
+                entity.Property(e => e.RankForIndicator).HasColumnName("rank_for_indicator");
+
+                entity.Property(e => e.RankingRules)
+                    .HasColumnName("ranking_rules")
+                    .HasMaxLength(1024);
+
+                entity.Property(e => e.UnderlyingDataUnit)
+                    .HasColumnName("underlying_data_unit")
+                    .HasMaxLength(1024);
+
+                entity.Property(e => e.Valid)
+                    .HasColumnName("valid")
+                    .HasMaxLength(1);
+            });
+
+            modelBuilder.Entity<IndicatorInstructionBak>(entity =>
+            {
+                entity.ToTable("indicator_instruction_bak");
 
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
@@ -5079,6 +5688,32 @@ namespace REAccess.Mobile.Database.Models
                     .HasMaxLength(1);
             });
 
+            modelBuilder.Entity<IndicatorRankMapping>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("indicator_rank_mapping", "dds");
+
+                entity.Property(e => e.DistrictSk).HasColumnName("district_sk");
+
+                entity.Property(e => e.IndicatorRankTypeKey).HasColumnName("indicator_rank_type_key");
+            });
+
+            modelBuilder.Entity<IndicatorRankType>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("indicator_rank_type", "dds");
+
+                entity.Property(e => e.Level)
+                    .HasColumnName("level")
+                    .HasMaxLength(1000);
+
+                entity.Property(e => e.Name)
+                    .HasColumnName("name")
+                    .HasMaxLength(1000);
+            });
+
             modelBuilder.Entity<IndustryCategory>(entity =>
             {
                 entity.HasNoKey();
@@ -5101,6 +5736,89 @@ namespace REAccess.Mobile.Database.Models
                     .HasColumnName("is_valid")
                     .HasMaxLength(1)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<IndustryCategoryForDevelopTrend>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("industry_category_for_develop_trend");
+
+                entity.Property(e => e.Class).HasColumnName("class");
+
+                entity.Property(e => e.Class1Id).HasColumnName("class1_id");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.IndustryName)
+                    .HasColumnName("industry_name")
+                    .HasMaxLength(512);
+
+                entity.Property(e => e.IndustryOrder).HasColumnName("industry_order");
+
+                entity.Property(e => e.IsValid)
+                    .HasColumnName("is_valid")
+                    .HasMaxLength(1)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<IndustryTypesForDevelopTrend>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("industry_types_for_develop_trend");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.IndustryType)
+                    .HasColumnName("industry_type")
+                    .HasMaxLength(1000);
+            });
+
+            modelBuilder.Entity<LargeCompanyDevelopTrend>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("large_company_develop_trend", "dds");
+
+                entity.Property(e => e.CityCode).HasColumnName("City_Code");
+
+                entity.Property(e => e.DistrictCode).HasColumnName("District_Code");
+
+                entity.Property(e => e.IndexValue).HasColumnType("decimal(18, 2)");
+
+                entity.Property(e => e.IndexYoy).HasColumnType("decimal(18, 2)");
+
+                entity.Property(e => e.IndicatorValueOfLastYear).HasColumnType("decimal(18, 2)");
+
+                entity.Property(e => e.ProvCode).HasColumnName("Prov_Code");
+            });
+
+            modelBuilder.Entity<ListCompanyDevelopTrend>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("list_company_develop_trend", "dds");
+
+                entity.Property(e => e.CityCode).HasColumnName("City_Code");
+
+                entity.Property(e => e.Code).HasMaxLength(1000);
+
+                entity.Property(e => e.DistrictCode).HasColumnName("District_Code");
+
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+
+                entity.Property(e => e.IndicatorValue).HasColumnType("decimal(18, 2)");
+
+                entity.Property(e => e.IndicatorValueOfLastYear).HasColumnType("decimal(18, 2)");
+
+                entity.Property(e => e.IndicatorYoY).HasColumnType("decimal(18, 2)");
+
+                entity.Property(e => e.MainProduct).HasMaxLength(1000);
+
+                entity.Property(e => e.ProvCode).HasColumnName("Prov_Code");
+
+                entity.Property(e => e.StockName).HasMaxLength(1000);
             });
 
             modelBuilder.Entity<Sor12306TrainScheduleDetail>(entity =>
@@ -6124,6 +6842,73 @@ namespace REAccess.Mobile.Database.Models
                 entity.Property(e => e.ZoneName).HasMaxLength(1000);
 
                 entity.Property(e => e.ZoneType).HasMaxLength(1000);
+            });
+
+            modelBuilder.Entity<VdevelopTrendAllIndustry>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("VDevelopTrendAllIndustry");
+
+                entity.Property(e => e.IndexValue).HasColumnType("decimal(18, 2)");
+
+                entity.Property(e => e.IndicatorValueOfLastYear).HasColumnType("decimal(18, 2)");
+
+                entity.Property(e => e.IndustryName).HasMaxLength(512);
+
+                entity.Property(e => e.Unit).HasMaxLength(1000);
+            });
+
+            modelBuilder.Entity<VdevelopTrendLargeCompany>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("VDevelopTrendLargeCompany");
+
+                entity.Property(e => e.IndexValue).HasColumnType("decimal(18, 2)");
+
+                entity.Property(e => e.IndicatorValueOfLastYear).HasColumnType("decimal(18, 2)");
+
+                entity.Property(e => e.IndustryName).HasMaxLength(512);
+
+                entity.Property(e => e.Unit).HasMaxLength(1000);
+            });
+
+            modelBuilder.Entity<VdevelopTrendListedCompany>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("VDevelopTrendListedCompany");
+
+                entity.Property(e => e.IndexValue).HasColumnType("decimal(18, 2)");
+
+                entity.Property(e => e.IndicatorValueOfLastYear).HasColumnType("decimal(18, 2)");
+
+                entity.Property(e => e.IndustryName).HasMaxLength(512);
+
+                entity.Property(e => e.Unit).HasMaxLength(1000);
+            });
+
+            modelBuilder.Entity<VnetProfitRate>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("VNetProfitRate");
+
+                entity.Property(e => e.IncomeIndicatorValue).HasColumnType("decimal(38, 20)");
+
+                entity.Property(e => e.IndustryName).HasMaxLength(512);
+
+                entity.Property(e => e.LastIncomeIndicatorValue).HasColumnType("decimal(38, 20)");
+
+                entity.Property(e => e.LastNetProfitIndicatorValue).HasColumnType("decimal(38, 20)");
+
+                entity.Property(e => e.NetProfitIndicatorValue).HasColumnType("decimal(38, 20)");
+
+                entity.Property(e => e.Unit)
+                    .IsRequired()
+                    .HasMaxLength(1)
+                    .IsUnicode(false);
             });
 
             OnModelCreatingPartial(modelBuilder);

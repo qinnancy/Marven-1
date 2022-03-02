@@ -5,13 +5,6 @@ namespace REAccess.Mobile.Database.Models
 {
     public partial class DsaParkInfo
     {
-        public DsaParkInfo()
-        {
-            DsaParkMainIndustry = new HashSet<DsaParkMainIndustry>();
-            DsaParkWebsites = new HashSet<DsaParkWebsites>();
-        }
-
-        public long Id { get; set; }
         public long? DistrictId { get; set; }
         public string ZoneClass { get; set; }
         public string ZoneType { get; set; }
@@ -19,8 +12,9 @@ namespace REAccess.Mobile.Database.Models
         public long? ZoneArea { get; set; }
         public string Prov { get; set; }
         public string City { get; set; }
-
-        public virtual ICollection<DsaParkMainIndustry> DsaParkMainIndustry { get; set; }
-        public virtual ICollection<DsaParkWebsites> DsaParkWebsites { get; set; }
+        public int? ZoneClassOrder { get; set; }
+        public int? ZoneTypeOrder { get; set; }
+        public long Id { get; set; }
+        public string HasGovWebsite { get; set; }
     }
 }

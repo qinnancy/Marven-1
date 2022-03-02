@@ -156,5 +156,29 @@ namespace REAccess.Mobile.Database.Models
         public decimal? CultureFacilitiesCountRatio { get; set; }
         public decimal? ScenicSpotCountPer100kPplRatio { get; set; }
         public decimal? AvgHousePriceRatio { get; set; }
+        public decimal? NumberOfMedicalInstitutionRatio { get; set; }
+        public decimal? TotalWaterResourceRatio { get; set; }
+        public decimal? BuildUpAreaCityRatio { get; set; }
+        public decimal? BuildUpGreenLandAreaRatio { get; set; }
+        public decimal? DoubleFirstClassDisciplineCountRatio { get; set; }
+        public decimal? NumberOfBedsInHospitalRatio { get; set; }
+        public decimal? NumberOfKindergardenRatio { get; set; }
+        public decimal? NumberOfPrimarySchoolRatio { get; set; }
+        public decimal? NumberOfMiddleSchoolRatio { get; set; }
+        public decimal? NumberOf5aRatio { get; set; }
+        public decimal? NumberOf4aRatio { get; set; }
+        public decimal? ConsumptionIntentionIndexCityRatio { get; set; }
+        public decimal? ConsumptionIntentionIndexTownRatio { get; set; }
+        public decimal? AirportPassengerCapacityRatio { get; set; }
+        public decimal? AirportGoodsCapacityRatio { get; set; }
+        public decimal? PortGoodsCapacityRatio { get; set; }
+        public decimal? PortContainerCapacityRatio { get; set; }
+        public decimal? GoodsTransportTotalAmountRatio { get; set; }
+        public decimal? GoodsTurnoverTotalAmountRatio { get; set; }
+        public decimal? BedsPerThousandInHospitalCountRatio { get; set; }
+        public decimal? AqiRatio { get; set; }
+        public decimal? BuildUpGreenCoverageCityRatio { get; set; }
+        public decimal? NumberOfRailwayStationPer10kPplRatio { get; set; }
+        public decimal? PrivateFundManagerCountRatio { get; set; }
     }
 }

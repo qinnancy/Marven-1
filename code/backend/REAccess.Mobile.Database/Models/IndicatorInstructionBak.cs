@@ -3,15 +3,11 @@ using System.Collections.Generic;
 
 namespace REAccess.Mobile.Database.Models
 {
-    public partial class IndicatorInstruction
+    public partial class IndicatorInstructionBak
     {
-        public IndicatorInstruction()
-        {
-            AppRankingListDetail = new HashSet<AppRankingListDetail>();
-        }
-
+        public int Id { get; set; }
         public string Name { get; set; }
-        public int? Class { get; set; }
+        public int Class { get; set; }
         public int? Class1Id { get; set; }
         public int? Class2Id { get; set; }
         public string Description { get; set; }
@@ -26,9 +22,5 @@ namespace REAccess.Mobile.Database.Models
         public int? NumberOfDecimalPlaces { get; set; }
         public string RankingRules { get; set; }
         public string MinimumDisplayDecimal { get; set; }
-        public int Id { get; set; }
-        public bool? IsDisplay { get; set; }
-
-        public virtual ICollection<AppRankingListDetail> AppRankingListDetail { get; set; }
     }
 }

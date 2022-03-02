@@ -106,10 +106,22 @@
             获取所有三级指标
             </summary>
         </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.UtilController.GetMobileAllIndex">
+            <summary>
+            单项指标-指标下拉列表
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:REAccess.Mobile.Api.Controllers.UtilController.GetCityList">
             <summary>
             获取城市列表
             </summary>
+        </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.UtilController.GetMobileCityList">
+            <summary>
+            城市排名-城市下拉列表
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:REAccess.Mobile.Api.Controllers.UtilController.GetPolicyList">
             <summary>

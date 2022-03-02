@@ -15,5 +15,7 @@ namespace REAccess.Mobile.Database.Models
         public string District { get; set; }
         public string MainIndustry { get; set; }
         public long IndustryId { get; set; }
+        public int? ZoneClassOrder { get; set; }
+        public int? ZoneTypeOrder { get; set; }
     }
 }

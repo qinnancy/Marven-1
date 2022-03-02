@@ -33,6 +33,15 @@ namespace REAccess.Mobile.Common.Services
 
             return indexList;
         }
+        /// <summary>
+        /// 单项指标-指标下拉列表
+        /// </summary>
+        public List<string> GetMobileAllIndex()
+        {
+            List<string> indexList = MobileData.AllIndexList;
+
+            return indexList;
+        }
 
         /// <summary>
         /// 获取城市列表
@@ -43,6 +52,17 @@ namespace REAccess.Mobile.Common.Services
 
             return cityList;
         }
+        
+        /// <summary>
+        /// 城市排名-城市下拉列表
+        /// </summary>
+        public List<string> GetMobileCityList()
+        {
+            List<string> cityList = MobileData.AllCityList;
+
+            return cityList;
+        }
+
         /// <summary>
         /// 获取政策类别列表
         /// </summary>
@@ -70,5 +90,32 @@ namespace REAccess.Mobile.Common.Services
 
             return result;
         }
+
+        /// <summary>
+        /// 根据指标名称，获取数据库有数据的年份
+        /// </summary>
+        public List<string> GetYearListByIndexName(string indicator)
+        {
+            List<string> yearList = new List<string>();
+            var indicatorRankList = StaticCache.IndicatorScore.ToList();
+            string indexName = IndicatorMappingExtension.GetIndexName(indicator);
+            if (string.IsNullOrEmpty(indexName))
+            {
+                yearList = indicatorRankList.Where(x => x.GetType().GetProperty(indexName).GetValue(x, null) != null)
+                                                      .GroupBy(x => x.SnapshotPeriod)
+                                                      .Select(x => x.FirstOrDefault())
+                                                      .OrderByDescending(x => x.SnapshotPeriod)
+                                                      .Select(x => x.SnapshotPeriod)
+                                                      .ToList();
+            }
+            if (!yearList.Any())
+            {
+                yearList = indicatorRankList.GroupBy(x => x.SnapshotPeriod).Select(x => x.First()).OrderByDescending(x => x.SnapshotPeriod).Select(x => x.SnapshotPeriod).ToList();
+            }
+
+            return yearList;
+
+        }
+
     }
 }

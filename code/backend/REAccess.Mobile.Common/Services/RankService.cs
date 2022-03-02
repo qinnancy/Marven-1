@@ -45,12 +45,21 @@ namespace REAccess.Mobile.Common.Services
             if (string.IsNullOrEmpty(selectYear))
             {
                 //若年份为空，则取数据库数据的最新年份
-                selectYear = StaticCache.IndicatorOriginalScore.Max(x => x.SnapshotPeriod);
+                selectYear = _utilService.GetYearListByIndexName(selectIndex).FirstOrDefault();
             }
+            model.Year = selectYear;
 
             //默认取排名前五的数据
             dataCount = dataCount == 0 ? 5 : dataCount;
-            
+            //获取单位
+            var dbIndicator = StaticCache.Indicators.FirstOrDefault(x => x.Name == selectIndex);
+            var dataUnit = string.Empty;
+            if(dbIndicator != null)
+            {
+                dataUnit = StaticCache.Indicators.FirstOrDefault(x => x.Name == selectIndex).DisplayDataUnit;
+            }
+            model.Unit = dataUnit;
+
             foreach (var district in districtList)
             {
                 var indicator = indicatorOriginalScore.FirstOrDefault(x => x.DistrictSk == district.DistrictSk && x.SnapshotPeriod == selectYear);
@@ -61,7 +70,8 @@ namespace REAccess.Mobile.Common.Services
                         DistrictSk = district.DistrictSk,
                         CityName = district.CityName,
                         ProvinceName = district.ProvName,
-                        RankValue = ((decimal)indicator.GetOriginalValueByName(selectIndex)).ToString("N0")//通过指标中文名映射数据库字段名，获取该数据的真实值
+                        RankValue = ((decimal)indicator.GetOriginalValueByName(selectIndex)).ToString("N1"),//通过指标中文名映射数据库字段名，获取该数据的真实值
+                        Unit = dataUnit
                     };
                     singleIndexList.Add(singleIndex);
                 }
@@ -90,7 +100,6 @@ namespace REAccess.Mobile.Common.Services
                 }
             }
             model.SingleIndexList = singleIndexList;
-            model.Unit = StaticCache.Indicators.FirstOrDefault(x => x.Name == selectIndex).DisplayDataUnit;
 
             return model;
         }
@@ -119,14 +128,15 @@ namespace REAccess.Mobile.Common.Services
             var indicatorScore = StaticCache.IndicatorScore.FirstOrDefault(x => x.DistrictSk == districtSk && x.SnapshotPeriod == selectYear);
             foreach(var indicator in indicatorList)
             {
-                var singleIndexRank = GetSingleIndexRank(indicator, selectYear, StaticCache.Districts.Count(x => x.CityName == x.DistrictName));
+                var singleIndexRank = GetSingleIndexRank(indicator, "", StaticCache.Districts.Count(x => x.CityName == x.DistrictName));
                 var currentRank = singleIndexRank.SingleIndexList.FirstOrDefault(x => x.DistrictSk == districtSk);
                 CityRank cityRank = new CityRank()
                 {
                     IndexName = indicator,
                     RankPlace = currentRank.RankPlace,
                     IndexValue = currentRank.RankValue,
-                    Unit = singleIndexRank.Unit
+                    Unit = singleIndexRank.Unit,
+                    Year = singleIndexRank.Year,
                 };
                 cityRankList.Add(cityRank);
             }

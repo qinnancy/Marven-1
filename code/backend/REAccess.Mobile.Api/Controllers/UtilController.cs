@@ -56,6 +56,36 @@ namespace REAccess.Mobile.Api.Controllers
                     });
             }
         }
+        /// <summary>
+        /// 单项指标-指标下拉列表
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("MobileAllIndex")]
+        public JsonResult GetMobileAllIndex()
+        {
+            try
+            {
+                _logger.LogInformation("Start executing GetMobileAllIndex() method");
+                return new JsonResult(
+                    new GeneralResponse()
+                    {
+                        StatusCode = ResponseStatusCode.Success,
+                        StatusMessage = ResponseStatusMessage.Success,
+                        ReturnObj = _utilService.GetMobileAllIndex()
+                    });
+            }
+            catch (Exception e)
+            {
+                _logger.LogInformation(e, "Error in GetMobileAllIndex() method");
+                return new JsonResult(
+                    new GeneralResponse()
+                    {
+                        StatusCode = ResponseStatusCode.Exception,
+                        StatusMessage = ResponseStatusMessage.Failed,
+                        ReturnObj = e.Message
+                    });
+            }
+        }
 
         /// <summary>
         /// 获取城市列表
@@ -77,6 +107,36 @@ namespace REAccess.Mobile.Api.Controllers
             catch (Exception e)
             {
                 _logger.LogInformation(e, "Error in GetCityList() method");
+                return new JsonResult(
+                    new GeneralResponse()
+                    {
+                        StatusCode = ResponseStatusCode.Exception,
+                        StatusMessage = ResponseStatusMessage.Failed,
+                        ReturnObj = e.Message
+                    });
+            }
+        }
+        /// <summary>
+        /// 城市排名-城市下拉列表
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("MobileCityList")]
+        public JsonResult GetMobileCityList()
+        {
+            try
+            {
+                _logger.LogInformation("Start executing GetMobileCityList() method");
+                return new JsonResult(
+                    new GeneralResponse()
+                    {
+                        StatusCode = ResponseStatusCode.Success,
+                        StatusMessage = ResponseStatusMessage.Success,
+                        ReturnObj = _utilService.GetMobileCityList()
+                    });
+            }
+            catch (Exception e)
+            {
+                _logger.LogInformation(e, "Error in GetMobileCityList() method");
                 return new JsonResult(
                     new GeneralResponse()
                     {
