@@ -1,11 +1,13 @@
 ﻿#region Using
 using REAccess.Mobile.Common.Interfaces;
+using REAccess.Mobile.Common.Utils;
 using REAccess.Mobile.Common.ViewModel;
 using REAccess.Mobile.Database.LogModels;
 using REAccess.Mobile.Database.Utils;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using static REAccess.Mobile.Common.Constants;
@@ -68,13 +70,23 @@ namespace REAccess.Mobile.Common.Services
         /// </summary>
         public List<PolicyListModel> GetPolicyList()
         {
+            List<PolicyListModel> model = new List<PolicyListModel>();
             List<PolicyListModel> policyList = _db.DsaIndustryFieldTag.Where(x => x.Category == 1).OrderBy(x => x.OrderNum).Select(x => new PolicyListModel() 
             {
                 PolicyId = x.Id,
                 PolicyName = x.Name
             }).ToList();
+            model.Add(new PolicyListModel()
+            {
+                PolicyId = -1,
+                PolicyName = "食品饮料"
+            });
+            model = model.Union(policyList).ToList();
+            var temp = model[4];
+            model[4] = model[5];
+            model[5] = temp;
 
-            return policyList;
+            return model;
         }
         /// <summary>
         /// 记录系统日志
@@ -115,6 +127,32 @@ namespace REAccess.Mobile.Common.Services
 
             return yearList;
 
+        }
+        public List<CityRank> GetCityRankData(string cityName)
+        {
+            List<CityRank> cityRankList = new List<CityRank>();
+            var filePath = Path.Combine("DataFiles", "mobile_data 20220301.xlsx");
+            Stream stream = new FileInfo(filePath).OpenRead();
+            var dataTable = FileHelper.ReadDataFromFile(stream, true, "城市排名data");
+            if(dataTable != null)
+            {
+                for(var i = 0; i < dataTable.Rows.Count; i++)
+                {
+                    CityRank cityRank = new CityRank()
+                    {
+                        CityName = dataTable.Rows[i][0].ToString() + "市",
+                        RankPlace = int.Parse(dataTable.Rows[i][1].ToString().Split("#").Last()),
+                        IndexName = dataTable.Rows[i][2].ToString(),
+                        IndexValue = dataTable.Rows[i][3].ToString(),
+                        Unit = dataTable.Rows[i][4].ToString(),
+                        Year = dataTable.Rows[i][5].ToString()
+                    };
+                    cityRankList.Add(cityRank);
+                }
+            }
+            cityRankList = cityRankList.Where(x => x.CityName == cityName).ToList();
+
+            return cityRankList;
         }
 
     }

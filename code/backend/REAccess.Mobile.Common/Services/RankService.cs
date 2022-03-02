@@ -107,42 +107,53 @@ namespace REAccess.Mobile.Common.Services
         /// <summary>
         /// 城市排名,根据用户选择的城市，获取该城市的每一个指标在所有城市中的排名，并取出排名前N的数据
         /// </summary>
-        public CityRankModel GetCityRank(string selectCity, string selectYear,int dataCount)
+        //public CityRankModel GetCityRank(string selectCity, string selectYear,int dataCount)
+        //{
+        //    CityRankModel model = new CityRankModel();
+        //    List<CityRank> cityRankList = new List<CityRank>();
+        //    //筛选时间默认为最新时间
+        //    if (string.IsNullOrEmpty(selectYear))
+        //    {
+        //        selectYear = StaticCache.IndicatorOriginalScore.Max(x => x.SnapshotPeriod);
+        //    }
+        //    //默认取排名前五的数据
+        //    dataCount = dataCount == 0 ? 5 : dataCount;
+
+        //    model.Year = selectYear;
+        //    //获取指标列表
+        //    var indicatorList = _utilService.GetAllIndex();
+        //    //获取已选城市ID
+        //    var districtSk = StaticCache.Districts.FirstOrDefault(x => x.CityName == selectCity && x.CityName == x.DistrictName).DistrictSk;
+        //    //获取指标得分表
+        //    var indicatorScore = StaticCache.IndicatorScore.FirstOrDefault(x => x.DistrictSk == districtSk && x.SnapshotPeriod == selectYear);
+        //    foreach(var indicator in indicatorList)
+        //    {
+        //        var singleIndexRank = GetSingleIndexRank(indicator, "", StaticCache.Districts.Count(x => x.CityName == x.DistrictName));
+        //        var currentRank = singleIndexRank.SingleIndexList.FirstOrDefault(x => x.DistrictSk == districtSk);
+        //        CityRank cityRank = new CityRank()
+        //        {
+        //            IndexName = indicator,
+        //            RankPlace = currentRank.RankPlace,
+        //            IndexValue = currentRank.RankValue,
+        //            Unit = singleIndexRank.Unit,
+        //            Year = singleIndexRank.Year,
+        //        };
+        //        cityRankList.Add(cityRank);
+        //    }
+
+        //    cityRankList = cityRankList.Where(x => x.IndexValue != NoData.NotPublished).OrderBy(x => x.RankPlace).Take(dataCount).ToList();
+            
+        //    model.CityRankList = cityRankList;
+
+        //    return model;
+        //}
+        public CityRankModel GetCityRank(string selectCity, string selectYear, int dataCount)
         {
             CityRankModel model = new CityRankModel();
-            List<CityRank> cityRankList = new List<CityRank>();
-            //筛选时间默认为最新时间
-            if (string.IsNullOrEmpty(selectYear))
-            {
-                selectYear = StaticCache.IndicatorOriginalScore.Max(x => x.SnapshotPeriod);
-            }
             //默认取排名前五的数据
             dataCount = dataCount == 0 ? 5 : dataCount;
-
-            model.Year = selectYear;
-            //获取指标列表
-            var indicatorList = _utilService.GetAllIndex();
-            //获取已选城市ID
-            var districtSk = StaticCache.Districts.FirstOrDefault(x => x.CityName == selectCity && x.CityName == x.DistrictName).DistrictSk;
-            //获取指标得分表
-            var indicatorScore = StaticCache.IndicatorScore.FirstOrDefault(x => x.DistrictSk == districtSk && x.SnapshotPeriod == selectYear);
-            foreach(var indicator in indicatorList)
-            {
-                var singleIndexRank = GetSingleIndexRank(indicator, "", StaticCache.Districts.Count(x => x.CityName == x.DistrictName));
-                var currentRank = singleIndexRank.SingleIndexList.FirstOrDefault(x => x.DistrictSk == districtSk);
-                CityRank cityRank = new CityRank()
-                {
-                    IndexName = indicator,
-                    RankPlace = currentRank.RankPlace,
-                    IndexValue = currentRank.RankValue,
-                    Unit = singleIndexRank.Unit,
-                    Year = singleIndexRank.Year,
-                };
-                cityRankList.Add(cityRank);
-            }
-
+            var cityRankList = _utilService.GetCityRankData(selectCity);
             cityRankList = cityRankList.Where(x => x.IndexValue != NoData.NotPublished).OrderBy(x => x.RankPlace).Take(dataCount).ToList();
-            
             model.CityRankList = cityRankList;
 
             return model;

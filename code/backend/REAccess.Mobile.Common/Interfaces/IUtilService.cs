@@ -38,5 +38,6 @@ namespace REAccess.Mobile.Common.Interfaces
         /// 根据指标名称，获取数据库有数据的年份
         /// </summary>
         public List<string> GetYearListByIndexName(string indexName);
+        public List<CityRank> GetCityRankData(string cityName);
     }
 }

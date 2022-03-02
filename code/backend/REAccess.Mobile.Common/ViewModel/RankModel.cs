@@ -34,5 +34,6 @@ namespace REAccess.Mobile.Common.ViewModel
         public string IndexValue { get; set; }
         public string Unit { get; set; }
         public string Year { get; set; }
+        public string CityName { get; set; }
     }
 }
