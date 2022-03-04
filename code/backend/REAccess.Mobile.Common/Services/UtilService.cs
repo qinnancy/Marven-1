@@ -121,7 +121,7 @@ namespace REAccess.Mobile.Common.Services
         public List<CityRank> GetCityRankData(string cityName)
         {
             List<CityRank> cityRankList = new List<CityRank>();
-            var filePath = Path.Combine("DataFiles", "mobile_data 20220301.xlsx");
+            var filePath = Path.Combine("DataFiles", "mobile_data_20220304.xlsx");
             Stream stream = new FileInfo(filePath).OpenRead();
             var dataTable = FileHelper.ReadDataFromFile(stream, true, "城市排名data");
             if(dataTable != null)
@@ -143,6 +143,29 @@ namespace REAccess.Mobile.Common.Services
             cityRankList = cityRankList.Where(x => x.CityName == cityName).ToList();
 
             return cityRankList;
+        }
+        public List<IndustrialPolicy> GetPolicyData()
+        {
+            List<IndustrialPolicy> policyList = new List<IndustrialPolicy>();
+            var filePath = Path.Combine("DataFiles", "mobile_data_20220304.xlsx");
+            Stream stream = new FileInfo(filePath).OpenRead();
+            var dataTable = FileHelper.ReadDataFromFile(stream, true, "政策data");
+            if (dataTable != null)
+            {
+                for (int i = 0; i < dataTable.Rows.Count; i++)
+                {
+                    IndustrialPolicy policy = new IndustrialPolicy()
+                    {
+                        IndustryName = dataTable.Rows[i][0].ToString(),
+                        FileName = dataTable.Rows[i][1].ToString(),
+                        Province = dataTable.Rows[i][2].ToString(),
+                        City = dataTable.Rows[i][3].ToString(),
+                    };
+                    policyList.Add(policy);
+                }
+            }
+
+            return policyList;
         }
 
     }

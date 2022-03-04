@@ -39,5 +39,6 @@ namespace REAccess.Mobile.Common.Interfaces
         /// </summary>
         public List<string> GetYearListByIndexName(string indexName);
         public List<CityRank> GetCityRankData(string cityName);
+        public List<IndustrialPolicy> GetPolicyData();
     }
 }

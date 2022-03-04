@@ -14,6 +14,12 @@ namespace REAccess.Mobile.Common.Services
 {
     public class IndustryService : BaseService, IIndustryService
     {
+        private readonly IUtilService _utilService;
+        public IndustryService(IUtilService utilService)
+        {
+            _utilService = utilService;
+        }
+
         ///<summary>
         ///清理所有正在使用的资源
         ///</summary>
@@ -344,13 +350,24 @@ namespace REAccess.Mobile.Common.Services
             policyCategory = string.IsNullOrEmpty(policyCategory) ? SearchPageMatch.PolicyCategory : policyCategory;
             //获取对应产业、对应分类的政策数据
             var policyList = StaticCache.DsaPolicyIndustryFieldTagRelation.Where(x => x.IndustryFieldTagId == industryId && x.Policy.Category.Trim() == policyCategory).ToList();
-            model.IndustrialPolicis = policyList.Take(dataCount).Select(x => new IndustrialPolicy()
+            //model.IndustrialPolicis = policyList.Take(dataCount).Select(x => new IndustrialPolicy()
+            //{
+            //    PolicyId = x.Policy.Id,
+            //    FileName = string.IsNullOrEmpty(x.Policy.Name) ? "-" : x.Policy.Name,
+            //    Province = string.IsNullOrEmpty(x.Policy.Province) ? "-" : x.Policy.Province,
+            //    City = string.IsNullOrEmpty(x.Policy.City) ? "-" : x.Policy.City,
+            //}).ToList();
+            var policyData = _utilService.GetPolicyData();
+            policyData.ForEach(x =>
             {
-                PolicyId = x.Policy.Id,
-                FileName = string.IsNullOrEmpty(x.Policy.Name) ? "-" : x.Policy.Name,
-                Province = string.IsNullOrEmpty(x.Policy.Province) ? "-" : x.Policy.Province,
-                City = string.IsNullOrEmpty(x.Policy.City) ? "-" : x.Policy.City,
-            }).ToList();
+                var dbPolicy = policyList.FirstOrDefault(p => p.Policy.Name == x.FileName);
+                if(dbPolicy != null)
+                {
+                    x.PolicyId = dbPolicy.PolicyId;
+                }
+            });
+            model.IndustrialPolicis = policyData.Where(x => x.PolicyId != 0).ToList() ;
+
             model.IndustrialPolicyCount = policyList.Count();
 
             return model;
