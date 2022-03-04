@@ -42,39 +42,43 @@
     <None Update="DataFiles\mobile_data 20220301.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="RealTimeInfoImgs\174255248_lo.jpg">
+    <None Update="RealTimeInfoImgs\178425824_lo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="RealTimeInfoImgs\232686868_lo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="RealTimeInfoImgs\ind_man_glb_ho_2172_lo.jpg">
+    <None Update="RealTimeInfoImgs\455128681_lo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="RealTimeInfoImgs\shutterstock_1669326868_lo.jpg">
+    <None Update="RealTimeInfoImgs\BAXWY1_lo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="RealTimeInfoImgs\shutterstock_1889680603_lo.jpg">
+    <None Update="RealTimeInfoImgs\bzi_gro_glb_ho_2173_lo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="RealTimeInfoImgs\shutterstock_334223177_lo.jpg">
+    <None Update="RealTimeInfoImgs\bzi_inn_glb_ho_2303_lo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="RealTimeInfoImgs\shutterstock_373700113_lo.jpg">
+    <None Update="RealTimeInfoImgs\ind_er_glb_ho_1886_lo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="RealTimeInfoImgs\shutterstock_516050707_lo.jpg">
+    <None Update="RealTimeInfoImgs\ind_man_glb_ho_2279_lo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="RealTimeInfoImgs\shutterstock_518160511_lo.jpg">
+    <None Update="RealTimeInfoImgs\ind_man_glb_ho_2313_lo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="RealTimeInfoImgs\shutterstock_565260484_lo.jpg">
+    <None Update="RealTimeInfoImgs\shutterstock_131733137_lo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="RealTimeInfoImgs\shutterstock_717437125_lo.jpg">
+    <None Update="RealTimeInfoImgs\shutterstock_147152594_-_Copy_lo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="RealTimeInfoImgs\shutterstock_1890415855_lo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    
     <None Update="Swagger.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

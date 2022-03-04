@@ -70,23 +70,13 @@ namespace REAccess.Mobile.Common.Services
         /// </summary>
         public List<PolicyListModel> GetPolicyList()
         {
-            List<PolicyListModel> model = new List<PolicyListModel>();
-            List<PolicyListModel> policyList = _db.DsaIndustryFieldTag.Where(x => x.Category == 1).OrderBy(x => x.OrderNum).Select(x => new PolicyListModel() 
+            List<PolicyListModel> policyList = _db.DsaIndustryFieldTag.Where(x => x.Category == 1 && x.IsValid == DbYesOrNo.Yes).OrderBy(x => x.OrderNum).Select(x => new PolicyListModel() 
             {
                 PolicyId = x.Id,
                 PolicyName = x.Name
             }).ToList();
-            model.Add(new PolicyListModel()
-            {
-                PolicyId = -1,
-                PolicyName = "食品饮料"
-            });
-            model = model.Union(policyList).ToList();
-            var temp = model[4];
-            model[4] = model[5];
-            model[5] = temp;
 
-            return model;
+            return policyList;
         }
         /// <summary>
         /// 记录系统日志
