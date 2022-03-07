@@ -10,6 +10,7 @@ namespace REAccess.Mobile.Common.ViewModel
     {
         public string Unit { get; set; }
         public string Year { get; set; }
+        public string IndexName { get; set; }
         public List<RankModel> SingleIndexList { get; set; }
     }
     public class RankModel

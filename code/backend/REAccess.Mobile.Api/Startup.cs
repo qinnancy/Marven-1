@@ -19,6 +19,7 @@ using REAccess.Mobile.Api.Extensions;
 using REAccess.Mobile.Common.Utils;
 using REAccess.Mobile.Database.Models;
 using REAccess.Mobile.Database.Utils;
+using Swashbuckle.AspNetCore.SwaggerUI;
 #endregion
 
 namespace REAccess.Mobile.Api
@@ -78,6 +79,7 @@ namespace REAccess.Mobile.Api
                 var basePath = Path.GetDirectoryName(typeof(Program).Assembly.Location);//获取应用程序所在目录
                 var xmlPath = Path.Combine(basePath, "Swagger.xml");
                 options.IncludeXmlComments(xmlPath);
+                options.EnableAnnotations();
             });
             #endregion
             services.Configure<KestrelServerOptions>(options =>
@@ -106,6 +108,9 @@ namespace REAccess.Mobile.Api
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApiHelp V1");
+                c.DocExpansion(DocExpansion.None);
+                c.ShowCommonExtensions();
+                c.ShowExtensions();
             });
             app.Use(next => new RequestDelegate(
               async context =>

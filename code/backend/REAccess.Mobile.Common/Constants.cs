@@ -78,5 +78,9 @@ namespace REAccess.Mobile.Common
             public static List<string> AllCityList = new List<string>() { "北京市","天津市","上海市","重庆市","沈阳市","大连市","长春市","哈尔滨市","南京市","苏州市","无锡市","杭州市","宁波市","合肥市","福州市","厦门市","济南市","青岛市","郑州市",
                     "武汉市","长沙市","广州市","深圳市","佛山市","成都市","西安市"};
         }
+        public static class DataFile
+        {
+            public const string FileName = "mobile_data_20220307.xlsx";
+        }
     }
 }

@@ -38,7 +38,21 @@ namespace REAccess.Mobile.Common.Interfaces
         /// 根据指标名称，获取数据库有数据的年份
         /// </summary>
         public List<string> GetYearListByIndexName(string indexName);
+        /// <summary>
+        /// 读取excel数据包城市排名数据
+        /// </summary>
         public List<CityRank> GetCityRankData(string cityName);
+        /// <summary>
+        /// 读取excel数据包政策数据
+        /// </summary>
         public List<IndustrialPolicy> GetPolicyData();
+        /// <summary>
+        /// 读取excel数据包产业用地数据
+        /// </summary>
+        public List<CityRank> GetLandHotIndustryData();
+        /// <summary>
+        /// 读取excel数据包单项排名数据
+        /// </summary>
+        public SingleIndexModel GetSingleRankData(string selectIndex);
     }
 }
