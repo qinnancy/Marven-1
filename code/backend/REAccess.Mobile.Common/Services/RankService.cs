@@ -179,7 +179,7 @@ namespace REAccess.Mobile.Common.Services
                 NewsContent = x.Content,
                 NewsImage = Path.Combine("RealTimeInfoImgs",x.Img).Replace(".png", ".jpg"),
                 //NewsImage = FileEncode.GetImageBytes($"{Directory.GetCurrentDirectory()}\\RealTimeInfoImgs\\{x.Img}"),
-                NewsReleaseDate = Convert.ToDateTime(x.ReleaseTime, dtFormat).ToString("yyyy-MM-dd"),
+                NewsReleaseDate = ToolFunc.DatetimeFormatter(x.ReleaseTime),
                 NewTags = x.Tags.Split(';').Where(x => x != "").ToList()
             }).ToList();
             currentPage = currentPage == 0 ? 1 : currentPage;
