@@ -5,11 +5,9 @@ namespace REAccess.Mobile.Database.Models
 {
     public partial class DsaParkWebsites
     {
-        public long Id { get; set; }
         public long? ParkId { get; set; }
         public string GovName { get; set; }
         public string Website { get; set; }
-
-        public virtual DsaParkInfo Park { get; set; }
+        public long Id { get; set; }
     }
 }

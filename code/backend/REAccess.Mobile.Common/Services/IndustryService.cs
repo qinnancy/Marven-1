@@ -14,6 +14,12 @@ namespace REAccess.Mobile.Common.Services
 {
     public class IndustryService : BaseService, IIndustryService
     {
+        private readonly IUtilService _utilService;
+        public IndustryService(IUtilService utilService)
+        {
+            _utilService = utilService;
+        }
+
         ///<summary>
         ///清理所有正在使用的资源
         ///</summary>
@@ -96,11 +102,11 @@ namespace REAccess.Mobile.Common.Services
             var year = industryProject.Where(x => x.InvestDate != null).Select(x => x.InvestDate.Value.Year).Distinct().Max();
             industryProject = industryProject.Where(x => x.InvestDate != null && x.InvestDate.Value.Year == year).ToList();
             //获取所有产业类型--国民经济产业门类
-            var industryTypeList = StaticCache.IndustryCategorys.Where(x => x.Class == 1).ToList();
+            var industryTypeList = StaticCache.IndustryCategorys.Where(x => x.Class == 2).ToList();
 
             foreach (var industry in industryTypeList)
             {
-                var industryList = industryProject.Where(x => x.IndustryPrimaryClassKey == industry.Id.ToString()).ToList();
+                var industryList = industryProject.Where(x => x.IndustrySecondaryClassKey == industry.Id.ToString()).ToList();
                 if (industryList.Count() > 0)
                 {
                     CityRank indusryRank = new CityRank()
@@ -199,50 +205,67 @@ namespace REAccess.Mobile.Common.Services
         ///产业投资-产业用地-看热点产业
         ///筛选规则：全国/土地成交笔数/国民经济行业门类/最新年份的排名
         /// </summary>
+        //public List<CityRank> GetLandHotIndustryRank(int dataCount)
+        //{
+        //    List<CityRank> model = new List<CityRank>();
+        //    //默认取排名前五的数据
+        //    dataCount = dataCount == 0 ? 5 : dataCount;
+        //    //获取所有产业用地数据
+        //    var industryLand = StaticCache.DsaIndustryLand.Where(x => x.CitySk != null).ToList();
+        //    //获取最新年份的数据
+        //    var year = industryLand.Where(x => x.LandClosingTime != null).Select(x => x.LandClosingTime.Value.Year).Distinct().Max();
+        //    industryLand = industryLand.Where(x => x.LandClosingTime != null && x.LandClosingTime.Value.Year == year).ToList();
+        //    //获取产业类型
+        //    var industryType = StaticCache.IndustryCategorys.Where(x => x.Class == 2).ToList();
+
+        //    foreach (var industry in industryType)
+        //    {
+        //        if(industry.Id != 77)
+        //        {
+        //            CityRank cityRank = new CityRank()
+        //            {
+        //                IndexId = industry.Id,
+        //                IndexName = industry.IndustryName,
+        //                Unit = LandRankUnit.TransactionSumUnit,
+        //                IndexValue = industryLand.Count(x => x.BuyerIndustrySecondaryClassKey == industry.Id.ToString()).ToString()
+        //            };
+        //            model.Add(cityRank);
+        //        }
+
+        //    }
+        //    model = model.OrderByDescending(x => float.Parse(x.IndexValue)).Take(dataCount).ToList();
+        //    //根据土地成交笔数排名--笔数相同则名次相同
+        //    for (var i = 0; i < model.Count(); i++)
+        //    {
+        //        if (i == 0)
+        //        {
+        //            model[i].RankPlace = 1;
+        //        }
+        //        else
+        //        {
+        //            if (model[i] == model[i - 1])
+        //            {
+        //                model[i].RankPlace = model[i - 1].RankPlace;
+        //            }
+        //            else
+        //            {
+        //                model[i].RankPlace = i + 1;
+        //            }
+        //        }
+        //    }
+
+        //    return model;
+        //}
         public List<CityRank> GetLandHotIndustryRank(int dataCount)
         {
             List<CityRank> model = new List<CityRank>();
-            //默认取排名前五的数据
             dataCount = dataCount == 0 ? 5 : dataCount;
-            //获取所有产业用地数据
-            var industryLand = StaticCache.DsaIndustryLand.Where(x => x.CitySk != null).ToList();
-            //获取最新年份的数据
-            var year = industryLand.Where(x => x.LandClosingTime != null).Select(x => x.LandClosingTime.Value.Year).Distinct().Max();
-            industryLand = industryLand.Where(x => x.LandClosingTime != null && x.LandClosingTime.Value.Year == year).ToList();
-            //获取产业类型
-            var industryType = StaticCache.IndustryCategorys.Where(x => x.Class == 1).ToList();
-
-            foreach (var industry in industryType)
+            model = _utilService.GetLandHotIndustryData();
+            var industryType = StaticCache.IndustryCategorys.Where(x => x.Class == 2).ToList();
+            model.ForEach(x =>
             {
-                CityRank cityRank = new CityRank()
-                {
-                    IndexId = industry.Id,
-                    IndexName = industry.IndustryName,
-                    Unit = LandRankUnit.TransactionSumUnit,
-                    IndexValue = industryLand.Count(x => x.BuyerIndustryPrimaryClassKey == industry.Id.ToString()).ToString()
-                };
-                model.Add(cityRank);
-            }
-            model = model.OrderByDescending(x => float.Parse(x.IndexValue)).Take(dataCount).ToList();
-            //根据土地成交笔数排名--笔数相同则名次相同
-            for (var i = 0; i < model.Count(); i++)
-            {
-                if (i == 0)
-                {
-                    model[i].RankPlace = 1;
-                }
-                else
-                {
-                    if (model[i] == model[i - 1])
-                    {
-                        model[i].RankPlace = model[i - 1].RankPlace;
-                    }
-                    else
-                    {
-                        model[i].RankPlace = i + 1;
-                    }
-                }
-            }
+                x.IndexId = industryType.FirstOrDefault(a => a.IndustryName == x.IndexName).Id;
+            });
 
             return model;
         }
@@ -343,15 +366,26 @@ namespace REAccess.Mobile.Common.Services
             //默认获取政策类数据
             policyCategory = string.IsNullOrEmpty(policyCategory) ? SearchPageMatch.PolicyCategory : policyCategory;
             //获取对应产业、对应分类的政策数据
-            var policyList = StaticCache.DsaPolicyIndustryFieldTagRelation.Where(x => x.IndustryFieldTagId == industryId && x.Policy.Category.Trim() == policyCategory).Take(dataCount).ToList();
-            model.IndustrialPolicis = policyList.Select(x => new IndustrialPolicy()
+            var policyList = StaticCache.DsaPolicyIndustryFieldTagRelation.Where(x => x.IndustryFieldTagId == industryId && x.Policy.Category.Trim() == policyCategory).ToList();
+            //model.IndustrialPolicis = policyList.Take(dataCount).Select(x => new IndustrialPolicy()
+            //{
+            //    PolicyId = x.Policy.Id,
+            //    FileName = string.IsNullOrEmpty(x.Policy.Name) ? "-" : x.Policy.Name,
+            //    Province = string.IsNullOrEmpty(x.Policy.Province) ? "-" : x.Policy.Province,
+            //    City = string.IsNullOrEmpty(x.Policy.City) ? "-" : x.Policy.City,
+            //}).ToList();
+            var policyData = _utilService.GetPolicyData();
+            policyData.ForEach(x =>
             {
-                PolicyId = x.Policy.Id,
-                FileName = string.IsNullOrEmpty(x.Policy.Name) ? "-" : x.Policy.Name,
-                Province = string.IsNullOrEmpty(x.Policy.Province) ? "-" : x.Policy.Province,
-                City = string.IsNullOrEmpty(x.Policy.City) ? "-" : x.Policy.City,
-            }).ToList();
-            model.IndustrialPolicyCount = dataCount;
+                var dbPolicy = policyList.FirstOrDefault(p => p.Policy.Name == x.FileName);
+                if(dbPolicy != null)
+                {
+                    x.PolicyId = dbPolicy.PolicyId;
+                }
+            });
+            model.IndustrialPolicis = policyData.Where(x => x.PolicyId != 0).ToList() ;
+
+            model.IndustrialPolicyCount = policyList.Count();
 
             return model;
         }

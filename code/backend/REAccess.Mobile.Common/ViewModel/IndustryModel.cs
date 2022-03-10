@@ -41,6 +41,7 @@ namespace REAccess.Mobile.Common.ViewModel
     public class IndustrialPolicy
     {
         public int PolicyId { get; set; }
+        public string IndustryName { get; set; }
         public string FileName { get; set; }
         public string Province { get; set; }
         public string City { get; set; }

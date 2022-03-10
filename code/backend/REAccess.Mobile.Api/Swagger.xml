@@ -106,15 +106,35 @@
             获取所有三级指标
             </summary>
         </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.UtilController.GetMobileAllIndex">
+            <summary>
+            单项指标-指标下拉列表
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:REAccess.Mobile.Api.Controllers.UtilController.GetCityList">
             <summary>
             获取城市列表
             </summary>
         </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.UtilController.GetMobileCityList">
+            <summary>
+            城市排名-城市下拉列表
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:REAccess.Mobile.Api.Controllers.UtilController.GetPolicyList">
             <summary>
             获取政策类别列表
             </summary>
+        </member>
+        <member name="M:REAccess.Mobile.Api.Controllers.UtilController.SysLog(System.String,System.String)">
+            <summary>
+            记录页面跳转系统日志
+            </summary>
+            <param name="pageName">当前页</param>
+            <param name="previousPage">上一页</param>
+            <returns></returns>
         </member>
     </members>
 </doc>

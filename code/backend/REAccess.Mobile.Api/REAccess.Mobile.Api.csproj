@@ -14,6 +14,7 @@
     <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />
     <PackageReference Include="Microsoft.AspNetCore.HttpOverrides" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.0.1">
       <PrivateAssets>all</PrivateAssets>
@@ -29,6 +30,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,39 +39,49 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="RealTimeInfoImgs\174255248_lo.jpg">
+    <None Update="DataFiles\mobile_data 20220301.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="DataFiles\mobile_data_20220304.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="RealTimeInfoImgs\178425824_lo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="RealTimeInfoImgs\232686868_lo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="RealTimeInfoImgs\ind_man_glb_ho_2172_lo.jpg">
+    <None Update="RealTimeInfoImgs\455128681_lo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="RealTimeInfoImgs\shutterstock_1669326868_lo.jpg">
+    <None Update="RealTimeInfoImgs\BAXWY1_lo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="RealTimeInfoImgs\shutterstock_1889680603_lo.jpg">
+    <None Update="RealTimeInfoImgs\bzi_gro_glb_ho_2173_lo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="RealTimeInfoImgs\shutterstock_334223177_lo.jpg">
+    <None Update="RealTimeInfoImgs\bzi_inn_glb_ho_2303_lo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="RealTimeInfoImgs\shutterstock_373700113_lo.jpg">
+    <None Update="RealTimeInfoImgs\ind_er_glb_ho_1886_lo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="RealTimeInfoImgs\shutterstock_516050707_lo.jpg">
+    <None Update="RealTimeInfoImgs\ind_man_glb_ho_2279_lo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="RealTimeInfoImgs\shutterstock_518160511_lo.jpg">
+    <None Update="RealTimeInfoImgs\ind_man_glb_ho_2313_lo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="RealTimeInfoImgs\shutterstock_565260484_lo.jpg">
+    <None Update="RealTimeInfoImgs\shutterstock_131733137_lo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="RealTimeInfoImgs\shutterstock_717437125_lo.jpg">
+    <None Update="RealTimeInfoImgs\shutterstock_147152594_-_Copy_lo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="RealTimeInfoImgs\shutterstock_1890415855_lo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    
     <None Update="Swagger.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

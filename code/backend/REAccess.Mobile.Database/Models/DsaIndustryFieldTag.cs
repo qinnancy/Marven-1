@@ -14,6 +14,7 @@ namespace REAccess.Mobile.Database.Models
         public int Id { get; set; }
         public int? Category { get; set; }
         public int? OrderNum { get; set; }
+        public string IsValid { get; set; }
 
         public virtual ICollection<DsaPolicyIndustryFieldTagRelation> DsaPolicyIndustryFieldTagRelation { get; set; }
     }

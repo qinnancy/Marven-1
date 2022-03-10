@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -18,6 +19,7 @@ using REAccess.Mobile.Api.Extensions;
 using REAccess.Mobile.Common.Utils;
 using REAccess.Mobile.Database.Models;
 using REAccess.Mobile.Database.Utils;
+using Swashbuckle.AspNetCore.SwaggerUI;
 #endregion
 
 namespace REAccess.Mobile.Api
@@ -77,8 +79,13 @@ namespace REAccess.Mobile.Api
                 var basePath = Path.GetDirectoryName(typeof(Program).Assembly.Location);//获取应用程序所在目录
                 var xmlPath = Path.Combine(basePath, "Swagger.xml");
                 options.IncludeXmlComments(xmlPath);
+                options.EnableAnnotations();
             });
             #endregion
+            services.Configure<KestrelServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -101,7 +108,17 @@ namespace REAccess.Mobile.Api
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApiHelp V1");
+                c.DocExpansion(DocExpansion.None);
+                c.ShowCommonExtensions();
+                c.ShowExtensions();
             });
+            app.Use(next => new RequestDelegate(
+              async context =>
+              {
+                  context.Request.EnableBuffering();
+                  await next(context);
+              }
+            ));
 
             //这是添加的扩张方法
             //设置访问文件

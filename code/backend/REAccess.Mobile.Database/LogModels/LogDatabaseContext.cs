@@ -69,38 +69,27 @@ namespace REAccess.Mobile.Database.LogModels
 
                 entity.Property(e => e.BrowseType)
                     .HasColumnName("browse_type")
-                    .HasMaxLength(256)
-                    .IsUnicode(false);
+                    .HasMaxLength(256);
 
-                entity.Property(e => e.CityIndexPolicyIndustryParamName)
-                    .HasColumnName("city_index_policy_industry_param_name")
-                    .HasMaxLength(64)
-                    .IsUnicode(false);
+                entity.Property(e => e.CityIndexPolicyIndustryParamName).HasColumnName("city_index_policy_industry_param_name");
 
-                entity.Property(e => e.Description)
-                    .HasColumnName("description")
-                    .IsUnicode(false);
+                entity.Property(e => e.Description).HasColumnName("description");
 
                 entity.Property(e => e.Entered)
                     .HasColumnName("entered")
                     .HasColumnType("datetime");
 
-                entity.Property(e => e.IpDetail)
-                    .HasColumnName("ip_detail")
-                    .HasMaxLength(64)
-                    .IsUnicode(false);
+                entity.Property(e => e.IpDetail).HasColumnName("ip_detail");
 
                 entity.Property(e => e.Message).HasColumnName("message");
 
                 entity.Property(e => e.PageName)
                     .HasColumnName("page_name")
-                    .HasMaxLength(64)
-                    .IsUnicode(false);
+                    .HasMaxLength(255);
 
                 entity.Property(e => e.PreviousPage)
                     .HasColumnName("previous_page")
-                    .HasMaxLength(512)
-                    .IsUnicode(false);
+                    .HasMaxLength(512);
 
                 entity.Property(e => e.RawUrl)
                     .IsRequired()
@@ -109,13 +98,11 @@ namespace REAccess.Mobile.Database.LogModels
 
                 entity.Property(e => e.SectionName)
                     .HasColumnName("section_name")
-                    .HasMaxLength(64)
-                    .IsUnicode(false);
+                    .HasMaxLength(255);
 
                 entity.Property(e => e.SessionId)
                     .HasColumnName("session_id")
-                    .HasMaxLength(500)
-                    .IsUnicode(false);
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.StackTrace).HasColumnName("stack_trace");
 

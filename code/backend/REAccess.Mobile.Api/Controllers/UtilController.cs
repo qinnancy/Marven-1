@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using REAccess.Mobile.Common.Interfaces;
 using REAccess.Mobile.Common.ViewModel;
+using REAccess.Mobile.Database.LogModels;
 using static REAccess.Mobile.Common.Constants;
 #endregion
 
@@ -55,6 +56,36 @@ namespace REAccess.Mobile.Api.Controllers
                     });
             }
         }
+        /// <summary>
+        /// 单项指标-指标下拉列表
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("MobileAllIndex")]
+        public JsonResult GetMobileAllIndex()
+        {
+            try
+            {
+                _logger.LogInformation("Start executing GetMobileAllIndex() method");
+                return new JsonResult(
+                    new GeneralResponse()
+                    {
+                        StatusCode = ResponseStatusCode.Success,
+                        StatusMessage = ResponseStatusMessage.Success,
+                        ReturnObj = _utilService.GetMobileAllIndex()
+                    });
+            }
+            catch (Exception e)
+            {
+                _logger.LogInformation(e, "Error in GetMobileAllIndex() method");
+                return new JsonResult(
+                    new GeneralResponse()
+                    {
+                        StatusCode = ResponseStatusCode.Exception,
+                        StatusMessage = ResponseStatusMessage.Failed,
+                        ReturnObj = e.Message
+                    });
+            }
+        }
 
         /// <summary>
         /// 获取城市列表
@@ -86,6 +117,36 @@ namespace REAccess.Mobile.Api.Controllers
             }
         }
         /// <summary>
+        /// 城市排名-城市下拉列表
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("MobileCityList")]
+        public JsonResult GetMobileCityList()
+        {
+            try
+            {
+                _logger.LogInformation("Start executing GetMobileCityList() method");
+                return new JsonResult(
+                    new GeneralResponse()
+                    {
+                        StatusCode = ResponseStatusCode.Success,
+                        StatusMessage = ResponseStatusMessage.Success,
+                        ReturnObj = _utilService.GetMobileCityList()
+                    });
+            }
+            catch (Exception e)
+            {
+                _logger.LogInformation(e, "Error in GetMobileCityList() method");
+                return new JsonResult(
+                    new GeneralResponse()
+                    {
+                        StatusCode = ResponseStatusCode.Exception,
+                        StatusMessage = ResponseStatusMessage.Failed,
+                        ReturnObj = e.Message
+                    });
+            }
+        }
+        /// <summary>
         /// 获取政策类别列表
         /// </summary>
         [HttpGet("GetPolicyList")]
@@ -105,6 +166,38 @@ namespace REAccess.Mobile.Api.Controllers
             catch (Exception e)
             {
                 _logger.LogInformation(e, "Error in GetPolicyList() method");
+                return new JsonResult(
+                    new GeneralResponse()
+                    {
+                        StatusCode = ResponseStatusCode.Exception,
+                        StatusMessage = ResponseStatusMessage.Failed,
+                        ReturnObj = e.Message
+                    });
+            }
+        }
+        /// <summary>
+        /// 记录页面跳转系统日志
+        /// </summary>
+        /// <param name="pageName">当前页</param>
+        /// <param name="previousPage">上一页</param>
+        /// <returns></returns>
+        [HttpPost("SysLog/{pageName}/{previousPage}")]
+        public JsonResult SysLog([FromRoute] string pageName,string previousPage)
+        {
+            try
+            {
+                _logger.LogInformation("Start executing SysLog() method");
+                return new JsonResult(
+                    new GeneralResponse()
+                    {
+                        StatusCode = ResponseStatusCode.Success,
+                        StatusMessage = ResponseStatusMessage.Success,
+                        ReturnObj = _utilService.SysLog(pageName,previousPage)
+                    });
+            }
+            catch (Exception e)
+            {
+                _logger.LogInformation(e, "Error in SysLog() method");
                 return new JsonResult(
                     new GeneralResponse()
                     {

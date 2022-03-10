@@ -157,5 +157,29 @@ namespace REAccess.Mobile.Database.Models
         public decimal? CinemaCount { get; set; }
         public decimal? CultureFacilitiesCount { get; set; }
         public decimal? ScenicSpotCountPer100kPpl { get; set; }
+        public decimal? Aqi { get; set; }
+        public decimal? BuildUpGreenCoverageCity { get; set; }
+        public decimal? NumberOfMedicalInstitution { get; set; }
+        public decimal? TotalWaterResource { get; set; }
+        public decimal? BuildUpAreaCity { get; set; }
+        public decimal? BuildUpGreenLandArea { get; set; }
+        public decimal? DoubleFirstClassDisciplineCount { get; set; }
+        public decimal? NumberOfBedsInHospital { get; set; }
+        public decimal? NumberOfKindergarden { get; set; }
+        public decimal? NumberOfPrimarySchool { get; set; }
+        public decimal? NumberOfMiddleSchool { get; set; }
+        public decimal? NumberOf5a { get; set; }
+        public decimal? NumberOf4a { get; set; }
+        public decimal? ConsumptionIntentionIndexCity { get; set; }
+        public decimal? ConsumptionIntentionIndexTown { get; set; }
+        public decimal? AirportPassengerCapacity { get; set; }
+        public decimal? AirportGoodsCapacity { get; set; }
+        public decimal? PortGoodsCapacity { get; set; }
+        public decimal? PortContainerCapacity { get; set; }
+        public decimal? GoodsTransportTotalAmount { get; set; }
+        public decimal? GoodsTurnoverTotalAmount { get; set; }
+        public decimal? BedsPerThousandInHospitalCount { get; set; }
+        public decimal? NumberOfRailwayStationPer10kPpl { get; set; }
+        public decimal? PrivateFundManagerCount { get; set; }
     }
 }

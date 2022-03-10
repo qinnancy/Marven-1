@@ -27,6 +27,10 @@ namespace REAccess.Mobile.Common
             public const string Yes = "Y";
             public const string No = "N";
         }
+        public static class NoData
+        {
+            public const string NotPublished = "-999,999";
+        }
         public static class DistrictData
         {
             public const string China = "中华人民共和国";
@@ -66,6 +70,17 @@ namespace REAccess.Mobile.Common
             public const string Industry = "产业";
             public const string PolicyCategory = "政策类";
             public const string PlanningClass = "规划类";
+        }
+        public static class MobileData
+        {
+            public static List<string> AllIndexList = new List<string>() {"人均GDP","GDP增速","实际利用外资","社会消费品零售总额","一般公共预算自给率","新增常住人口","全市居民人均可支配收入","全市居民人均消费支出","上市企业数量","高新技术企业数量",
+                    "专精特新“小巨人”企业数量","上市企业研发投入占比","货物运输总量","港口货物吞吐量","相对劳动力成本","房价收入比","每千人医疗机构床位数量","每十万人基础教育学校数量","每十万人地铁站点数量","每十万人星巴克数量"};
+            public static List<string> AllCityList = new List<string>() { "北京市","天津市","上海市","重庆市","沈阳市","大连市","长春市","哈尔滨市","南京市","苏州市","无锡市","杭州市","宁波市","合肥市","福州市","厦门市","济南市","青岛市","郑州市",
+                    "武汉市","长沙市","广州市","深圳市","佛山市","成都市","西安市"};
+        }
+        public static class DataFile
+        {
+            public const string FileName = "mobile_data_20220307.xlsx";
         }
     }
 }
