@@ -10,8 +10,7 @@
         <img src="@/assets/logo.svg" class="logo-img">
         <span class="title"> 丨 产城智链</span>
       </div>
-      <div class="header-policy" @click="returnPolicy()" v-else-if="routerName === 'PolicyDetail'">
-        <span class="title">政策</span>
+      <div class="header-policy" @click="returnPolicy()" v-else-if="routerName === 'PolicyDetail'">政策
       </div>
        <div class="header-detail" @click="returnDetail(titleName,routerName)" v-else-if="routerName === 'ListDetail' || routerName === 'LandDetail'">
         <span class="title">{{titleName}}</span>
@@ -28,9 +27,15 @@
       </div>
     </div>
     <div class="bg-box" v-if="isShowHome">
-       <div class="bg-title">产城智链</div>
+       <!-- <div class="bg-title">产城智链</div>
        <div class="bg-tag">发现你的城市</div>
-       <div class="bg-detail">解锁100+维度，洞察240+城市，追踪90+产业</div>
+       <div class="bg-detail">解锁100+维度，洞察240+城市，追踪90+产业</div> -->
+       <div class="footer-detail">
+         <img src="@/assets/icon.svg"/>
+         <span>追踪丨250+城市，145+指标</span>
+         <img src="@/assets/icon.svg" class="detail-icon"/>
+         <span>洞察丨90+产业，400,000+企业</span>
+        </div>
     </div>
      <!-- <img class="bg-img" src="@/assets/background.png"/> -->
     <div id="nav" v-if="!showDetail">
@@ -113,12 +118,12 @@ export default {
     handler: function(val, oldVal){
       const routerName = this.getRouterName(val.name)
       const oldName = this.getRouterName(oldVal.name) === "" ? "首页" : this.getRouterName(oldVal.name)
-      const obj = {
-        pageName:routerName,
-        previousPage:oldName
-      }
+      // const obj = {
+      //   pageName:routerName,
+      //   previousPage:oldName
+      // }
       api
-      .post('/Util/SysLog/' + routerName + '/' + oldName)
+      .post('/Util/SysLog/'+routerName+'/'+oldName)
       .then((res) => {
       //  console.log('-----',res);
       });
@@ -229,7 +234,7 @@ body {
   color: white;
   font-size: 1rem;
   font-weight: bold;
-  padding-left: 30%;
+  /* padding-left: 30%; */
 }
 .header-detail{
   float: left;
@@ -288,9 +293,10 @@ body {
 }
 .bg-box{
   width: 100%;
-  height: 12rem;
-  background: url("./assets/background.png") no-repeat;
-  background-size:100.5% 104%; 
+  height: 11.5rem;
+  background: url("./assets/banner底部.svg") no-repeat;
+  /* background-size:100.5% 104%;  */
+  background-size:100%;
   text-align: center;
 }
 a {
@@ -374,11 +380,13 @@ a {
 }
 .footer-img-font{
   font-size: .75rem;
-  color: #333333;
+  color: #525E75;
+  /* margin-left: 0.5rem; */
 }
 .footer-img-font2{
   font-size: .75rem;
   color: #525E75;
+  /* margin-left: 0.5rem; */
 }
 .footer-line-box{
   padding-top: 2.2rem;
@@ -390,5 +398,25 @@ a {
   float: left;
   width: 92%;
   padding-left: 8%;
+}
+.footer-detail{
+    position: absolute;
+    margin-top: 9.5rem;
+    font-size: 0.75rem;
+    color: #fff;
+    line-height: 1.2rem;
+    text-align: center;
+    width: 100%;
+    background: #afc7e8;
+    height: 2rem;
+    line-height: 2.2rem;
+}
+.detail-icon {
+  margin-left: 1rem;
+}
+.intrduction{
+  font-size: .75rem;
+  margin-top: .5rem;
+  color: #999999;
 }
 </style>

@@ -3,7 +3,7 @@
       <div class="filter-title"><img src="@/assets/城市排名.svg" class="logo-box"/>
         <div class="search-title">{{searchName}}</div>
         <!-- <div class="unit-box">单位：{{rankingData.unit}}</div> -->
-        <div class="unit-box">2020年 排名</div>
+        <div class="unit-box">{{rankingData.year}}年 排名</div>
       </div>
       <div v-for="(item,index) in rankingData.singleIndexList" :key="String(index)" class="line-box">
         <div class="line-item num-order" v-if="index===0">
@@ -16,9 +16,9 @@
             <img src="@/assets/3.svg" class="order-img"/>
         </div>
         <div class="line-item num-order" v-if="index>2">#{{index+1}}</div>
-        <div :class="index>2?'line-item uni-font':'line-item'">{{item.cityName}}</div>
-        <div class="line-item uni-font">{{item.provinceName}}</div>
-        <div class="line-item uni-font amount-box">{{item.rankValue}} 亿元</div>
+        <div :class="index>2?'line-item uni-font':'line-item'" style="line-height: 1rem;margin-top: 1.5rem;">{{item.cityName}}</div>
+        <div class="line-item uni-font" style="line-height: 1rem;margin-top: 1.5rem">{{item.provinceName}}</div>
+        <div class="line-item uni-font amount-box">{{item.rankValue}} {{item.unit}}</div>
       </div>
   </div>
 </template>
@@ -56,7 +56,7 @@ export default {
   height: 3rem;
   line-height: 3rem;
   text-align: left;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 }
 .logo-box{
   float: left;
@@ -64,11 +64,11 @@ export default {
   margin-right: 1rem;
 }
 .search-title{
-  font-size: 1rem;
+  font-size: 0.85rem;
   color: #000000;
   float: left;
-  max-width: 50%;
-  overflow: hidden;
+  max-width: 60%;
+  /* overflow: hidden; */
   white-space: nowrap;
   text-overflow: ellipsis;
   font-weight: 700;
@@ -101,7 +101,7 @@ export default {
   line-height: 4rem;
   font-size: .75rem;
   color: #333333;
-  margin: 0 2rem 0 2rem;
+  margin: 0 1.5rem 0 1.5rem;
   border-bottom: 1px solid #EEEFF3;
 }
 .num-order{

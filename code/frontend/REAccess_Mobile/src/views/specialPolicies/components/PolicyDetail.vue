@@ -139,7 +139,7 @@ export default {
   line-height: 1.5rem;
   font-size: .75rem;
   color: #333333;
-  margin: 0 1rem 0 1.5rem;
+  margin: 0 1.5rem 0 1.5rem;
 }
 .closingDate {
   text-align: left;

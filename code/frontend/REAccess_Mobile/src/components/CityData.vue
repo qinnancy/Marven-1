@@ -2,7 +2,7 @@
   <div class="filter-data">
       <div class="filter-title"><img src="@/assets/城市排名.svg" class="logo-box"/>
         <div class="search-title">{{searchName}}</div>
-        <div class="unit-box">{{rankingData.year}}年 排名</div>
+        <!-- <div class="unit-box">{{rankingData0.year}}年 排名</div> -->
       </div>
       <div v-for="(item,index) in rankingData.cityRankList" :key="String(index)" class="line-box">
         <div :class="index>2?'item-box uni-font':'item-box'">
@@ -10,18 +10,18 @@
           <!-- <div v-for="(imgObj,i) in imgList" :key="String(i)"/><img :src="imgObj.url"/></div> -->
           {{item.indexName}}
         </div>
-        <div class="value-item">{{item.indexValue}} {{item.unit}}</div>
-        <div class="line-item num-order" v-if="index===0">
+        <div class="value-item" style="line-height:1rem;margin-top:1.5rem;overflow:auto">{{item.indexValue}} {{item.unit}}</div>
+        <div class="line-item num-order" v-if="item.rankPlace===1">
             <img src="@/assets/1.svg" class="order-img"/>
         </div>
-        <div class="line-item num-order" v-if="index===1">
+        <div class="line-item num-order" v-if="item.rankPlace===2">
             <img src="@/assets/2.svg" class="order-img"/>
         </div>
-         <div class="line-item num-order" v-if="index===2">
+         <div class="line-item num-order" v-if="item.rankPlace===3">
             <img src="@/assets/3.svg" class="order-img"/>
         </div>
-        <div class="line-item num-order" v-if="index>2">#{{index+1}}</div>
-       
+        <div class="line-item num-order" v-else-if="item.rankPlace>3">#{{item.rankPlace}}</div>
+        <div class="value-item" style="width:15%;text-align:right">{{item.year}}年</div>
       </div>
   </div>
 </template>
@@ -79,7 +79,7 @@ export default {
   height: 3rem;
   line-height: 3rem;
   text-align: left;
-  padding: 0 2rem;
+  padding: 0 1rem;
 }
 .logo-box{
   float: left;
@@ -123,7 +123,7 @@ export default {
   line-height: 4rem;
   font-size: .75rem;
   color: #333333;
-  margin: 0 2rem 0 2rem;
+  margin: 0 1.2rem 0 1.2rem;
   border-bottom: 1px solid #EEEFF3;
 }
 .num-order{
@@ -147,21 +147,27 @@ export default {
   text-align: center;
 }
 .item-box{
-  width: 60%;
+  width: 50%;
   float: left;
   text-align: left;
+   overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .img-item{
   float: left;
   margin-top: 1.375rem;
-  margin-right: 1.25rem
+  margin-right: .25rem;
 }
 .filter-data{
   min-height: 23.5rem;
 }
 .value-item{
-  width: 35%;
+  width: 30%;
   float: left;
   text-align: left;
+   /* overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; */
 }
 </style>

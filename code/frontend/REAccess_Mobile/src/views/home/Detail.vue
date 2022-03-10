@@ -9,7 +9,7 @@
      </div>
      <div class="news-tags">
         <span class="news-tag-title">产城智链：</span>
-        <div class="news-tag-box" v-for="(itag,itagNum) in newsDetail.newTags" :key="itagNum">
+        <div class="news-tag-box" v-for="(itag,itagNum) in filterArray(newsDetail.newTags)" :key="itagNum">
             <div class="new-tag">{{itag}}</div>
         </div>
      </div>
@@ -49,6 +49,9 @@ export default {
     this.getNewDetails(newsId)
   },
   methods:{
+    filterArray(array){
+      return array.filter((item)=>item !=='')
+    },
     getNewDetails(id){
       api
       .get(`/Rank/GetNewsById?newsId=${id}`)
@@ -102,7 +105,7 @@ export default {
   margin-top: 0.5rem;
 }
 .news-content{
-  font-size: .75rem;
+  font-size: .85rem;
   color: #333333;
   width: 100%;
   line-height: 1.25rem;
@@ -150,6 +153,7 @@ export default {
  width: 100%;
  position: fixed;
  bottom: 0;
+ background: #f7f8fc;
  /* padding: 1rem; */
 }
 .footer-img >>> img{

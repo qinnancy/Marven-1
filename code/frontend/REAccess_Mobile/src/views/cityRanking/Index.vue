@@ -52,7 +52,7 @@ export default {
    },
    getIndexList(){
       api
-      .get('/Util/GetCityList')
+      .get('/Util/MobileCityList')
       .then((res) => {
         this.filterList = res.data.returnObj
         this.searchData(this.filterList[0])
