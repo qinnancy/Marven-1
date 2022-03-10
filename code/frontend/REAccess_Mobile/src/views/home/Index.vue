@@ -6,21 +6,40 @@
       <div class="news-card" v-for="item in newsList" :key="item.id" @click="toNewDetail(item)">
         <div class="news-img-box"><img :src="item.newsImage" class="news-img"/></div>
         <div class="news-content-box">
-            <div class="new-title">{{item.newsTitle}}</div>
-            <div class="news-content">{{item.newsContent}}</div>
+            <div class="new-title">{{item.newsTitle}}
+              <div class="news-date" >{{item.newsReleaseDate}}</div>
+            </div>
+            <!-- <div class="news-date" >{{item.newsReleaseDate}}</div> -->
+            <!-- <div class="news-content">{{item.newsContent}}</div> -->
             <div class="news-buttom-box">
               <span class="news-tag-title">产城智链：</span>
               <div class="new-tag-box">
-                <div class="news-tag-box" v-for="(itag,itagNum) in item.newTags" :key="itagNum">
+                <div class="news-tag-box" v-for="(itag,itagNum) in filterArray(item.newTags)" :key="itagNum">
                     <div class="new-tag">{{itag}}</div>
                 </div>
               </div>
             </div>
-            <div class="news-date">{{item.newsReleaseDate}}</div>
         </div>
       </div>
-      <div v-loading="loading" class="loading-box">{{loadingContent}}</div>
-      <div class="footer">沪ICP备14034737号-3</div>
+      <div v-loading="loading" class="loading-box">
+      </div>
+      <div class="footer">
+            <div class="footer-img">
+           <!-- <a href="https://rea.deloitte.com.cn"><div class="link-web"></div></a> -->
+           <!-- <img src="@/assets/解锁城市.svg"/> -->
+            <div class="footer-img-bg">
+             <div class="footer-line-box">
+              <img src="@/assets/解锁.svg" class="footer-icon-size"/>
+              <span class="footer-img-font">解锁更多资讯</span>
+             </div>
+             <div class="footer-line-box1">
+               <img src="@/assets/登录.svg" class="footer-icon-size"/>
+               <span class="footer-img-font2">请登录PC端 (rea.deloitte.com.cn)</span>
+             </div>
+            </div>
+        </div>
+        <span style="font-size: .625rem;color: #2C2C2C;">沪ICP备14034737号-3</span>
+        </div>
   </div>
 </template>
 
@@ -44,6 +63,9 @@ export default {
     window.addEventListener("scroll", this.scrollBottom, true);
   },
   methods:{
+    filterArray(array){
+      return array.filter((item)=>item !=='')
+    },
     scrollBottom() {
     // 滚动到页面底部时
         const el = document.getElementById("content");
@@ -83,6 +105,13 @@ export default {
     },
     toNewDetail(obj){
       this.$router.push({path: `/Detail?id=${obj.id}`})
+    },
+    getMargin(index){
+      this.$nextTick(() => {
+        const titlelist = document.getElementsByClassName('new-title')
+        const height = titlelist[index].offsetHeight / 16
+        return 'margin-left:' + height + 'rem'   
+      })
     }
   }
 }
@@ -99,7 +128,7 @@ export default {
   background: #FFFFFF;
   box-shadow: 0 1px 20px 1px rgba(0,0,0,0.06);
   margin-bottom: 0.8rem;
-  min-height: 5rem;
+  height: 5.5rem;
   padding: 1rem;
 }
 .news-card::after{
@@ -131,12 +160,18 @@ export default {
   font-size: .875rem;
   color: #333333;
   width: 100%;
-  /* overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis; */
   padding-left: 0.5rem;
-  margin-top: 0.2rem;
+  /* margin-top: 0.2rem; */
   font-weight: bold;
+  line-height: 1.4rem;
+}
+.new-title::after{
+    content:"";
+    height:0px;
+    width:0px;
+    clear:both;
+    display:block;
+    overflow: hidden;
 }
 .news-content{
   font-size: .625rem;
@@ -151,19 +186,28 @@ export default {
 }
 .news-buttom-box{
   padding-left: 0.5rem;
+  margin-top: 0.4rem;
   /* width: 80%; */
-  height: 1.25rem;
-  overflow: hidden;
+  /* height: 1.25rem; */
+  /* overflow: hidden; */
   /* overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis; */
 }
 .new-tag-box{
-  width: 53%;
-  overflow: hidden;
+  width: 100%;
+  /* overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis;
-  float: left;
+  text-overflow: ellipsis; */
+  /* float: left; */
+}
+.news-buttom-box::after{
+    content:"";
+    height:0px;
+    width:0px;
+    clear:both;
+    display:block;
+    overflow: hidden;
 }
 .news-tag-box{
   border: .0313rem solid #999999;
@@ -171,39 +215,49 @@ export default {
   float: left;
   padding: 0 .25rem 0 .25rem;
   margin-right: .25rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.2rem;
   /* overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis; */
 }
 .news-tag-title{
-  font-size: .625rem;
+  font-size: .7rem;
   color: #333333;
   float: left;
   font-weight: bold;
 }
 .new-tag{
-  font-size: .625rem;
+  font-size: .7rem;
   color: #999999;
 }
 .news-date{
   font-size: .625rem;
   color: #B0B0B0;
   text-align: right;
-  overflow: hidden;
+  position: relative;
+  float: right;
+  margin-right: 0.2rem;
+  /* overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  margin-top: -1rem;
+  margin-top: -1rem; */
 }
 .footer{
   font-size: .625rem;
   color: #2C2C2C;
-  margin-top: 0.5rem;
+  margin-top: 3rem;
   margin-bottom: 2rem;
 }
 .loading-box {
     font-size: .75rem;
     color: #999999;
     /* margin-top: 29px; */
+}
+.footer-icon-size{
+  margin-top: 0.1rem;
+}
+.footer-line-box {
+    padding-top: 2.5rem;
+    margin-bottom: 0.2rem;
 }
 </style>

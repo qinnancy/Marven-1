@@ -2,6 +2,7 @@
   <div class="city-detail">
    <filter-index title="指标筛选" :filterList="filterList" @searchData="searchData"></filter-index>
    <filter-data title="指标筛选" :searchName="searchName" :rankingData="rankingData"></filter-data>
+   <div class="intrduction">相对劳动成本 = 普通劳动力平均年薪 / 人均GDP</div>
     <div class="footer">
         <div class="footer-img">
            <!-- <a href="https://rea.deloitte.com.cn"><div class="link-web"></div></a> -->
@@ -53,7 +54,7 @@ export default {
    },
    getIndexList(){
       api
-      .get('/Util/GetAllIndex')
+      .get('/Util/MobileAllIndex')
       .then((res) => {
         this.filterList = res.data.returnObj
         this.searchData(this.filterList[0])

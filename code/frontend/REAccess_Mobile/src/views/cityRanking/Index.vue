@@ -2,6 +2,7 @@
   <div class="city-detail">
    <filter-index title="选择城市" :filterList="filterList" @searchData="searchData"></filter-index>
    <city-data title="选择城市" :searchName="searchName" :rankingData="rankingData"></city-data>
+   <div class="intrduction">房价收入比 = 平均购房价格 / 普通劳动力平均月薪</div>
     <div class="footer">
         <div class="footer-img">
            <!-- <a href="https://rea.deloitte.com.cn"><div class="link-web"></div></a> -->
@@ -52,7 +53,7 @@ export default {
    },
    getIndexList(){
       api
-      .get('/Util/GetCityList')
+      .get('/Util/MobileCityList')
       .then((res) => {
         this.filterList = res.data.returnObj
         this.searchData(this.filterList[0])

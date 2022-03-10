@@ -55,7 +55,7 @@ export default {
   height: 3rem;
   line-height: 3rem;
   text-align: left;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 }
 .logo-box{
   float: left;
@@ -99,7 +99,7 @@ export default {
   line-height: 4rem;
   font-size: .75rem;
   color: #333333;
-  margin: 0 2rem 0 2rem;
+  margin: 0 1.5rem 0 1.5rem;
   border-bottom: 1px solid #EEEFF3;
 }
 .line-box::after{
