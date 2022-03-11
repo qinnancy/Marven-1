@@ -54,5 +54,9 @@ namespace REAccess.Mobile.Common.Interfaces
         /// 读取excel数据包单项排名数据
         /// </summary>
         public SingleIndexModel GetSingleRankData(string selectIndex);
+        /// <summary>
+        /// 读取excel数据包资讯数据
+        /// </summary>
+        public List<NewsModel> GetNewsData();
     }
 }

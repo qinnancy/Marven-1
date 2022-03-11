@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using static REAccess.Mobile.Common.Constants;
 #endregion
@@ -281,6 +282,47 @@ namespace REAccess.Mobile.Common.Services
                 }
             }
             model.SingleIndexList = data;
+
+            return model;
+        }
+        /// <summary>
+        /// 读取excel数据包资讯数据
+        /// </summary>
+        public List<NewsModel> GetNewsData()
+        {
+            List<NewsModel> model = new List<NewsModel>();
+            var filePath = Path.Combine("DataFiles", DataFile.FileName);
+            Stream stream = new FileInfo(filePath).OpenRead();
+            var dataTable = FileHelper.ReadDataFromFile(stream, true, "资讯");
+            if (dataTable != null)
+            {
+                for (int i = 0; i < dataTable.Rows.Count; i++)
+                {
+                    NewsModel news = new NewsModel()
+                    {
+                        Id = int.Parse(dataTable.Rows[i][0].ToString()),
+                        NewsTitle = WebUtility.HtmlEncode(dataTable.Rows[i][1].ToString()),
+                        NewsImage = Path.Combine("RealTimeInfoImgs", dataTable.Rows[i][2].ToString()).Replace(".png", ".jpg") ,
+                        NewsContent = dataTable.Rows[i][3].ToString(),
+                        NewsReleaseDate = ToolFunc.DatetimeFormatter(Convert.ToDateTime(dataTable.Rows[i][6].ToString()))
+                    };
+                    var tagList = new List<string>();
+                    if (!string.IsNullOrEmpty(dataTable.Rows[i][10].ToString()))
+                    {
+                        tagList.Add(dataTable.Rows[i][10].ToString());
+                    }
+                    if (!string.IsNullOrEmpty(dataTable.Rows[i][11].ToString()))
+                    {
+                        tagList.Add(dataTable.Rows[i][11].ToString());
+                    }
+                    if (!string.IsNullOrEmpty(dataTable.Rows[i][12].ToString()))
+                    {
+                        tagList.Add(dataTable.Rows[i][12].ToString());
+                    }
+                    news.NewTags = tagList;
+                    model.Add(news);
+                }
+            }
 
             return model;
         }

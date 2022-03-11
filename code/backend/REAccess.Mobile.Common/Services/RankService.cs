@@ -171,18 +171,17 @@ namespace REAccess.Mobile.Common.Services
         /// </summary>
         public List<NewsModel> GetNewsList(int currentPage,int pageSize)
         {
-            DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
-            dtFormat.ShortDatePattern = "yyyy-MM-dd";
-            List<NewsModel> model = StaticCache.DdsNews.Select(x => new NewsModel()
-            {
-                Id = x.Id,
-                NewsTitle = x.Title.Contains("克拉玛依") ? x.Title.Replace("克拉玛依", WebUtility.HtmlEncode("<div>克拉玛依</div>")) : x.Title,
-                NewsContent = x.Content,
-                NewsImage = Path.Combine("RealTimeInfoImgs",x.Img).Replace(".png", ".jpg"),
-                //NewsImage = FileEncode.GetImageBytes($"{Directory.GetCurrentDirectory()}\\RealTimeInfoImgs\\{x.Img}"),
-                NewsReleaseDate = ToolFunc.DatetimeFormatter(x.ReleaseTime),
-                NewTags = x.Tags.Split(';').Where(x => x != "").ToList()
-            }).ToList();
+            //List<NewsModel> model = StaticCache.DdsNews.Select(x => new NewsModel()
+            //{
+            //    Id = x.Id,
+            //    NewsTitle = WebUtility.HtmlEncode(x.Title),
+            //    NewsContent = x.Content,
+            //    NewsImage = Path.Combine("RealTimeInfoImgs",x.Img).Replace(".png", ".jpg"),
+            //    //NewsImage = FileEncode.GetImageBytes($"{Directory.GetCurrentDirectory()}\\RealTimeInfoImgs\\{x.Img}"),
+            //    NewsReleaseDate = ToolFunc.DatetimeFormatter(x.ReleaseTime),
+            //    NewTags = x.Tags.Split(';').Where(x => x != "").ToList()
+            //}).ToList();
+            List<NewsModel> model = _utilService.GetNewsData();
             currentPage = currentPage == 0 ? 1 : currentPage;
             pageSize = pageSize == 0 ? 10 : pageSize;
 
@@ -196,8 +195,6 @@ namespace REAccess.Mobile.Common.Services
         public NewsModel GetNewsById(int newsId)
         {
             NewsModel model = new NewsModel();
-            DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
-            dtFormat.ShortDatePattern = "yyyy-MM-dd";
             var dbNews = StaticCache.DdsNews.FirstOrDefault(x => x.Id == newsId);
             if(dbNews != null)
             {
@@ -205,7 +202,7 @@ namespace REAccess.Mobile.Common.Services
                 model.NewsTitle = dbNews.Title;
                 model.NewsContent = dbNews.Content;
                 model.NewsImage = Path.Combine("RealTimeInfoImgs", dbNews.Img).Replace(".png",".jpg");
-                model.NewsReleaseDate = Convert.ToDateTime(dbNews.ReleaseTime, dtFormat).ToString("yyyy-MM-dd");
+                model.NewsReleaseDate = ToolFunc.DatetimeFormatter(dbNews.ReleaseTime);
                 model.NewTags = dbNews.Tags.Split(';').ToList();
             }
 
