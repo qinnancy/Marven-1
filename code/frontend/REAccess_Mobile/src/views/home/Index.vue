@@ -6,7 +6,7 @@
       <div class="news-card" v-for="item in newsList" :key="item.id" @click="toNewDetail(item)">
         <div class="news-img-box"><img :src="item.newsImage" class="news-img"/></div>
         <div class="news-content-box">
-            <div class="new-title">{{item.newsTitle}}
+            <div class="new-title" v-html="htmlDecode(item.newsTitle)">{{htmlDecode(item.newsTitle)}}
               <div class="news-date" >{{item.newsReleaseDate}}</div>
             </div>
             <!-- <div class="news-date" >{{item.newsReleaseDate}}</div> -->
@@ -112,6 +112,11 @@ export default {
         const height = titlelist[index].offsetHeight / 16
         return 'margin-left:' + height + 'rem'   
       })
+    },
+    htmlDecode(str){
+      const div = document.createElement('div');
+      div.innerHTML = str;
+      return div.innerText || div.innerHTML;
     }
   }
 }

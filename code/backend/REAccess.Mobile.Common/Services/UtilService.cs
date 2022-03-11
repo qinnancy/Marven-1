@@ -274,7 +274,7 @@ namespace REAccess.Mobile.Common.Services
                             CityName = dataTable.Rows[i][2].ToString(),
                             ProvinceName = dataTable.Rows[i][3].ToString(),
                             RankValue = dataTable.Rows[i][4].ToString(),
-                            Unit = dataTable.Rows[i][5].ToString(),
+                            Unit = dataTable.Rows[i][5].ToString() == "-" ? "" : dataTable.Rows[i][5].ToString(),
                         };
                         data.Add(rank);
                     }

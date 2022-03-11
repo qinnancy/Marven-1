@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Web;
 using static REAccess.Mobile.Common.Constants;
@@ -175,7 +176,7 @@ namespace REAccess.Mobile.Common.Services
             List<NewsModel> model = StaticCache.DdsNews.Select(x => new NewsModel()
             {
                 Id = x.Id,
-                NewsTitle = x.Title,
+                NewsTitle = x.Title.Contains("克拉玛依") ? x.Title.Replace("克拉玛依", WebUtility.HtmlEncode("<div>克拉玛依</div>")) : x.Title,
                 NewsContent = x.Content,
                 NewsImage = Path.Combine("RealTimeInfoImgs",x.Img).Replace(".png", ".jpg"),
                 //NewsImage = FileEncode.GetImageBytes($"{Directory.GetCurrentDirectory()}\\RealTimeInfoImgs\\{x.Img}"),

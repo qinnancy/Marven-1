@@ -297,7 +297,7 @@ namespace REAccess.Mobile.Common.Services
                 }
                 else
                 {
-                    industryProject = industryProject.Where(x => x.IndustryPrimaryClassKey == currentId).ToList();
+                    industryProject = industryProject.Where(x => x.IndustrySecondaryClassKey == currentId).ToList();
                     model.PrimaryName = industryTypeList.FirstOrDefault(x => x.Id.ToString() == currentId).IndustryName;
                 }
                 model.InvestProjectCount = industryProject.Count().ToString();
@@ -333,7 +333,7 @@ namespace REAccess.Mobile.Common.Services
                 }
                 else
                 {
-                    industryLand = industryLand.Where(x => x.BuyerIndustryPrimaryClassKey == currentId).ToList();
+                    industryLand = industryLand.Where(x => x.BuyerIndustrySecondaryClassKey == currentId).ToList();
                     model.PrimaryName = industryTypeList.FirstOrDefault(x => x.Id.ToString() == currentId).IndustryName;
                 }
                 model.InvestProjectCount = industryLand.Count().ToString("N0");
@@ -345,7 +345,7 @@ namespace REAccess.Mobile.Common.Services
                 {
                     ProjectName = x.BuyerName,
                     ProjectLocation = x.LandLocation == null ? IndustryRankUnit.NullVaule : x.LandLocation,
-                    ProjectIndustry = industryTypeList.FirstOrDefault(a => a.Id.ToString() == x.BuyerIndustryPrimaryClassKey).IndustryName,
+                    ProjectIndustry = industryTypeList.FirstOrDefault(a => a.Id.ToString() == x.BuyerIndustrySecondaryClassKey).IndustryName,
                     AreaCovered = x.LandTotalArea == null ? IndustryRankUnit.NullVaule : ((double)x.LandTotalArea).ToString("N0") + LandRankUnit.TransactionAreaUnit,
                     TransactionAmount = x.LandPrice == null ? IndustryRankUnit.NullVaule : ((double)x.LandPrice).ToString("N0") + LandRankUnit.TransactionAmountUnitOfTable,
                     TransferDate = x.LandClosingTime == null ? IndustryRankUnit.NullVaule : Convert.ToDateTime(x.LandClosingTime, dtFormat).ToString("yyyy-MM-dd")
