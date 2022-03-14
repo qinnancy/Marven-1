@@ -401,18 +401,20 @@ a {
 }
 .footer-detail{
     position: absolute;
-    margin-top: 9.5rem;
+    margin-top: 8.5rem;
     font-size: 0.75rem;
-    color: #fff;
+    color: #3b5b83;
     line-height: 1.2rem;
     text-align: center;
     width: 100%;
-    background: #afc7e8;
+    /* background-image: url(./assets/mini-banner.svg); */
+    /* background: #afc7e8; */
+    background-image: linear-gradient(90deg, rgba(47,128,216,0.00) 0%, rgba(47,128,216,0.32) 50%, rgba(47,128,216,0.00) 100%);
     height: 2rem;
     line-height: 2.2rem;
 }
 .detail-icon {
-  margin-left: 1rem;
+  margin-left: 0.5rem;
 }
 .intrduction{
   font-size: .75rem;
