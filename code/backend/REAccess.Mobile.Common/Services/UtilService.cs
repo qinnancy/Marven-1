@@ -53,6 +53,7 @@ namespace REAccess.Mobile.Common.Services
                     indexList.Add(dataTable.Rows[i][1].ToString());
                 }
             }
+            indexList = indexList.Where(x => x != "新增常住人口").ToList();
 
             return indexList;
         }
@@ -159,7 +160,7 @@ namespace REAccess.Mobile.Common.Services
                         CityName = dataTable.Rows[i][0].ToString() + "市",
                         RankPlace = int.Parse(dataTable.Rows[i][1].ToString().Split("#").Last()),
                         IndexName = dataTable.Rows[i][2].ToString(),
-                        IndexValue = dataTable.Rows[i][3].ToString(),
+                        IndexValue = ToolFunc.ThousandFormatter(dataTable.Rows[i][3].ToString()),
                         Unit = dataTable.Rows[i][4].ToString(),
                         Year = dataTable.Rows[i][5].ToString()
                     };
@@ -214,7 +215,7 @@ namespace REAccess.Mobile.Common.Services
                         RankPlace = int.Parse(dataTable.Rows[i][0].ToString().Split('#').Last()),
                         CityName = dataTable.Rows[i][1].ToString(),
                         ProvinceName = dataTable.Rows[i][2].ToString(),
-                        RankValue = dataTable.Rows[i][3].ToString(),
+                        RankValue = ToolFunc.ThousandFormatter(dataTable.Rows[i][3].ToString()),
                         Unit = dataTable.Rows[i][4].ToString()
                     };
                     regionData.Add(rank);
@@ -240,7 +241,7 @@ namespace REAccess.Mobile.Common.Services
                     {
                         RankPlace = int.Parse(dataTable.Rows[i][0].ToString().Split('#').Last()),
                         IndexName = dataTable.Rows[i][1].ToString(),
-                        IndexValue = dataTable.Rows[i][2].ToString(),
+                        IndexValue = ToolFunc.ThousandFormatter(dataTable.Rows[i][2].ToString()),
                         Unit = dataTable.Rows[i][3].ToString(),
                     };
                     data.Add(rank);
@@ -269,12 +270,13 @@ namespace REAccess.Mobile.Common.Services
                         model.IndexName = dataTable.Rows[i][0].ToString();
                         model.Unit = dataTable.Rows[i][5].ToString();
                         model.Year = dataTable.Rows[i][6].ToString();
+                        model.Formula = string.IsNullOrEmpty(dataTable.Rows[i][7].ToString()) ? "" : $"{selectIndex} = {dataTable.Rows[i][7]}" ;
                         RankModel rank = new RankModel()
                         {
                             RankPlace = int.Parse(dataTable.Rows[i][1].ToString().Split('#').Last()),
                             CityName = dataTable.Rows[i][2].ToString(),
                             ProvinceName = dataTable.Rows[i][3].ToString(),
-                            RankValue = dataTable.Rows[i][4].ToString(),
+                            RankValue = ToolFunc.ThousandFormatter(dataTable.Rows[i][4].ToString()),
                             Unit = dataTable.Rows[i][5].ToString() == "-" ? "" : dataTable.Rows[i][5].ToString(),
                         };
                         data.Add(rank);

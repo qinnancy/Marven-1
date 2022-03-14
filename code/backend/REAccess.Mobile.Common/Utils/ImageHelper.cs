@@ -31,7 +31,7 @@ namespace REAccess.Mobile.Common.Utils
                     Stream stream = new MemoryStream(bytes);
 
                     MagickImage image = new MagickImage(stream);
-                    image.Resize(new MagickGeometry(600, 300));
+                    //image.Resize(new MagickGeometry(600, 300));
                     image.Format = MagickFormat.Jpg;
                     image.Write($"{Directory.GetCurrentDirectory()}\\RealTimeInfoImgs\\{fileName}.jpg");
                 }
