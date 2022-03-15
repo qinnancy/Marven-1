@@ -45,6 +45,9 @@
     <None Update="DataFiles\mobile_data_20220304.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="DataFiles\mobile_data_20220307.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="RealTimeInfoImgs\178425824_lo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
