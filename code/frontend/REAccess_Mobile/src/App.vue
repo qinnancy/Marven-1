@@ -10,7 +10,7 @@
         <img src="@/assets/logo.svg" class="logo-img">
         <span class="title"> 丨 产城智链</span>
       </div>
-      <div class="header-policy" @click="returnPolicy()" v-else-if="routerName === 'PolicyDetail'">政策
+      <div class="header-policy" @click="returnPolicy()" v-else-if="routerName === 'PolicyDetail'">政策1
       </div>
        <div class="header-detail" @click="returnDetail(titleName,routerName)" v-else-if="routerName === 'ListDetail' || routerName === 'LandDetail'">
         <span class="title">{{titleName}}</span>
@@ -32,10 +32,11 @@
        <div class="bg-detail">解锁100+维度，洞察240+城市，追踪90+产业</div> -->
        <div class="footer-detail">
          <img src="@/assets/icon.svg"/>
-         <span>追踪丨250+城市，145+指标</span>
+         <span>追踪丨300+城市，150+指标</span>
          <img src="@/assets/icon.svg" class="detail-icon"/>
-         <span>洞察丨90+产业，400,000+企业</span>
+         <span>洞察丨100+产业，500,000+企业</span>
         </div>
+        <div class="footer-filter"></div>
     </div>
      <!-- <img class="bg-img" src="@/assets/background.png"/> -->
     <div id="nav" v-if="!showDetail">
@@ -403,18 +404,28 @@ a {
     position: absolute;
     margin-top: 8.5rem;
     font-size: 0.75rem;
-    color: #3b5b83;
+    color: #386091;
     line-height: 1.2rem;
     text-align: center;
     width: 100%;
     /* background-image: url(./assets/mini-banner.svg); */
     /* background: #afc7e8; */
-    background-image: linear-gradient(90deg, rgba(47,128,216,0.00) 0%, rgba(47,128,216,0.32) 50%, rgba(47,128,216,0.00) 100%);
+    background-image: linear-gradient(90deg, rgba(45, 137, 235, 0.00) 0%, rgba(45, 137, 235, 0.32) 50%, rgba(45, 137, 235, 0.00) 100%);
     height: 2rem;
     line-height: 2.2rem;
 }
 .detail-icon {
   margin-left: 0.5rem;
+}
+.footer-filter{
+    /* filter: blur(7px);
+    position: absolute;
+    margin-top: 10.3rem;
+    line-height: 1.2rem;
+    text-align: center;
+    width: 100%;
+    height: 1.2rem;
+    background: #e3e8f0; */
 }
 .intrduction{
   font-size: .75rem;

@@ -30,7 +30,7 @@
         <div class="closingDate">
           <div class="spanContent dateContent">{{detailData.closingDate}}</div>
           <img class="bottom-icon" src="@/assets/截止日期.svg"/>
-          <span class="spanTitle">截止日期</span>
+          <span class="spanTitle">有效期至</span>
         </div>
       </div>
     </div>

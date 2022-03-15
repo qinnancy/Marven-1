@@ -2,11 +2,13 @@
   <div class="city-detail">
    <div :class="chooseItem==='list'?'shift-tab active-tab':'shift-tab'" @click="shiftTag('list')">
      <img src="@/assets/上市.svg" class="tab-img"/><span>A股上市企业投资</span>
-     <div class="year-box" v-if="chooseItem==='list'">2021 <a class="el-icon-arrow-down"></a></div>
+     <div class="year-box" v-if="chooseItem==='list'">2021年</div>
    </div>
    <div :class="chooseItem==='land'?'shift-tab active-tab':'shift-tab'"  @click="shiftTag('land')">
      <img src="@/assets/产业用地.svg" class="tab-img"/><span>产业用地获取</span>      
-     <div class="year-box" v-if="chooseItem==='land'">2021年 <a class="el-icon-arrow-down"></a></div>   
+     <div class="year-box" v-if="chooseItem==='land'">2021年 
+       <!-- <a class="el-icon-arrow-down"></a> -->
+       </div>   
    </div>
      <invest-filter-index :title="chooseOption" :filterList="options" @searchData="searchData"></invest-filter-index>
      <invest-data :filterList="filterList" :searchName="chooseOption" :tabName="chooseItem"></invest-data>

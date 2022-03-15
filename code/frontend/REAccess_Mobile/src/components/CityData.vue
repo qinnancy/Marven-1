@@ -10,7 +10,7 @@
           <!-- <div v-for="(imgObj,i) in imgList" :key="String(i)"/><img :src="imgObj.url"/></div> -->
           {{item.indexName}}
         </div>
-        <div class="value-item" style="line-height:1rem;margin-top:1.5rem;overflow:auto">{{item.indexValue}} {{item.unit}}</div>
+        <div class="value-item" style="line-height:1rem;margin-top:1.5rem;overflow:auto;padding-right:3%;width:27%">{{item.indexValue}} {{item.unit}}</div>
         <div class="line-item num-order" v-if="item.rankPlace===1">
             <img src="@/assets/1.svg" class="order-img"/>
         </div>
