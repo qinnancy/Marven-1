@@ -3,7 +3,7 @@
     <div class="header-box">
       <div class="header-left">
         <!-- <img src="http://reaapi.ftechsoftware.com/RealTimeInfoImgs/logo.png" style="display:none"/> -->
-        <img src="@/assets/prev.svg" class="prev-img" @click="goBack()" v-if="!isShowHome">
+        <img src="@/assets/prev.svg" class="prev-img" @click="goBack(titleName,routerName)" v-if="!isShowHome">
       </div>
       <div class="header-content" @click="returnHome()" 
         v-if="routerName !== 'PolicyDetail' && routerName !== 'ListDetail' && routerName !== 'LandDetail'">
@@ -76,6 +76,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import NewsCard from "./views/home/Index.vue"
 import api from "@/request/api";
 export default {
@@ -88,6 +89,7 @@ export default {
     }
   },
   computed:{
+    ...mapState('common/common', ['routerName', 'searchName','filterName']),
     isShowHome(){
       const name = this.$route.name
       if (name !== 'Home' || !name) {
@@ -109,8 +111,10 @@ export default {
       return this.$route.name
     },
     titleName(){
-      const searchName = this.$route.query.searchName.replace("看","")
-      return searchName
+      if (this.$route.query.searchName) {
+        const searchName = this.$route.query.searchName.replace("看","")
+        return searchName
+      }
     }
   },
   watch: {
@@ -173,8 +177,10 @@ export default {
       }
       return routerName
     },
-    goBack(){
+    goBack(titleName,routerName){
       this.$router.go(-1)
+      this.$store.commit('common/common/setRouterName', routerName)
+      this.$store.commit('common/common/setSearchName', titleName)
     },
     returnHome(){
       this.$router.push("/")
@@ -184,11 +190,14 @@ export default {
     },
     returnDetail(titleName,routerName){
       this.$router.push(`/IndustrialInvest`)
-      window.localStorage.setItem('searchName', titleName)
-      window.localStorage.setItem('routerName', routerName)
+      this.$store.commit('common/common/setRouterName', routerName)
+      this.$store.commit('common/common/setSearchName', titleName)
+      // window.localStorage.setItem('searchName', titleName)
+      // window.localStorage.setItem('routerName', routerName)
     },
     goToPolice(){
-      window.localStorage.setItem('filterName', '')
+      this.$store.commit('common/common/setFilterName', '')
+      // window.localStorage.setItem('filterName', '')
     }
   }
 }

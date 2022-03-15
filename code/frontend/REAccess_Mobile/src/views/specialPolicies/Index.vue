@@ -1,6 +1,6 @@
 <template>
   <div class="city-detail">
-   <filter-index title="产业类别" :filterList="filterList" @searchData="searchData" :filterName="filterName"></filter-index>
+   <filter-index title="产业类别" :filterList="filterList" @searchData="searchData" :filterName="filterPageName"></filter-index>
    <industrial-policy title="产业类别" :searchName="searchName" :rankingData="rankingData"></industrial-policy>
    <div class="footer">
       <div class="footer-img">
@@ -23,6 +23,7 @@
 
 <script>
 import api from "@/request/api";
+import { mapState} from 'vuex'
 import FilterIndex from "../../components/FilterIndex.vue";
 import IndustrialPolicy from '../../components/IndustrialPolicy.vue';
 export default {
@@ -31,22 +32,27 @@ export default {
     FilterIndex,
     IndustrialPolicy
   },
+  computed: {
+    ...mapState('common/common', ['filterName']),
+  },
   data(){
     return{
       searchName:"",
-      filterName:"",
+      filterPageName:"",
       filterList:[],
       dataList:[],
       rankingData:{}
     }
   },
   created(){
-   this.filterName = window.localStorage.getItem('filterName')
+  //  this.filterName = window.localStorage.getItem('filterName')
+   this.filterPageName = this.filterName
    this.getIndexList()
   },
   methods:{
    searchData(cityName){
-    window.localStorage.setItem('filterName', cityName)
+    // window.localStorage.setItem('filterName', cityName)
+    this.$store.commit('common/common/setFilterName', cityName)
     this.searchName = cityName
     const industryId = this.dataList.filter((item)=>
     item.policyName === cityName)[0].policyId
@@ -64,8 +70,8 @@ export default {
         this.dataList.map((item)=>{
           this.filterList.push(item.policyName)
         })
-        if(this.filterName){
-          this.searchData(this.filterName)
+        if(this.filterPageName){
+          this.searchData(this.filterPageName)
         }else{
           this.searchData(this.filterList[0])
         }

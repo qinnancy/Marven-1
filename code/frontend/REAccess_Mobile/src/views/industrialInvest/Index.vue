@@ -30,6 +30,7 @@
 
 <script>
 import api from "@/request/api";
+import { mapState } from 'vuex'
 import InvestFilterIndex from "../../components/InvestFilterIndex.vue";
 import InvestData from "../../components/InvestData.vue";
 export default {
@@ -37,6 +38,9 @@ export default {
   components:{
     InvestFilterIndex,
     InvestData
+  },
+  computed: {
+    ...mapState('common/common', ['searchName','routerName']),
   },
   data(){
     return{
@@ -47,8 +51,10 @@ export default {
     }
   },
   created(){
-    const searchName = window.localStorage.getItem('searchName')
-    const routerName = window.localStorage.getItem('routerName')
+    // const searchName = window.localStorage.getItem('searchName')
+    // const routerName = window.localStorage.getItem('routerName')
+    const searchName = this.searchName
+    const routerName = this.routerName
     if(routerName === 'LandDetail'){
         this.chooseItem = 'land'
     }
@@ -56,8 +62,10 @@ export default {
         this.chooseOption = '所属产业'
     }
     this.getInvestList()
-    window.localStorage.setItem('searchName', '')
-    window.localStorage.setItem('routerName', '')
+    this.$store.commit('common/common/setSearchName', '')
+    this.$store.commit('common/common/setRouterName', '')
+    // window.localStorage.setItem('searchName', '')
+    // window.localStorage.setItem('routerName', '')
   },
   methods:{
     shiftTag(value){

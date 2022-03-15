@@ -3,7 +3,7 @@
     <div class="detail">
       <div class="detailTitle">
         <img class="titleIcon" src="@/assets/书签.svg"/>
-        <div class="fileName">{{fileName}}</div>
+        <div class="fileName">{{filePageName}}</div>
       </div>
       <!-- <div class="hrStyle"></div> -->
       <div class="line-box">
@@ -54,16 +54,21 @@
 
 <script>
 import api from "@/request/api";
+import { mapState } from 'vuex'
 export default {
   name: 'PolicyDetail',
   data () {
     return {
       detailData: {},
-      fileName: '',
+      filePageName: '',
     }
   }, 
+  computed: {
+    ...mapState('common/common', ['fileName']),
+  },
   created() {
-    this.fileName = window.localStorage.getItem('fileName')
+    this.filePageName = this.fileName
+    // this.fileName = window.localStorage.getItem('fileName')
     const policyId = this.$route.query.policyId
     this.getIndexList(policyId)
   },

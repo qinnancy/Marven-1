@@ -41,7 +41,8 @@ export default {
   methods:{
     policyDetail(policyId, fileName) {
       this.$router.push({path: `/PolicyDetail?policyId=${policyId}`})
-      window.localStorage.setItem('fileName', fileName)
+      // window.localStorage.setItem('fileName', fileName)
+      this.$store.commit('common/common/setFileName', fileName)
     }
   }
 }
