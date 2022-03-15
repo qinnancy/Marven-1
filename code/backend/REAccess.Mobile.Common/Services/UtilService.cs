@@ -161,7 +161,7 @@ namespace REAccess.Mobile.Common.Services
                         RankPlace = int.Parse(dataTable.Rows[i][1].ToString().Split("#").Last()),
                         IndexName = dataTable.Rows[i][2].ToString(),
                         IndexValue = ToolFunc.ThousandFormatter(dataTable.Rows[i][3].ToString()),
-                        Unit = dataTable.Rows[i][4].ToString(),
+                        Unit = dataTable.Rows[i][4].ToString() == "-" ? "" : dataTable.Rows[i][4].ToString(),
                         Year = dataTable.Rows[i][5].ToString()
                     };
                     cityRankList.Add(cityRank);
