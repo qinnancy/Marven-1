@@ -10,7 +10,7 @@
         <img src="@/assets/logo.svg" class="logo-img">
         <span class="title"> 丨 产城智链</span>
       </div>
-      <div class="header-policy" @click="returnPolicy()" v-else-if="routerName === 'PolicyDetail'">政策1
+      <div class="header-policy" @click="returnPolicy()" v-else-if="routerName === 'PolicyDetail'">政策
       </div>
        <div class="header-detail" @click="returnDetail(titleName,routerName)" v-else-if="routerName === 'ListDetail' || routerName === 'LandDetail'">
         <span class="title">{{titleName}}</span>
@@ -89,6 +89,13 @@ export default {
     return{
     }
   },
+  mounted() {
+    let that = this;
+    // 添加返回事件监听
+    window.addEventListener("popstate", function(e) {
+      that.returnDetail(that.titleName,that.routerName)
+    }, false);
+  },
   computed:{
     ...mapState('common/common', ['routerName', 'searchName','filterName']),
     isShowHome(){
@@ -100,7 +107,7 @@ export default {
       }
     },
     showDetail(){
-       const name = this.$route.name
+      const name = this.$route.name
       if(name === 'Detail' || name === 'Contact' || name === 'Agreement' || name === 'PrivacyPolicy' 
       || name === 'ListDetail' || name === 'LandDetail' || name === 'PolicyDetail'){
         return true
@@ -190,9 +197,11 @@ export default {
       this.$router.push("/SpecialPolicies")
     },
     returnDetail(titleName,routerName){
-      this.$router.push(`/IndustrialInvest`)
-      this.$store.commit('common/common/setRouterName', routerName)
-      this.$store.commit('common/common/setSearchName', titleName)
+      if(titleName){
+        this.$router.push(`/IndustrialInvest`)
+        this.$store.commit('common/common/setRouterName', routerName)
+        this.$store.commit('common/common/setSearchName', titleName)
+      }
       // window.localStorage.setItem('searchName', titleName)
       // window.localStorage.setItem('routerName', routerName)
     },

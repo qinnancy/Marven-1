@@ -50,7 +50,7 @@ export default {
   data(){
     return{
       newsList:[],
-      currentPage: 2,
+      currentPage: 1,
       pageSize: 5,
       loading:false,
       loadingContent:null,
@@ -197,7 +197,7 @@ export default {
 .news-buttom-box{
   padding-left: 0.5rem;
   position: absolute;
-  margin-bottom: -0.1rem;
+  margin-top: 0.1rem;
   bottom: 0;
   /* margin-top: 0.4rem; */
   /* position: absolute; */
