@@ -13,11 +13,11 @@
             <!-- <div class="news-content">{{item.newsContent}}</div> -->
             <div class="news-buttom-box">
               <span class="news-tag-title">产城智链：</span>
-              <div class="new-tag-box">
+              <!-- <div class="new-tag-box"> -->
                 <div class="news-tag-box" v-for="(itag,itagNum) in filterArray(item.newTags)" :key="itagNum">
                     <div class="new-tag">{{itag}}</div>
                 </div>
-              </div>
+              <!-- </div> -->
             </div>
         </div>
       </div>
@@ -133,8 +133,9 @@ export default {
   background: #FFFFFF;
   box-shadow: 0 1px 20px 1px rgba(0,0,0,0.06);
   margin-bottom: 0.8rem;
-  height: 5.5rem;
-  padding: 1rem;
+  height: 5.2rem;
+  /* width: 100%; */
+  padding: 0.8rem;
 }
 .news-card::after{
     content:"";
@@ -145,28 +146,32 @@ export default {
     overflow: hidden;
 }
 .news-img-box{
-  width: 33%;
+  /* width: 33%; */
   vertical-align: middle;
   height: 100%;
   float: left;
 }
 .news-img{
-  width: 100%;
-  height: 100%;
+  width: 7.5rem;
+  height: 5.2rem;
   line-height: 6.25rem;
   border-radius: .125rem;
 }
 .news-content-box{
   float: left;
-  width: 67%;
+  width: 62%;
   text-align: left;
+  height: 5.2rem;
+  position: absolute;
+  margin-left: 7.5rem;
+  padding-right: 0.5rem;
 }
 .new-title{
   font-size: .875rem;
   color: #333333;
   width: 100%;
   padding-left: 0.5rem;
-  /* margin-top: 0.2rem; */
+  margin-top: -0.1rem;
   font-weight: bold;
   line-height: 1.4rem;
 }
@@ -191,7 +196,12 @@ export default {
 }
 .news-buttom-box{
   padding-left: 0.5rem;
-  margin-top: 0.4rem;
+  position: absolute;
+  margin-top: 0.1rem;
+  bottom: 0;
+  /* margin-top: 0.4rem; */
+  /* position: absolute; */
+  /* margin-bottom: 2rem; */
   /* width: 80%; */
   /* height: 1.25rem; */
   /* overflow: hidden; */
@@ -200,11 +210,11 @@ export default {
   text-overflow: ellipsis; */
 }
 .new-tag-box{
-  width: 100%;
+  /* width: 100%; */
   /* overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis; */
-  /* float: left; */
+  float: left;
 }
 .news-buttom-box::after{
     content:"";
@@ -220,7 +230,7 @@ export default {
   float: left;
   padding: 0 .25rem 0 .25rem;
   margin-right: .25rem;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.1rem;
   /* overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis; */

@@ -1,8 +1,8 @@
 <template>
   <div class="filter-data">
       <div class="filter-title"><img src="@/assets/政策.svg" class="logo-box"/>
-        <div class="search-title">{{searchName}}产业政策</div>
-        <div class="unit-box">共{{rankingData.industrialPolicyCount}}条</div>
+        <div class="search-title">{{searchName}}</div>
+        <div class="unit-box">共{{rankingData.industrialPolicyCount}}份</div>
       </div>
       <div v-for="(item,index) in rankingData.industrialPolicis" :key="String(index)" class="line-box" @click="policyDetail(item.policyId, item.fileName)">
         <div class="file">
@@ -41,7 +41,8 @@ export default {
   methods:{
     policyDetail(policyId, fileName) {
       this.$router.push({path: `/PolicyDetail?policyId=${policyId}`})
-      window.localStorage.setItem('fileName', fileName)
+      // window.localStorage.setItem('fileName', fileName)
+      this.$store.commit('common/common/setFileName', fileName)
     }
   }
 }
