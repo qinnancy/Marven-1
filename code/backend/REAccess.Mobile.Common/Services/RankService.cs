@@ -202,7 +202,8 @@ namespace REAccess.Mobile.Common.Services
                 model.NewsTitle = dbNews.Title;
                 model.NewsContent = dbNews.Content;
                 model.NewsImage = Path.Combine("RealTimeInfoImgs", dbNews.Img).Replace(".png",".jpg");
-                model.NewsReleaseDate = ToolFunc.DatetimeFormatter(dbNews.ReleaseTime);
+                //model.NewsReleaseDate = ToolFunc.DatetimeFormatter(dbNews.ReleaseTime);
+                model.NewsReleaseDate = "2022-03-21";
                 model.NewTags = dbNews.Tags.Split(';').ToList();
             }
 
