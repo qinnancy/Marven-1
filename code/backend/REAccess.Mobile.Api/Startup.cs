@@ -72,8 +72,7 @@ namespace REAccess.Mobile.Api
                     Description = "框架说明文档",
                     Contact = new OpenApiContact
                     {
-                        Name = "John Jiang",
-                        Email = "1033596188@qq.com",
+                        Name = "Eric xue",
                     }
                 });
                 var basePath = Path.GetDirectoryName(typeof(Program).Assembly.Location);//获取应用程序所在目录

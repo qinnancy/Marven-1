@@ -28,9 +28,9 @@ namespace REAccess.Mobile.Api.Controllers
         }
 
         /// <summary>
-        /// 获取所有三级指标
+        /// 获取所有 三级指标 
         /// </summary>
-        [HttpGet("GetAllIndex")]
+        [HttpGet("GetAllIndex")] 
         public JsonResult GetAllIndex()
         {
             try

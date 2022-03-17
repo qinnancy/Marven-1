@@ -103,7 +103,7 @@
         </member>
         <member name="M:REAccess.Mobile.Api.Controllers.UtilController.GetAllIndex">
             <summary>
-            获取所有三级指标
+            获取所有 三级指标 
             </summary>
         </member>
         <member name="M:REAccess.Mobile.Api.Controllers.UtilController.GetMobileAllIndex">
