@@ -10,7 +10,7 @@
        <!-- <a class="el-icon-arrow-down"></a> -->
        </div>   
    </div>
-     <invest-filter-index :title="chooseOption" :filterList="options" @searchData="searchData"></invest-filter-index>
+     <invest-filter-index ref="investFilterIndex" :title="chooseOption" :filterList="options" @searchData="searchData"></invest-filter-index>
      <invest-data :filterList="filterList" :searchName="chooseOption" :tabName="chooseItem"></invest-data>
      <div class="footer">
         <div class="footer-img">
@@ -60,9 +60,6 @@ export default {
     if(routerName === 'LandDetail'){
         this.chooseItem = 'land'
     }
-    if(searchName === '所属产业'){
-        this.chooseOption = '所属产业'
-    }
     this.getInvestList()
     this.$store.commit('common/common/setSearchName', '')
     this.$store.commit('common/common/setRouterName', '')
@@ -73,6 +70,7 @@ export default {
     shiftTag(value){
       this.chooseItem = value
       this.getInvestList()
+      this.$refs.investFilterIndex.chooseIndex('所在区域')
     },
     searchData(value){
       this.chooseOption = value

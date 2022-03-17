@@ -30,13 +30,13 @@
        <!-- <div class="bg-title">产城智链</div>
        <div class="bg-tag">发现你的城市</div>
        <div class="bg-detail">解锁100+维度，洞察240+城市，追踪90+产业</div> -->
-       <div class="footer-detail">
+       <!-- <div class="footer-detail">
          <img src="@/assets/icon.svg"/>
          <span>追踪丨300+城市，150+指标</span>
          <img src="@/assets/icon.svg" class="detail-icon"/>
          <span>洞察丨100+产业，500,000+企业</span>
         </div>
-        <div class="footer-filter"></div>
+        <div class="footer-filter"></div> -->
     </div>
      <!-- <img class="bg-img" src="@/assets/background.png"/> -->
     <div id="nav" v-if="!showDetail">
@@ -313,7 +313,7 @@ body {
 .bg-box{
   width: 100%;
   height: 11.5rem;
-  background: url("./assets/banner底部.svg") no-repeat;
+  background: url("./assets/banner.jpg") no-repeat;
   /* background-size:100.5% 104%;  */
   background-size:100%;
   text-align: center;
