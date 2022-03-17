@@ -43,28 +43,28 @@
       <el-row>
         <el-col :span="6">
           <router-link to="/SingleIndex">
-            <img src="@/assets/单项指标-选中.svg" v-if="routerName=='SingleIndex'" class="img-size"/>
+            <img src="@/assets/单项指标-选中.svg" v-if="routerName=='SingleIndex' || routerName=='Home'" class="img-size"/>
             <img src="@/assets/单项指标-未选中.svg" v-else class="img-size"/>
             <div :class="routerName=='SingleIndex'?'menu-title active-menu':'menu-title'">单项指标</div>
           </router-link> 
         </el-col>
         <el-col :span="6">
            <router-link to="/CityRanking">
-              <img src="@/assets/城市排名-选中.svg" v-if="routerName=='CityRanking'" class="img-size"/>
+              <img src="@/assets/城市排名-选中.svg" v-if="routerName=='CityRanking' || routerName=='Home'" class="img-size"/>
               <img src="@/assets/城市排名-未选中.svg" v-else class="img-size"/>
               <div :class="routerName=='CityRanking'?'menu-title active-menu':'menu-title'">城市排名</div>
            </router-link> 
         </el-col>
         <el-col :span="6">
            <router-link to="/IndustrialInvest">
-              <img src="@/assets/产业投资-选中.svg" v-if="routerName=='IndustrialInvest'" class="img-size"/>
+              <img src="@/assets/产业投资-选中.svg" v-if="routerName=='IndustrialInvest' || routerName=='Home'" class="img-size"/>
               <img src="@/assets/产业投资-未选中.svg" v-else class="img-size"/>
               <div :class="routerName=='IndustrialInvest'?'menu-title active-menu':'menu-title'">产业投资</div>
           </router-link> 
         </el-col>
         <el-col :span="6">
             <router-link to="/SpecialPolicies">
-                <img src="@/assets/政策 选中.svg" v-if="routerName=='SpecialPolicies'" class="img-size" @click="goToPolice()"/>
+                <img src="@/assets/政策 选中.svg" v-if="routerName=='SpecialPolicies' || routerName=='Home'" class="img-size" @click="goToPolice()"/>
                 <img src="@/assets/专项政策未选中.svg" v-else class="img-size" @click="goToPolice()"/>
                 <div :class="routerName=='SpecialPolicies'?'menu-title active-menu':'menu-title'" @click="goToPolice()">专项政策</div>
             </router-link> 
