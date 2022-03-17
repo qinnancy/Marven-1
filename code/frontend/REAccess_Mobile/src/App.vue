@@ -3,7 +3,7 @@
     <div class="header-box">
       <div class="header-left">
         <!-- <img src="http://reaapi.ftechsoftware.com/RealTimeInfoImgs/logo.png" style="display:none"/> -->
-        <img src="@/assets/prev.svg" class="prev-img" @click="goBack()" v-if="!isShowHome">
+        <img src="@/assets/prev.svg" class="prev-img" @click="goBack(titleName,routerName)" v-if="!isShowHome">
       </div>
       <div class="header-content" @click="returnHome()" 
         v-if="routerName !== 'PolicyDetail' && routerName !== 'ListDetail' && routerName !== 'LandDetail'">
@@ -32,10 +32,11 @@
        <div class="bg-detail">解锁100+维度，洞察240+城市，追踪90+产业</div> -->
        <div class="footer-detail">
          <img src="@/assets/icon.svg"/>
-         <span>追踪丨250+城市，145+指标</span>
+         <span>追踪丨300+城市，150+指标</span>
          <img src="@/assets/icon.svg" class="detail-icon"/>
-         <span>洞察丨90+产业，400,000+企业</span>
+         <span>洞察丨100+产业，500,000+企业</span>
         </div>
+        <div class="footer-filter"></div>
     </div>
      <!-- <img class="bg-img" src="@/assets/background.png"/> -->
     <div id="nav" v-if="!showDetail">
@@ -76,6 +77,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import NewsCard from "./views/home/Index.vue"
 import api from "@/request/api";
 export default {
@@ -87,7 +89,15 @@ export default {
     return{
     }
   },
+  mounted() {
+    let that = this;
+    // 添加返回事件监听
+    window.addEventListener("popstate", function(e) {
+      that.returnDetail(that.titleName,that.routerName)
+    }, false);
+  },
   computed:{
+    ...mapState('common/common', ['routerName', 'searchName','filterName']),
     isShowHome(){
       const name = this.$route.name
       if (name !== 'Home' || !name) {
@@ -97,7 +107,7 @@ export default {
       }
     },
     showDetail(){
-       const name = this.$route.name
+      const name = this.$route.name
       if(name === 'Detail' || name === 'Contact' || name === 'Agreement' || name === 'PrivacyPolicy' 
       || name === 'ListDetail' || name === 'LandDetail' || name === 'PolicyDetail'){
         return true
@@ -109,8 +119,10 @@ export default {
       return this.$route.name
     },
     titleName(){
-      const searchName = this.$route.query.searchName.replace("看","")
-      return searchName
+      if (this.$route.query.searchName) {
+        const searchName = this.$route.query.searchName.replace("看","")
+        return searchName
+      }
     }
   },
   watch: {
@@ -173,8 +185,10 @@ export default {
       }
       return routerName
     },
-    goBack(){
+    goBack(titleName,routerName){
       this.$router.go(-1)
+      this.$store.commit('common/common/setRouterName', routerName)
+      this.$store.commit('common/common/setSearchName', titleName)
     },
     returnHome(){
       this.$router.push("/")
@@ -183,12 +197,17 @@ export default {
       this.$router.push("/SpecialPolicies")
     },
     returnDetail(titleName,routerName){
-      this.$router.push(`/IndustrialInvest`)
-      window.localStorage.setItem('searchName', titleName)
-      window.localStorage.setItem('routerName', routerName)
+      if(titleName){
+        this.$router.push(`/IndustrialInvest`)
+        this.$store.commit('common/common/setRouterName', routerName)
+        this.$store.commit('common/common/setSearchName', titleName)
+      }
+      // window.localStorage.setItem('searchName', titleName)
+      // window.localStorage.setItem('routerName', routerName)
     },
     goToPolice(){
-      window.localStorage.setItem('filterName', '')
+      this.$store.commit('common/common/setFilterName', '')
+      // window.localStorage.setItem('filterName', '')
     }
   }
 }
@@ -401,18 +420,30 @@ a {
 }
 .footer-detail{
     position: absolute;
-    margin-top: 9.5rem;
+    margin-top: 8.5rem;
     font-size: 0.75rem;
-    color: #fff;
+    color: #386091;
     line-height: 1.2rem;
     text-align: center;
     width: 100%;
-    background: #afc7e8;
+    /* background-image: url(./assets/mini-banner.svg); */
+    /* background: #afc7e8; */
+    background-image: linear-gradient(90deg, rgba(45, 137, 235, 0.00) 0%, rgba(45, 137, 235, 0.32) 50%, rgba(45, 137, 235, 0.00) 100%);
     height: 2rem;
     line-height: 2.2rem;
 }
 .detail-icon {
-  margin-left: 1rem;
+  margin-left: 0.5rem;
+}
+.footer-filter{
+    /* filter: blur(7px);
+    position: absolute;
+    margin-top: 10.3rem;
+    line-height: 1.2rem;
+    text-align: center;
+    width: 100%;
+    height: 1.2rem;
+    background: #e3e8f0; */
 }
 .intrduction{
   font-size: .75rem;
