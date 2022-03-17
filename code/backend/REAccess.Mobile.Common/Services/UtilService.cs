@@ -243,7 +243,7 @@ namespace REAccess.Mobile.Common.Services
                             IssuingAgency = dataTable.Rows[i][5].ToString(),
                             SupportAreas = dataTable.Rows[i][6].ToString(),
                             ReleaseDate = ToolFunc.DatetimeFormatter(Convert.ToDateTime(dataTable.Rows[i][7].ToString())),
-                            ClosingDate = ToolFunc.DatetimeFormatter(Convert.ToDateTime(dataTable.Rows[i][8].ToString()))
+                            ClosingDate = dataTable.Rows[i][8].ToString() == "未公布" ? "未公布" : ToolFunc.DatetimeFormatter(Convert.ToDateTime(dataTable.Rows[i][8].ToString()))
                         };
                     }
                 }
