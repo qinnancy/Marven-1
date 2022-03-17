@@ -37,6 +37,7 @@ namespace REAccess.Mobile.Common.ViewModel
     {
         public int PolicyId { get; set; }
         public string PolicyName { get; set; }
+        public string PolicyCount { get; set; }
     }
     public class IndustrialPolicy
     {

@@ -49,6 +49,30 @@ namespace REAccess.Mobile.Common.Utils
 
             return result;
         }
+        public static string ThousandFormatter(string matterValue, int place)
+        {
+            string result = string.Empty;
+            if (!string.IsNullOrEmpty(matterValue))
+            {
+                switch (place)
+                {
+                    case 0:
+                        result = float.Parse(matterValue).ToString("N0");
+                        break;
+                    case 1:
+                        result = float.Parse(matterValue).ToString("N1");
+                        break;
+                    case 2:
+                        result = float.Parse(matterValue).ToString("N2");
+                        break ;
+                    default:
+                        result = matterValue;
+                        break;
+                }
+            }
+
+            return result;
+        }
 
     }
 }

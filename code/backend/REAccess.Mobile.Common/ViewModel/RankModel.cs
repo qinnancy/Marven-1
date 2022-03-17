@@ -22,6 +22,8 @@ namespace REAccess.Mobile.Common.ViewModel
         public string ProvinceName { get; set; }
         public string RankValue { get; set; }
         public string Unit { get; set; }
+        public string RankAmount { get; set; }
+        public string RankAmountUnit { get; set; }
     }
     public class CityRankModel
     {
@@ -37,5 +39,7 @@ namespace REAccess.Mobile.Common.ViewModel
         public string Unit { get; set; }
         public string Year { get; set; }
         public string CityName { get; set; }
+        public string IndexAmount { get; set; }
+        public string IndexAmountUnit { get; set; }
     }
 }

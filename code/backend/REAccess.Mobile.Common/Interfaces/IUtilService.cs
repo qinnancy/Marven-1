@@ -47,6 +47,10 @@ namespace REAccess.Mobile.Common.Interfaces
         /// </summary>
         public List<IndustrialPolicy> GetPolicyData();
         /// <summary>
+        /// 读取excel数据包政策数据
+        /// </summary>
+        public PolicyDetail GetPolicyData(string policyName);
+        /// <summary>
         /// 读取excel数据包产业用地数据
         /// </summary>
         public List<CityRank> GetLandHotIndustryData();
@@ -58,5 +62,34 @@ namespace REAccess.Mobile.Common.Interfaces
         /// 读取excel数据包资讯数据
         /// </summary>
         public List<NewsModel> GetNewsData();
+        /// <summary>
+        /// 读取excel数据包产业投资-区域数据
+        /// </summary>
+        public List<RankModel> GetActiveAreaData();
+        /// <summary>
+        /// 产业投资-区域-下沉页数据
+        /// </summary>
+        public List<ProjectDetail> GetCityInvestProjectData(string cityName);
+        /// <summary>
+        /// 产业投资-行业-下沉页数据
+        /// </summary>
+        public List<ProjectDetail> GetIndustryInvestProjectData(string industryName);
+        /// <summary>
+        /// 读取excel数据包产业投资-热点产业数据
+        /// </summary>
+        public List<CityRank> GetHotIndustryData();
+        /// <summary>
+        /// 读取excel数据包产业拿地-活跃区域数据
+        /// </summary>
+        /// <returns></returns>
+        public List<RankModel> GetIndusrtyActiveRegionData();
+        /// <summary>
+        /// 产业用地-活跃区域-下沉页数据
+        /// </summary>
+        public List<ProjectDetail> GetCityIndustryProjectData(string cityName);
+        /// <summary>
+        /// 产业用地-热点产业-下沉页数据
+        /// </summary>
+        public List<ProjectDetail> GetIndustryProjectData(string industryName);
     }
 }

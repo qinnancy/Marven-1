@@ -47,6 +47,7 @@ namespace REAccess.Mobile.Common
             public const string ByLandSize = "亩";
             public const string Growth = "%";
             public const string Year = "年";
+            public const string AmountUnit = "万元";
         }
         public static class LandRankUnit
         {
