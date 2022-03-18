@@ -1,6 +1,6 @@
 <template>
   <div >
-    <div class="detail">
+    <div class="detail" style="height:100%;overflow:auto;margin-bottom:110px">
       <div class="detailTitle">
         <img class="titleIcon" src="@/assets/书签.svg"/>
         <div class="fileName">{{filePageName}}</div>
@@ -178,6 +178,7 @@ export default {
  width: 100%;
  position: fixed;
  bottom: 0;
+ background: #f7f8fc;
 }
 .footer-img >>> img{
   /* width: 94%; */
