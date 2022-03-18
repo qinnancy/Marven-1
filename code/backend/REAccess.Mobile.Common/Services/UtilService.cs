@@ -557,7 +557,7 @@ namespace REAccess.Mobile.Common.Services
                         ProjectDetail project = new ProjectDetail()
                         {
                             ProjectLocation = $"{dataTable.Rows[i][1]}{dataTable.Rows[i][2]}",
-                            AreaCovered = ToolFunc.ThousandFormatter(dataTable.Rows[i][3].ToString(), 0),
+                            AreaCovered = ToolFunc.ThousandFormatter(dataTable.Rows[i][3].ToString(), 0) + "㎡",
                             ProjectName = dataTable.Rows[i][6].ToString(),
                             TransactionAmount = ToolFunc.ThousandFormatter(dataTable.Rows[i][7].ToString(),0) + IndustryRankUnit.AmountUnit,
                             ProjectIndustry = dataTable.Rows[i][10].ToString(),
@@ -588,7 +588,7 @@ namespace REAccess.Mobile.Common.Services
                         ProjectDetail project = new ProjectDetail()
                         {
                             ProjectLocation = $"{dataTable.Rows[i][1]}{dataTable.Rows[i][2]}",
-                            AreaCovered = ToolFunc.ThousandFormatter(dataTable.Rows[i][3].ToString(), 0),
+                            AreaCovered = ToolFunc.ThousandFormatter(dataTable.Rows[i][3].ToString(), 0) + "㎡",
                             ProjectName = dataTable.Rows[i][6].ToString(),
                             ProjectIndustry = industryName,
                             TransactionAmount = ToolFunc.ThousandFormatter(dataTable.Rows[i][7].ToString(), 0) + IndustryRankUnit.AmountUnit,
