@@ -9,11 +9,11 @@
           <div class="footer-img-bg">
              <div class="footer-line-box">
               <img src="@/assets/解锁.svg" class="footer-icon-size"/>
-              <span class="footer-img-font">解锁更多产业政策</span>
+              <span class="footer-img-font">解锁更多产业政策详情</span>
              </div>
              <div class="footer-line-box1">
                <img src="@/assets/登录.svg" class="footer-icon-size"/>
-               <span class="footer-img-font2">请登录PC端 (rea.deloitte.com.cn)</span>
+               <span class="footer-img-font2">请登录PC端 rea.deloitte.com.cn</span>
              </div>
             </div>
       </div>

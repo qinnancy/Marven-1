@@ -50,11 +50,11 @@
            <div class="footer-img-bg">
              <div class="footer-line-box">
               <img src="@/assets/解锁.svg" class="footer-icon-size"/>
-              <span class="footer-img-font">解锁更多投资项目</span>
+              <span class="footer-img-font">解锁100,000+项目投资</span>
              </div>
              <div class="footer-line-box1">
                <img src="@/assets/登录.svg" class="footer-icon-size"/>
-               <span class="footer-img-font2">请登录PC端 (rea.deloitte.com.cn)</span>
+               <span class="footer-img-font2">请登录PC端 rea.deloitte.com.cn</span>
              </div>
             </div>
         </div>
@@ -192,6 +192,7 @@ export default {
     text-align: left;
     color: #333333;
     font-size: .75rem;
+    min-height: 2rem;
 }
 .content-line {
     line-height: 2rem;

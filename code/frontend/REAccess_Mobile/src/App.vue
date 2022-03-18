@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="bg-box" v-if="isShowHome">
-      <img src="@/assets/banner改字.jpg" class="header-img"/>
+      <!-- <img src="@/assets/banner改字.jpg" class="header-img"/> -->
        <!-- <div class="bg-title">产城智链</div>
        <div class="bg-tag">发现你的城市</div>
        <div class="bg-detail">解锁100+维度，洞察240+城市，追踪90+产业</div> -->
@@ -312,17 +312,17 @@ body {
   color: #fff !important;
 }
 .bg-box{
-  /* width: 100%;
-  height: 11.5rem;
-  background: url("./assets/banner.jpg") no-repeat;
+  width: 100%;
+  height: 11.3rem;
+  background: url("./assets/banner-last.jpg") no-repeat;
   background-size:100%;
-  text-align: center; */
-    width: 100%;
+  text-align: center;
+    /* width: 100%;
     height: 10.8rem;
     position: relative;
     display: block;
     overflow: hidden;
-    text-align: center;
+    text-align: center; */
 }
 .header-img{
     width: 100%;
