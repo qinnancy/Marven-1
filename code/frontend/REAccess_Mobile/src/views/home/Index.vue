@@ -34,7 +34,7 @@
              </div>
              <div class="footer-line-box1">
                <img src="@/assets/登录.svg" class="footer-icon-size"/>
-               <span class="footer-img-font2">请登录PC端 (rea.deloitte.com.cn)</span>
+               <span class="footer-img-font2">请登录PC端 rea.deloitte.com.cn</span>
              </div>
             </div>
         </div>
@@ -114,6 +114,7 @@ export default {
       })
     },
     htmlDecode(str){
+      str = str.replaceAll("div","span")
       const div = document.createElement('div');
       div.innerHTML = str;
       return div.innerText || div.innerHTML;
@@ -174,6 +175,9 @@ export default {
   margin-top: -0.1rem;
   font-weight: bold;
   line-height: 1.4rem;
+}
+.new-title >>> span{
+    display: inherit;
 }
 .new-title::after{
     content:"";

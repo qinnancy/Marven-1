@@ -148,6 +148,7 @@ export default {
   line-clamp: 2;
   -webkit-box-orient: vertical;
   margin-top: 1rem;
+  text-align: left;
 }
 .province{
   float: left;

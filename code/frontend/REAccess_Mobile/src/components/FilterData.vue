@@ -17,7 +17,7 @@
         </div>
         <div class="line-item num-order" v-if="index>2">#{{index+1}}</div>
         <div :class="index>2?'line-item uni-font':'line-item'" style="line-height: 1rem;margin-top: 1.5rem;padding-right:4%;width:26%">{{item.cityName}}</div>
-        <div class="line-item uni-font" style="line-height: 1rem;margin-top: 1.5rem;padding-right:4%;width:26%">{{item.provinceName}}</div>
+        <div class="line-item uni-font" style="line-height: 1rem;margin-top: 1.5rem;padding-right:3%;width:28%">{{item.provinceName}}</div>
         <div class="line-item uni-font amount-box">{{item.rankValue}} {{item.unit}}</div>
       </div>
   </div>
@@ -56,7 +56,7 @@ export default {
   height: 3rem;
   line-height: 3rem;
   text-align: left;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
 }
 .logo-box{
   float: left;
@@ -101,11 +101,11 @@ export default {
   line-height: 4rem;
   font-size: .75rem;
   color: #333333;
-  margin: 0 1.5rem 0 1.5rem;
+  margin: 0 1rem 0 1rem;
   border-bottom: 1px solid #EEEFF3;
 }
 .num-order{
-  width: 10% !important;
+  width: 9% !important;
 }
 .line-item{
   float: left;

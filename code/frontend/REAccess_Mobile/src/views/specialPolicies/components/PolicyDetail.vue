@@ -44,7 +44,7 @@
              </div>
              <div class="footer-line-box1">
                <img src="@/assets/登录.svg" class="footer-icon-size"/>
-               <span class="footer-img-font2">请登录PC端 (rea.deloitte.com.cn)</span>
+               <span class="footer-img-font2">请登录PC端 rea.deloitte.com.cn</span>
              </div>
             </div>
       </div>
