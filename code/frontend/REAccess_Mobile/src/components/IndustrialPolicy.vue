@@ -162,6 +162,14 @@ export default {
   width: 30%;
   font-size: 12px;
   color: #999999;
+  line-height: 1rem;
+  margin-top: 1.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 .goto-order{
   width: 8% !important;
