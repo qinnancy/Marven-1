@@ -198,13 +198,16 @@ namespace REAccess.Mobile.Common.Services
             var dbNews = StaticCache.DdsNews.FirstOrDefault(x => x.Id == newsId);
             if(dbNews != null)
             {
-                model.Id = dbNews.Id;
-                model.NewsTitle = dbNews.Title;
-                model.NewsContent = dbNews.Content;
-                model.NewsImage = Path.Combine("RealTimeInfoImgs", dbNews.Img).Replace(".png",".jpg");
-                //model.NewsReleaseDate = ToolFunc.DatetimeFormatter(dbNews.ReleaseTime);
-                model.NewsReleaseDate = "2022-03-21";
-                model.NewTags = dbNews.Tags.Split(';').ToList();
+                List<NewsModel> newsData = _utilService.GetNewsData();
+                model = newsData.FirstOrDefault(x => x.Id == dbNews.Id);
+                model.NewsTitle = WebUtility.HtmlDecode(dbNews.Title).Replace("<div>","").Replace("</div>","");
+                //model.Id = dbNews.Id;
+                //model.NewsTitle = dbNews.Title;
+                //model.NewsContent = dbNews.Content;
+                //model.NewsImage = Path.Combine("RealTimeInfoImgs", dbNews.Img).Replace(".png",".jpg");
+                ////model.NewsReleaseDate = ToolFunc.DatetimeFormatter(dbNews.ReleaseTime);
+                //model.NewsReleaseDate = "2022-03-21";
+                //model.NewTags = dbNews.Tags.Split(';').ToList();
             }
 
             return model;

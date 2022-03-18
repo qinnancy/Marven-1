@@ -81,7 +81,7 @@ namespace REAccess.Mobile.Common
         }
         public static class DataFile
         {
-            public const string FileName = "mobile_data_20220307.xlsx";
+            public const string FileName = "mobile_data_20220318.xlsx";
         }
     }
 }

@@ -473,8 +473,9 @@ namespace REAccess.Mobile.Common.Services
                 }
             });
             model.IndustrialPolicis = policyData.Where(x => x.PolicyId != 0).ToList() ;
+            var policyName = model.IndustrialPolicis.First().IndustryName;
 
-            model.IndustrialPolicyCount = industryId == 2 ? 180 : policyList.Count();
+            model.IndustrialPolicyCount = int.Parse(_utilService.GetPolicyList().FirstOrDefault(x => x.PolicyName == policyName).PolicyCount);
 
             return model;
         }

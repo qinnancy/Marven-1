@@ -67,9 +67,7 @@ namespace REAccess.Mobile.Database.LogModels
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.BrowseType)
-                    .HasColumnName("browse_type")
-                    .HasMaxLength(256);
+                entity.Property(e => e.BrowseType).HasColumnName("browse_type");
 
                 entity.Property(e => e.CityIndexPolicyIndustryParamName).HasColumnName("city_index_policy_industry_param_name");
 
@@ -83,33 +81,23 @@ namespace REAccess.Mobile.Database.LogModels
 
                 entity.Property(e => e.Message).HasColumnName("message");
 
-                entity.Property(e => e.PageName)
-                    .HasColumnName("page_name")
-                    .HasMaxLength(255);
+                entity.Property(e => e.PageName).HasColumnName("page_name");
 
-                entity.Property(e => e.PreviousPage)
-                    .HasColumnName("previous_page")
-                    .HasMaxLength(512);
+                entity.Property(e => e.PreviousPage).HasColumnName("previous_page");
 
                 entity.Property(e => e.RawUrl)
                     .IsRequired()
-                    .HasColumnName("raw_url")
-                    .HasMaxLength(2048);
+                    .HasColumnName("raw_url");
 
-                entity.Property(e => e.SectionName)
-                    .HasColumnName("section_name")
-                    .HasMaxLength(255);
+                entity.Property(e => e.SectionName).HasColumnName("section_name");
 
-                entity.Property(e => e.SessionId)
-                    .HasColumnName("session_id")
-                    .HasMaxLength(500);
+                entity.Property(e => e.SessionId).HasColumnName("session_id");
 
                 entity.Property(e => e.StackTrace).HasColumnName("stack_trace");
 
                 entity.Property(e => e.Url)
                     .IsRequired()
-                    .HasColumnName("url")
-                    .HasMaxLength(2048);
+                    .HasColumnName("url");
             });
 
             OnModelCreatingPartial(modelBuilder);

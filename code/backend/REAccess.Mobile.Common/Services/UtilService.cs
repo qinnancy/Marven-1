@@ -297,7 +297,7 @@ namespace REAccess.Mobile.Common.Services
                         IndexName = dataTable.Rows[i][1].ToString(),
                         IndexValue = ToolFunc.ThousandFormatter(dataTable.Rows[i][2].ToString()),
                         Unit = dataTable.Rows[i][3].ToString(),
-                        IndexAmount = dataTable.Rows[i][4].ToString(),
+                        IndexAmount = ToolFunc.ThousandFormatter(dataTable.Rows[i][4].ToString(),1),
                         IndexAmountUnit = dataTable.Rows[i][5].ToString()
                     };
                     data.Add(rank);
@@ -404,7 +404,7 @@ namespace REAccess.Mobile.Common.Services
                         ProvinceName = dataTable.Rows[i][2].ToString(),
                         RankValue = dataTable.Rows[i][3].ToString(),
                         Unit = dataTable.Rows[i][4].ToString(),
-                        RankAmount = ToolFunc.ThousandFormatter(dataTable.Rows[i][5].ToString()),
+                        RankAmount = ToolFunc.ThousandFormatter(dataTable.Rows[i][5].ToString(),1),
                         RankAmountUnit = dataTable.Rows[i][6].ToString()
                     };
                     model.Add(rank);
