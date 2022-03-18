@@ -420,7 +420,7 @@ a {
   /* margin-left: 0.5rem; */
 }
 .footer-line-box{
-  padding-top: 2.2rem;
+  padding-top: 9.5%;
   padding-left: 8%;
   float: left;
   width: 92%;
