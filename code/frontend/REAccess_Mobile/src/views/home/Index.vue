@@ -50,7 +50,7 @@ export default {
   data(){
     return{
       newsList:[],
-      currentPage: 1,
+      currentPage: 2,
       pageSize: 5,
       loading:false,
       loadingContent:null,
