@@ -14,7 +14,7 @@
             <div class="news-buttom-box">
               <div class="news-tag-title">产城智链：</div>
               <!-- <div class="new-tag-box"> -->
-                <div class="news-tag-box" v-for="(itag,itagNum) in filterArray(item.newTags)" :key="itagNum">
+                <div class="news-tag-box" v-for="(itag,itagNum) in filterArray(item.newTags)" :key="itagNum" :style="itagNum===0?'margin-left:3.5rem':''">
                     <div class="new-tag">{{itag}}</div>
                 </div>
               <!-- </div> -->
@@ -234,7 +234,7 @@ export default {
   float: left;
   padding: 0 .25rem 0 .25rem;
   margin-right: .25rem;
-  /* margin-bottom: 0.1rem; */
+  margin-bottom: 1px;
   /* overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis; */
@@ -242,7 +242,8 @@ export default {
 .news-tag-title{
   font-size: .7rem;
   color: #333333;
-  float: left;
+  /* float: left; */
+  position: absolute;
   font-weight: bold;
   height: 1.18rem;
 }
